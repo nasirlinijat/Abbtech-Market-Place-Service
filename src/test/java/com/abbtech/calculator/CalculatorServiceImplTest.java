@@ -42,6 +42,12 @@ class CalculatorServiceImplTest {
         Assertions.assertEquals("b is not allowed to negative number", exception.getMessage());
     }
 
+    @Test
+    void printNumbersTest_success() {
+        calculatorService.printNumbers(1, -5);
+        Assertions.assertDoesNotThrow(() -> calculatorService.printNumbers(1, -5));
+    }
+
 
     private static Stream<Integer> addTestThrowBSource() {
         List<Integer> list = new ArrayList<>();

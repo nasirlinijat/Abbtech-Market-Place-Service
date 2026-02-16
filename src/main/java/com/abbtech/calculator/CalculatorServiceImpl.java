@@ -35,4 +35,9 @@ public class CalculatorServiceImpl implements CalculatorService {
         System.out.println("Dividing " + a + " " + b);
         return a / b;
     }
+
+    @Override
+    public void printNumbers(int a, int b) {
+        System.out.println("Printing " + a + " " + b);
+    }
 }

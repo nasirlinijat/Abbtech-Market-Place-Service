@@ -9,4 +9,6 @@ public interface CalculatorService {
     int mul(int a, int b);
 
     int div(int a, int b);
+
+    void printNumbers(int a, int b);
 }
