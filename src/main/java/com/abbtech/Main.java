@@ -6,7 +6,7 @@ import com.abbtech.calculator.CalculatorServiceImpl;
 import java.util.Scanner;
 
 public class Main {
-    static void main() {
+    static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter a number A: ");
         int a = sc.nextInt();
@@ -15,18 +15,19 @@ public class Main {
         System.out.println("Enter a calculator method: ");
         String method = sc.next();
         CalculatorService calculatorService = new CalculatorServiceImpl();
+
         switch (method) {
             case "add":
-                calculatorService.add(a, b);
+                System.out.println(calculatorService.add(a, b));
                 break;
             case "subtract":
-                calculatorService.sub(a, b);
+                System.out.println(calculatorService.sub(a, b));
                 break;
             case "multiply":
-                calculatorService.mul(a, b);
+                System.out.println(calculatorService.mul(a, b));
                 break;
             case "divide":
-                calculatorService.div(a, b);
+                System.out.println(calculatorService.div(a, b));
                 break;
             default:
                 System.out.println("Invalid operation");
