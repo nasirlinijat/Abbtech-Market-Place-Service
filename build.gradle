@@ -1,12 +1,29 @@
 plugins {
     id 'java'
+    id 'application'
 }
 
 group = 'com.abbtech'
-version = '1.0-SNAPSHOT'
+version = '1.0.0'
 
 repositories {
     mavenCentral()
+}
+
+application {
+    mainClass = 'com.abbtech.Main'
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'com.abbtech.Main'
+        )
+    }
+}
+
+tasks.register("buildJar"){
+    print("Jar created")
 }
 
 dependencies {
