@@ -22,14 +22,20 @@ public class CalculatorController extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
         int a = Integer.parseInt(request.getParameter("a"));
         int b = Integer.parseInt(request.getParameter("b"));
         String method = request.getParameter("method");
         int result = 0;
+        boolean isSuccess = true;
         switch (method) {
             case "add":
-                result = calculatorService.add(a, b);
+                try {
+                    result = calculatorService.add(a, b);
+                } catch (ArithmeticException e) {
+                    response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                    response.getWriter().println(e.getMessage());
+                    isSuccess = false;
+                }
                 break;
             case "subtract":
                 result = calculatorService.sub(a, b);
@@ -41,8 +47,9 @@ public class CalculatorController extends HttpServlet {
                 result = calculatorService.div(a, b);
                 break;
         }
-
-        PrintWriter writer = response.getWriter();
-        writer.println("result x: " + result);
+        if (isSuccess) {
+            PrintWriter writer = response.getWriter();
+            writer.println("result x: " + result);
+        }
     }
 }
