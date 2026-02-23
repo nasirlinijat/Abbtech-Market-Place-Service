@@ -1,4 +1,4 @@
-package com.abbtech.calculator;
+package com.abbtech.service;
 
 public interface CalculatorService {
 

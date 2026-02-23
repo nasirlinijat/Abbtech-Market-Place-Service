@@ -1,10 +1,17 @@
 plugins {
     id 'java'
     id 'application'
+    id 'war'
 }
 
 group = 'com.abbtech'
 version = '1.0.0'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
+}
+
 
 repositories {
     mavenCentral()
@@ -14,19 +21,28 @@ application {
     mainClass = 'com.abbtech.Main'
 }
 
-jar {
-    manifest {
-        attributes(
-                'Main-Class': 'com.abbtech.Main'
-        )
-    }
+
+ext {
+    set('jakartaVersion', '6.1.0-M2')
 }
+
+
+
+//jar {
+//    manifest {
+//        attributes(
+//                'Main-Class': 'com.abbtech.Main'
+//        )
+//    }
+//}
 
 tasks.register("buildJar"){
     print("Jar created")
 }
 
 dependencies {
+    compileOnly group: 'jakarta.servlet', name: 'jakarta.servlet-api', version: "${jakartaVersion}"
+
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testImplementation("org.mockito:mockito-core:5.21.0")

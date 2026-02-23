@@ -1,7 +1,7 @@
 package com.abbtech;
 
-import com.abbtech.calculator.CalculatorService;
-import com.abbtech.calculator.CalculatorServiceImpl;
+import com.abbtech.service.CalculatorService;
+import com.abbtech.service.CalculatorServiceImpl;
 
 import java.util.Scanner;
 
