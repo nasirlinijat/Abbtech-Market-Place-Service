@@ -4,10 +4,11 @@ import java.math.BigDecimal;
 
 public class ResponseProductDto {
     private String productName;
+
     private BigDecimal productPrice;
+
     private String productImage;
     private String productDescription;
-
     public ResponseProductDto(String productName, BigDecimal productPrice, String productImage, String productDescription) {
         this.productName = productName;
         this.productPrice = productPrice;
@@ -47,4 +48,14 @@ public class ResponseProductDto {
         this.productDescription = productDescription;
     }
 
+
+    @Override
+    public String toString() {
+        return "ResponseProductDto{" +
+               "productName='" + productName + '\'' +
+               ", productPrice=" + productPrice +
+               ", productImage='" + productImage + '\'' +
+               ", productDescription='" + productDescription + '\'' +
+               '}';
+    }
 }
