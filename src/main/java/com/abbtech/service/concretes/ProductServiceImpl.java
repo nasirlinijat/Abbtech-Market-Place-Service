@@ -18,10 +18,10 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.getAllProducts()
                 .stream()
                 .map(product -> new ResponseProductDto(
+                        product.getProductName(),
                         product.getProductDescription(),
-                        product.getProductPrice(),
                         product.getProductImage(),
-                        product.getProductName()))
+                        product.getProductPrice()))
                 .toList();
     }
 

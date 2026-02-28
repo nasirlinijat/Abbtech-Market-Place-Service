@@ -4,16 +4,15 @@ import java.math.BigDecimal;
 
 public class ResponseProductDto {
     private String productName;
-
+    private String productDescription;
+    private String productImage;
     private BigDecimal productPrice;
 
-    private String productImage;
-    private String productDescription;
-    public ResponseProductDto(String productName, BigDecimal productPrice, String productImage, String productDescription) {
+    public ResponseProductDto(String productName, String productDescription, String productImage, BigDecimal productPrice) {
         this.productName = productName;
-        this.productPrice = productPrice;
-        this.productImage = productImage;
         this.productDescription = productDescription;
+        this.productImage = productImage;
+        this.productPrice = productPrice;
     }
 
     public String getProductName() {
