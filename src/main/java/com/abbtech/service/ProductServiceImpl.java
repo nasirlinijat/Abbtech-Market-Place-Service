@@ -1,6 +1,8 @@
 package com.abbtech.service;
 
+import com.abbtech.dto.ReqProductDto;
 import com.abbtech.dto.RespProductDto;
+import com.abbtech.model.Product;
 import com.abbtech.repository.ProductRepository;
 
 import java.math.BigDecimal;
@@ -23,5 +25,15 @@ public class ProductServiceImpl implements ProductService {
                         product.getProductPrice(),
                         product.getProductName()))
                 .toList();
+    }
+
+    @Override
+    public void saveProduct(ReqProductDto product) {
+        productRepository.saveProduct(new Product(product.getProductDescription(),
+                        product.getProductImage(),
+                        product.getProductPrice(),
+                        product.getProductName(),
+                        product.getProductPrice())
+                );
     }
 }

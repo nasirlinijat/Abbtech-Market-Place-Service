@@ -47,4 +47,9 @@ public class ProductInMemoryRepositoryImpl implements ProductRepository {
     public List<Product> getAllProducts() {
         return products;
     }
+
+    @Override
+    public void saveProduct(Product product) {
+
+    }
 }
