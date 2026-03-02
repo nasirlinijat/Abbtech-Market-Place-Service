@@ -24,6 +24,8 @@ application {
 
 ext {
     set('jakartaVersion', '6.1.0-M2')
+    set("postgresVersion", "42.7.4")
+    set("hikariCPVersion", "6.2.1")
 }
 
 
@@ -43,6 +45,8 @@ tasks.register("buildJar"){
 dependencies {
 
     implementation("com.fasterxml.jackson.core:jackson-databind:2.21.1")
+    implementation group: 'com.zaxxer', name: 'HikariCP', version: "${hikariCPVersion}"
+    implementation group: 'org.postgresql', name: 'postgresql', version: "${postgresVersion}"
 
     compileOnly group: 'jakarta.servlet', name: 'jakarta.servlet-api', version: "${jakartaVersion}"
 
