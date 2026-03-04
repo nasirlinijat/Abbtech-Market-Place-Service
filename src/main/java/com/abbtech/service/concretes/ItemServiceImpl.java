@@ -1,6 +1,7 @@
 package com.abbtech.service.concretes;
 
-import com.abbtech.dto.ResponseItemDto;
+import com.abbtech.dto.request.RequestItemDto;
+import com.abbtech.dto.response.ResponseItemDto;
 import com.abbtech.repository.ItemRepository;
 import com.abbtech.service.abstracts.ItemService;
 
@@ -42,6 +43,11 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public void deleteByName(String name) {
         itemRepository.deleteByName(name);
+    }
+
+    @Override
+    public void updateByName(String name, RequestItemDto requestItemDto) {
+        itemRepository.updateByName(name, requestItemDto);
     }
 
 

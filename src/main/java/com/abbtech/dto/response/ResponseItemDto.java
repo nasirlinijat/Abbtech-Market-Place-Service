@@ -1,4 +1,4 @@
-package com.abbtech.dto;
+package com.abbtech.dto.response;
 
 import java.math.BigDecimal;
 
