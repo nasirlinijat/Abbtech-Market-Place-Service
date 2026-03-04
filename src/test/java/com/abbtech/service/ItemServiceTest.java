@@ -44,10 +44,10 @@ public class ItemServiceTest {
                 BigDecimal.valueOf(2000)
         );
 
-        when(itemRepository.getAllItems())
+        when(itemRepository.getAll())
                 .thenReturn(List.of(item1, item2));
 
-        List<ResponseItemDto> result = itemService.getAllItems();
+        List<ResponseItemDto> result = itemService.getAll();
 
         assertEquals(2, result.size());
 
@@ -58,7 +58,7 @@ public class ItemServiceTest {
                 () -> assertEquals("Latest iPhone with A16 chip", result.get(0).getDescription())
         );
 
-        verify(itemRepository, times(1)).getAllItems();
+        verify(itemRepository, times(1)).getAll();
 
     }
 
