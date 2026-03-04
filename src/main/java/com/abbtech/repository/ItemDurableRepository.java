@@ -1,6 +1,7 @@
 package com.abbtech.repository;
 
 import com.abbtech.config.DatabaseConfig;
+import com.abbtech.dto.request.RequestItemDto;
 import com.abbtech.model.Item;
 
 import java.math.BigDecimal;
@@ -75,7 +76,31 @@ public class ItemDurableRepository implements ItemRepository {
                 PreparedStatement statement = connection.prepareStatement(deleteQuery)
         ) {
             statement.setString(1, itemName);
-            statement.executeQuery();
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void updateByName(String itemName, RequestItemDto requestItemDto) {
+        String updateQuery = """
+                UPDATE item
+                SET name = ?, price = ?, image = ?, description = ?
+                WHERE name = ? 
+                """;
+        try (
+                Connection connection = DatabaseConfig.dataSource.getConnection();
+                PreparedStatement statement = connection.prepareStatement(updateQuery)
+                ){
+            statement.setString(1, requestItemDto.getName());
+            statement.setBigDecimal(2, requestItemDto.getPrice());
+            statement.setString(3, requestItemDto.getImage());
+            statement.setString(4, requestItemDto.getDescription());
+            statement.setString(5, itemName);
+
+            statement.executeUpdate();
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

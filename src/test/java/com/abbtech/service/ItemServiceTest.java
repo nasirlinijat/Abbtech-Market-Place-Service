@@ -1,6 +1,6 @@
 package com.abbtech.service;
 
-import com.abbtech.dto.ResponseItemDto;
+import com.abbtech.dto.response.ResponseItemDto;
 import com.abbtech.model.Item;
 import com.abbtech.repository.ItemRepository;
 import com.abbtech.service.concretes.ItemServiceImpl;

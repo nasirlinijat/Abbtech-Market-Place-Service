@@ -1,5 +1,6 @@
 package com.abbtech.controller;
 
+import com.abbtech.dto.request.RequestItemDto;
 import com.abbtech.repository.ItemDurableRepository;
 import com.abbtech.service.abstracts.ItemService;
 import com.abbtech.service.concretes.ItemServiceImpl;
@@ -55,6 +56,18 @@ public class ItemController extends HttpServlet {
         if (nameParameter != null && !nameParameter.isBlank()) {
             response.setStatus(HttpServletResponse.SC_OK);
             itemService.deleteByName(nameParameter);
+        }
+    }
+
+    @Override
+    protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        String nameParameter = request.getParameter("name");
+        if (nameParameter != null && !nameParameter.isBlank()) {
+            RequestItemDto requestItemDto = OBJECT_MAPPER.readValue(request.getReader(), RequestItemDto.class);
+            response.setStatus(HttpServletResponse.SC_OK);
+            itemService.updateByName(nameParameter, requestItemDto);
         }
     }
 }
