@@ -5,6 +5,7 @@ import com.abbtech.repository.ItemRepository;
 import com.abbtech.service.abstracts.ItemService;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ItemServiceImpl implements ItemService {
     private final ItemRepository itemRepository;
@@ -14,8 +15,8 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public List<ResponseItemDto> getAllItems() {
-        return itemRepository.getAllItems()
+    public List<ResponseItemDto> getAll() {
+        return itemRepository.getAll()
                 .stream()
                 .map(item -> new ResponseItemDto(
                         item.getName(),
@@ -23,6 +24,24 @@ public class ItemServiceImpl implements ItemService {
                         item.getImage(),
                         item.getDescription()))
                 .toList();
+    }
+
+    @Override
+    public List<ResponseItemDto> getByName(String name) {
+        return itemRepository.getByName(name)
+                .stream()
+                .map(item -> new ResponseItemDto(
+                        item.getName(),
+                        item.getPrice(),
+                        item.getImage(),
+                        item.getDescription()
+                ))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public void deleteByName(String name) {
+        itemRepository.deleteByName(name);
     }
 
 
