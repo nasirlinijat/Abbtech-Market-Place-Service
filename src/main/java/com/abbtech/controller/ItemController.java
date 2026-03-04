@@ -1,6 +1,6 @@
 package com.abbtech.controller;
 
-import com.abbtech.repository.ItemInMemoryRepositoryImpl;
+import com.abbtech.repository.ItemDurableRepository;
 import com.abbtech.service.abstracts.ItemService;
 import com.abbtech.service.concretes.ItemServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,7 +19,7 @@ public class ItemController extends HttpServlet {
 
     @Override
     public void init() {
-        itemService = new ItemServiceImpl(new ItemInMemoryRepositoryImpl());
+        itemService = new ItemServiceImpl(new ItemDurableRepository());
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
