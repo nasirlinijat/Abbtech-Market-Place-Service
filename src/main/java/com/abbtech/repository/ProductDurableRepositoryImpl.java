@@ -17,11 +17,11 @@ public class ProductDurableRepositoryImpl implements ProductRepository {
 
         List<Product> products = new ArrayList<>();
         String getProductsQuery = "SELECT * FROM item";
+        Connection connection = DatabaseConfig.getConnection();
         try (
-                Connection connection = DatabaseConfig.dataSource.getConnection();
                 PreparedStatement statement = connection.prepareStatement(getProductsQuery)) {
-
             ResultSet resulSet = statement.executeQuery();
+
             while (resulSet.next()) {
                 String name = resulSet.getString("name");
                 String description = resulSet.getString("description");
