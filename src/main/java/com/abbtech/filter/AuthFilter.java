@@ -5,8 +5,8 @@ import jakarta.servlet.annotation.WebFilter;
 
 import java.io.IOException;
 
-@WebFilter("/logging/*")
-public class LoggingFilter implements Filter {
+@WebFilter("/*")
+public class AuthFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         System.out.println("LoggingFilter is called");

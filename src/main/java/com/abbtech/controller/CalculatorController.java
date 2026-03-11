@@ -7,9 +7,11 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 @WebServlet(name = "CalculatorController", urlPatterns = "/calculator")
 public class CalculatorController extends HttpServlet {
@@ -22,6 +24,12 @@ public class CalculatorController extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+
+        HttpSession session = request.getSession();
+        String username = (String) session.getAttribute("username");
+        List<String> items = (List<String>) session.getAttribute("items");
+
         int a = Integer.parseInt(request.getParameter("a"));
         int b = Integer.parseInt(request.getParameter("b"));
         String method = request.getParameter("method");
