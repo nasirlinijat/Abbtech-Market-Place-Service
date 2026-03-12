@@ -1,5 +1,8 @@
 package com.abbtech.livenesslock;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class Deadlock {
     private Object objectOne = new Object();
     private Object objectTwo = new Object();
@@ -31,8 +34,13 @@ class DeadlockTest {
         Deadlock deadlock = new Deadlock();
         Thread threadOne = new Thread(() -> deadlock.doSomethingOnObjectOne());
         Thread threadTwo = new Thread(() -> deadlock.doSomethingOnObjectTwo());
-        threadOne.start();
-        threadTwo.start();
+
+        ExecutorService executorService = Executors.newFixedThreadPool(2);
+        executorService.execute(threadOne);
+        executorService.execute(threadTwo);
+
+       // threadOne.start();
+      //  threadTwo.start();
 
     }
 }
