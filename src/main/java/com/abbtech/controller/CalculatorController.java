@@ -13,6 +13,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import static com.abbtech.utils.StringUtils.EMPTY_STRING;
+import static com.abbtech.utils.StringUtils.isBlank;
+
 @WebServlet(name = "CalculatorController", urlPatterns = "/calculator")
 public class CalculatorController extends HttpServlet {
     private CalculatorService calculatorService;
@@ -21,6 +24,10 @@ public class CalculatorController extends HttpServlet {
     public void init() throws ServletException {
         log("CalculatorController init");
         calculatorService = new CalculatorServiceImpl();
+
+        String emptyString = EMPTY_STRING;
+
+        isBlank("asdasdsa");
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
