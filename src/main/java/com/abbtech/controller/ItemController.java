@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "ItemController", urlPatterns = "/items")
+@WebServlet(urlPatterns = "/items")
 public class ItemController extends HttpServlet {
     private ItemService itemService;
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
