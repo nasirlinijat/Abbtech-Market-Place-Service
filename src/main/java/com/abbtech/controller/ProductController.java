@@ -1,13 +1,13 @@
 package com.abbtech.controller;
 
-import com.abbtech.repository.ProductDurableRepositoryImpl;
+import com.abbtech.repository.ProductInMemoryRepositoryImpl;
 import com.abbtech.service.ProductService;
 import com.abbtech.service.ProductServiceImpl;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import tools.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,7 +19,7 @@ public class ProductController extends HttpServlet {
 
     @Override
     public void init() {
-        productService = new ProductServiceImpl(new ProductDurableRepositoryImpl());
+        productService = new ProductServiceImpl(new ProductInMemoryRepositoryImpl());
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
