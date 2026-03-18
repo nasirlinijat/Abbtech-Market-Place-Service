@@ -1,29 +1,38 @@
 package com.abbtech.controller;
 
-import com.abbtech.repository.ProductInMemoryRepositoryImpl;
+import com.abbtech.bean.annotation.Employee;
+import com.abbtech.dto.RespProductDto;
 import com.abbtech.service.ProductService;
-import com.abbtech.service.ProductServiceImpl;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import tools.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 
-@WebServlet(name = "ProductController", urlPatterns = "/products")
+@Component
 public class ProductController extends HttpServlet {
-    private ProductService productService;
-    private static final ObjectMapper objectMapper = new ObjectMapper();
+    private final ProductService productService;
 
-    @Override
-    public void init() {
-        productService = new ProductServiceImpl(new ProductInMemoryRepositoryImpl());
+    @Autowired
+    @Qualifier("ali")
+    //field injection
+    private Employee smth;
+
+    public Employee smthels;
+
+    // setter injection
+    public void setEmployee(Employee smth) {
+        this.smth = smth;
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        PrintWriter writer = response.getWriter();
-        writer.println(objectMapper.writeValueAsString(productService.getAllProducts()));
+    //constructor
+    public ProductController(ProductService productService) {
+        this.productService = productService;
     }
+
+    public List<RespProductDto> getAllProducts() {
+        return productService.getAllProducts();
+    }
+
 }

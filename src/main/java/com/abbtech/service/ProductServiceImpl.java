@@ -4,10 +4,12 @@ import com.abbtech.dto.ReqProductDto;
 import com.abbtech.dto.RespProductDto;
 import com.abbtech.model.Product;
 import com.abbtech.repository.ProductRepository;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
 
+@Service
 public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
 

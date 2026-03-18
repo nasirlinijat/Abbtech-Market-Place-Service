@@ -1,10 +1,12 @@
 package com.abbtech.repository;
 
 import com.abbtech.model.Product;
+import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 import java.util.List;
 
+@Repository
 public class ProductInMemoryRepositoryImpl implements ProductRepository {
 
 
