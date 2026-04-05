@@ -21,14 +21,17 @@ public class ProductController extends HttpServlet {
 
     public Employee smthels;
 
+    private final Employee pirvali;
+
     // setter injection
     public void setEmployee(Employee smth) {
         this.smth = smth;
     }
 
     //constructor
-    public ProductController(ProductService productService) {
+    public ProductController(ProductService productService, Employee pirvali) {
         this.productService = productService;
+        this.pirvali = pirvali;
     }
 
     public List<RespProductDto> getAllProducts() {
