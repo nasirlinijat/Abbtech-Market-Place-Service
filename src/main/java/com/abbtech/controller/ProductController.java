@@ -37,9 +37,7 @@ public class ProductController extends HttpServlet {
             , @RequestHeader Map<String, String> allHeaders) {
 
 
-        throw new RuntimeException("This is a test exception");
-
-        // return productService.getProductByName(name);
+        return productService.getProductByName(name);
     }
 
 

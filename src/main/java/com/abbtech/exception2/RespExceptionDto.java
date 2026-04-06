@@ -1,4 +1,4 @@
-package com.abbtech.exception;
+package com.abbtech.exception2;
 
 import java.time.LocalDateTime;
 

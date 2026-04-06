@@ -2,6 +2,7 @@ package com.abbtech.service;
 
 import com.abbtech.dto.ReqProductDto;
 import com.abbtech.dto.RespProductDto;
+import com.abbtech.exception.ProductErrorEnum;
 import com.abbtech.exception.ProductException;
 import com.abbtech.model.Product;
 import com.abbtech.repository.ProductRepository;
@@ -26,7 +27,7 @@ public class ProductServiceImpl implements ProductService {
                 .map(product -> new RespProductDto(product.getProductDescription(),
                         product.getProductImage(),
                         product.getProductPrice(),
-                        product.getProductName())).findFirst().orElseThrow(() -> new ProductException("Product not found"));
+                        product.getProductName())).findFirst().orElseThrow(() -> new ProductException(ProductErrorEnum.PRODUCT_NOT_FOUND));
     }
 
     @Override
