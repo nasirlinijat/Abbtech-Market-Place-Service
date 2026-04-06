@@ -2,6 +2,7 @@ package com.abbtech.service;
 
 import com.abbtech.dto.ReqProductDto;
 import com.abbtech.dto.RespProductDto;
+import com.abbtech.exception.ProductException;
 import com.abbtech.model.Product;
 import com.abbtech.repository.ProductRepository;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,17 @@ public class ProductServiceImpl implements ProductService {
 
     public ProductServiceImpl(ProductRepository productRepository) {
         this.productRepository = productRepository;
+    }
+
+    @Override
+    public RespProductDto getProductByName(String name) {
+        return productRepository.getAllProducts()
+                .stream()
+                .filter(product -> product.getProductName().equals(name))
+                .map(product -> new RespProductDto(product.getProductDescription(),
+                        product.getProductImage(),
+                        product.getProductPrice(),
+                        product.getProductName())).findFirst().orElseThrow(() -> new ProductException());
     }
 
     @Override
@@ -32,10 +44,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void saveProduct(ReqProductDto product) {
         productRepository.saveProduct(new Product(product.getProductDescription(),
-                        product.getProductImage(),
-                        product.getProductPrice(),
-                        product.getProductName(),
-                        product.getProductPrice())
-                );
+                product.getProductImage(),
+                product.getProductPrice(),
+                product.getProductName(),
+                product.getProductPrice())
+        );
     }
 }

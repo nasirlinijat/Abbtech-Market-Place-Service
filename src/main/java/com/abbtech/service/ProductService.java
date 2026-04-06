@@ -10,4 +10,6 @@ public interface ProductService {
     List<RespProductDto> getAllProducts();
 
     void saveProduct(ReqProductDto product);
+
+    RespProductDto getProductByName(String name);
 }
