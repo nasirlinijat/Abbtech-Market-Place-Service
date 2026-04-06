@@ -26,7 +26,7 @@ public class ProductServiceImpl implements ProductService {
                 .map(product -> new RespProductDto(product.getProductDescription(),
                         product.getProductImage(),
                         product.getProductPrice(),
-                        product.getProductName())).findFirst().orElseThrow(() -> new ProductException());
+                        product.getProductName())).findFirst().orElseThrow(() -> new ProductException("Product not found"));
     }
 
     @Override

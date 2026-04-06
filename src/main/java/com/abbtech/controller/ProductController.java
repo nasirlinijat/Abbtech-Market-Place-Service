@@ -35,7 +35,11 @@ public class ProductController extends HttpServlet {
             , @RequestParam(value = "student", required = false) String student
             , @RequestHeader("x-custom-header") String customHeader
             , @RequestHeader Map<String, String> allHeaders) {
-        return productService.getProductByName(name);
+
+
+        throw new RuntimeException("This is a test exception");
+
+        // return productService.getProductByName(name);
     }
 
 
