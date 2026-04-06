@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/products")
@@ -31,7 +32,9 @@ public class ProductController extends HttpServlet {
     @GetMapping("/{name}")
     public RespProductDto getProductByName(@PathVariable("name") String name
             , @RequestParam(value = "course") String course
-            , @RequestParam(value = "student", required = false) String student) {
+            , @RequestParam(value = "student", required = false) String student
+            , @RequestHeader("x-custom-header") String customHeader
+            , @RequestHeader Map<String, String> allHeaders) {
         return productService.getProductByName(name);
     }
 
