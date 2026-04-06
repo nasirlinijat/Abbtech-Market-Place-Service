@@ -24,13 +24,12 @@ public class ProductController extends HttpServlet {
 
     @GetMapping
     public List<RespProductDto> getAllProducts() {
-
         return productService.getAllProducts();
     }
 
 
     @GetMapping("/{name}")
-    public RespProductDto getProductById(@PathVariable("name") String name
+    public RespProductDto getProductByName(@PathVariable("name") String name
             , @RequestParam(value = "course") String course
             , @RequestParam(value = "student", required = false) String student) {
         return productService.getProductByName(name);
