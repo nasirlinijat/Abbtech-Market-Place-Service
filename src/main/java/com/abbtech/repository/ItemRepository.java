@@ -1,14 +1,17 @@
 package com.abbtech.repository;
 
-import com.abbtech.dto.request.RequestItemDto;
 import com.abbtech.model.Item;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ItemRepository {
     List<Item> getAll();
-    List<Item> getByName(String name);
+
+    Optional<Item> getByName(String name);
+
     void deleteByName(String name);
-    void updateByName(String name, RequestItemDto requestItemDto);
+
+    void add(Item item);
 
 }
