@@ -1,0 +1,9 @@
+employee:
+  name: Ali-dev
+  email: ali@gmail.com-dev
+  phone: 09123456789
+  address:
+    street: 123 Main St
+    city: New York
+    state: NY
+    zip: 10001

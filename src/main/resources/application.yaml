@@ -1,20 +1,7 @@
-employee:
-  name: Ali
-  email: ali@gmail.com
-  phone: 09123456789
-  address:
-    street: 123 Main St
-    city: New York
-    state: NY
-    zip: 10001
-  items:
-    - item1
-    - item2
-    - item3
-    - item4
-  age: 10
-
-
 server:
   servlet:
     context-path: /api/market-place
+    application-display-name: Market Place
+spring:
+  config:
+    import: employee/application-employee.yaml

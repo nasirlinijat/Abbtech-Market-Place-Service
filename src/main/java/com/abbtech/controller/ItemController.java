@@ -2,7 +2,10 @@ package com.abbtech.controller;
 
 import com.abbtech.dto.request.RequestItemDto;
 import com.abbtech.dto.response.ResponseItemDto;
+import com.abbtech.scopes.RequestScopedClass;
+import com.abbtech.scopes.SessionScopedClass;
 import com.abbtech.service.ItemService;
+import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,14 +15,19 @@ import java.util.List;
 public class ItemController {
 
     private final ItemService itemService;
+    private final ApplicationContext applicationContext;
 
-    public ItemController(ItemService itemService) {
+    public ItemController(ItemService itemService, ApplicationContext applicationContext) {
         this.itemService = itemService;
+        this.applicationContext = applicationContext;
     }
 
 
     @GetMapping
-    public List<ResponseItemDto> getAll(@RequestHeader("x-custom-header") String customHeader) {
+    public List<ResponseItemDto> getAll(@RequestHeader(value = "x-custom-header",required = false) String customHeader) {
+        System.out.println("RequestScopedClass: " + applicationContext.getBean(RequestScopedClass.class));
+        System.out.println("SessionScopedClass: " + applicationContext.getBean(SessionScopedClass.class));
+
         return itemService.getAll();
     }
 
