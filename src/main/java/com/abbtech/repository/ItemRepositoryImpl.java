@@ -73,7 +73,7 @@ public class ItemRepositoryImpl implements ItemRepository {
             }
             @Override
             public int getBatchSize() {
-                return items.size(); // whole list
+                return items.size();
             }
         });
 
