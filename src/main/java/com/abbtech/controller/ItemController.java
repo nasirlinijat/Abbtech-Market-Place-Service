@@ -2,10 +2,9 @@ package com.abbtech.controller;
 
 import com.abbtech.dto.request.RequestItemDto;
 import com.abbtech.dto.response.ResponseItemDto;
-import com.abbtech.scopes.RequestScopedClass;
-import com.abbtech.scopes.SessionScopedClass;
 import com.abbtech.service.ItemService;
 import org.springframework.context.ApplicationContext;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,9 +24,6 @@ public class ItemController {
 
     @GetMapping
     public List<ResponseItemDto> getAll(@RequestHeader(value = "x-custom-header", required = false) String customHeader) {
-        System.out.println("RequestScopedClass: " + applicationContext.getBean(RequestScopedClass.class));
-        System.out.println("SessionScopedClass: " + applicationContext.getBean(SessionScopedClass.class));
-
         return itemService.getAll();
     }
 
@@ -44,6 +40,12 @@ public class ItemController {
     @PostMapping
     public ResponseItemDto add(@RequestBody RequestItemDto request) {
         return itemService.add(request);
+    }
+
+    @PostMapping("/all")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void saveAll(@RequestBody List<RequestItemDto> request) {
+        itemService.saveAll(request);
     }
 
     @PutMapping("/{name}")

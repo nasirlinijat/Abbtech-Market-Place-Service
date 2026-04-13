@@ -8,6 +8,8 @@ import java.util.List;
 public interface ItemService {
     ResponseItemDto add(RequestItemDto request);
 
+    void saveAll(List<RequestItemDto> request);
+
     List<ResponseItemDto> getAll();
 
     ResponseItemDto getById(Long id);
