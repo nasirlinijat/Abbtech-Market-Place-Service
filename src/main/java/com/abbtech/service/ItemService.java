@@ -10,7 +10,7 @@ public interface ItemService {
 
     List<ResponseItemDto> getAll();
 
-    ResponseItemDto getByName(String name);
+    ResponseItemDto getById(Long id);
 
     void deleteByName(String name);
 

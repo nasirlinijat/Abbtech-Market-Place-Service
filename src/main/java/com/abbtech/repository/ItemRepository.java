@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface ItemRepository {
     List<Item> getAll();
 
-    Optional<Item> getByName(String name);
+    Optional<Item> getById(Long id);
 
     void deleteByName(String name);
 

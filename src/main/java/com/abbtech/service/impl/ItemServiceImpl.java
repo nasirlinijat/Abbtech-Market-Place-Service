@@ -2,6 +2,8 @@ package com.abbtech.service.impl;
 
 import com.abbtech.dto.request.RequestItemDto;
 import com.abbtech.dto.response.ResponseItemDto;
+import com.abbtech.exception.ProductErrorEnum;
+import com.abbtech.exception.ProductException;
 import com.abbtech.model.Item;
 import com.abbtech.repository.ItemRepository;
 import com.abbtech.service.ItemService;
@@ -50,17 +52,12 @@ public class ItemServiceImpl implements ItemService {
                 .toList();
     }
 
-    @Override
-    public ResponseItemDto getByName(String name) {
-        return itemRepository.getByName(name).stream()
-                .findAny()
-                .map(item -> new ResponseItemDto(
-                        item.getName(),
-                        item.getPrice(),
-                        item.getImage(),
-                        item.getDescription())
-                )
-                .orElseThrow(() -> new RuntimeException("No element with name found!"));
+    public ResponseItemDto getById(Long id) {
+
+        return itemRepository.getById(id)
+                .map(item -> new ResponseItemDto(item.getName(), item.getPrice(), item.getImage(), item.getDescription()))
+                .orElseThrow(() -> new ProductException(ProductErrorEnum.PRODUCT_NOT_FOUND));
+
     }
 
     @Override
@@ -70,19 +67,21 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public ResponseItemDto updateByName(String name, RequestItemDto requestItemDto) {
-        Item item = itemRepository.getByName(name).orElseThrow(() -> new RuntimeException("No element with name found!"));
+        //Item item = itemRepository.getById(name).orElseThrow(() -> new RuntimeException("No element with name found!"));
 
-        item.setName(requestItemDto.getName());
-        item.setPrice(requestItemDto.getPrice());
-        item.setImage(requestItemDto.getImage());
-        item.setDescription(requestItemDto.getDescription());
+//        item.setName(requestItemDto.getName());
+//        item.setPrice(requestItemDto.getPrice());
+//        item.setImage(requestItemDto.getImage());
+//        item.setDescription(requestItemDto.getDescription());
+//
+//        return new ResponseItemDto(
+//                item.getName(),
+//                item.getPrice(),
+//                item.getImage(),
+//                item.getDescription()
+        //       );
 
-        return new ResponseItemDto(
-                item.getName(),
-                item.getPrice(),
-                item.getImage(),
-                item.getDescription()
-        );
+        return null;
     }
 
     @Override
@@ -103,15 +102,8 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public ResponseItemDto partialUpdateByName(String name, String itemDescription) {
-        Item item = itemRepository.getByName(name).orElseThrow(() -> new RuntimeException("No element with name found!"));
-        item.setDescription(itemDescription);
 
-        return new ResponseItemDto(
-                item.getName(),
-                item.getPrice(),
-                item.getImage(),
-                item.getDescription()
-        );
+        return null;
     }
 
 

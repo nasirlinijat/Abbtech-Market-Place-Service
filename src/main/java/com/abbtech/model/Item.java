@@ -52,7 +52,7 @@ public class Item {
     }
 
 
-    public Item(String name, BigDecimal price, String image, String description, BigDecimal wholesalePrice) {
+    public Item(String name, BigDecimal price, String image, String description) {
         this.name = name;
         this.price = price;
         this.image = image;

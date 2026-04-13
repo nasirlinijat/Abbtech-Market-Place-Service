@@ -31,10 +31,9 @@ public class ItemController {
         return itemService.getAll();
     }
 
-    @GetMapping("/{name}")
-    public ResponseItemDto getByName(@PathVariable String name,
-                                     @RequestHeader("x-custom-header") String customHeader) {
-        return itemService.getByName(name);
+    @GetMapping("/{id}")
+    public ResponseItemDto getByName(@PathVariable Long id) {
+        return itemService.getById(id);
     }
 
     @GetMapping("/filter")
