@@ -24,7 +24,7 @@ public class ItemController {
 
 
     @GetMapping
-    public List<ResponseItemDto> getAll(@RequestHeader(value = "x-custom-header",required = false) String customHeader) {
+    public List<ResponseItemDto> getAll(@RequestHeader(value = "x-custom-header", required = false) String customHeader) {
         System.out.println("RequestScopedClass: " + applicationContext.getBean(RequestScopedClass.class));
         System.out.println("SessionScopedClass: " + applicationContext.getBean(SessionScopedClass.class));
 
@@ -37,36 +37,28 @@ public class ItemController {
     }
 
     @GetMapping("/filter")
-    public List<ResponseItemDto> getPriceRange(@RequestParam double min,
-                                               @RequestParam double max,
-                                               @RequestHeader("x-custom-header") String customHeader) {
+    public List<ResponseItemDto> getPriceRange(@RequestParam double min, @RequestParam double max) {
         return itemService.getPriceRange(min, max);
     }
 
     @PostMapping
-    public ResponseItemDto add(@RequestBody RequestItemDto request,
-                               @RequestHeader("x-custom-header") String customHeader) {
+    public ResponseItemDto add(@RequestBody RequestItemDto request) {
         return itemService.add(request);
     }
 
     @PutMapping("/{name}")
-    public ResponseItemDto updateByName(@PathVariable String name,
-                                        @RequestBody RequestItemDto request,
-                                        @RequestHeader("x-custom-header") String customHeader) {
+    public ResponseItemDto updateByName(@PathVariable String name, @RequestBody RequestItemDto request) {
         return itemService.updateByName(name, request);
     }
 
     @PatchMapping("/{name}")
-    public ResponseItemDto partialUpdateByName(@PathVariable String name,
-                                               @RequestParam String itemDescription,
-                                               @RequestHeader("x-custom-header") String customHeader) {
+    public ResponseItemDto partialUpdateByName(@PathVariable String name, @RequestParam String itemDescription) {
 
         return itemService.partialUpdateByName(name, itemDescription);
     }
 
-    @DeleteMapping("/{name}")
-    public void delete(@PathVariable String name,
-                       @RequestHeader("x-custom-header") String customHeader) {
-        itemService.deleteByName(name);
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        itemService.deleteById(id);
     }
 }

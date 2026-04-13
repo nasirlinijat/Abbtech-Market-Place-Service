@@ -9,6 +9,7 @@ import com.abbtech.repository.ItemRepository;
 import com.abbtech.service.ItemService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -23,6 +24,7 @@ public class ItemServiceImpl implements ItemService {
 
 
     @Override
+    @Transactional
     public ResponseItemDto add(RequestItemDto request) {
         Item item = new Item();
         item.setName(request.getName());
@@ -53,7 +55,6 @@ public class ItemServiceImpl implements ItemService {
     }
 
     public ResponseItemDto getById(Long id) {
-
         return itemRepository.getById(id)
                 .map(item -> new ResponseItemDto(item.getName(), item.getPrice(), item.getImage(), item.getDescription()))
                 .orElseThrow(() -> new ProductException(ProductErrorEnum.PRODUCT_NOT_FOUND));
@@ -61,8 +62,9 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public void deleteByName(String name) {
-        itemRepository.deleteByName(name);
+    @Transactional
+    public void deleteById(Long id) {
+        itemRepository.deleteById(id);
     }
 
     @Override

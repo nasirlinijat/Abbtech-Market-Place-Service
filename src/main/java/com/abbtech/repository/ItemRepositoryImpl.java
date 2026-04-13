@@ -39,11 +39,14 @@ public class ItemRepositoryImpl implements ItemRepository {
     }
 
     @Override
-    public void deleteByName(String itemName) {
+    public void deleteById(Long id) {
+        jdbcTemplate.update("DELETE FROM item WHERE id = ?", id);
 
     }
 
     @Override
     public void add(Item item) {
+        jdbcTemplate.update("INSERT INTO item (name, price, image, description) VALUES (?, ?, ?, ?)",
+                item.getName(), item.getPrice(), item.getImage(), item.getDescription());
     }
 }

@@ -12,7 +12,7 @@ public interface ItemService {
 
     ResponseItemDto getById(Long id);
 
-    void deleteByName(String name);
+    void deleteById(Long id);
 
     ResponseItemDto updateByName(String name, RequestItemDto requestItemDto);
 

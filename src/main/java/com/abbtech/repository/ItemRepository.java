@@ -10,7 +10,7 @@ public interface ItemRepository {
 
     Optional<Item> getById(Long id);
 
-    void deleteByName(String name);
+    void deleteById(Long id);
 
     void add(Item item);
 
