@@ -14,4 +14,7 @@ public interface ItemRepository {
 
     void add(Item item);
 
+    void saveAll(List<Item> items);
+
+
 }
