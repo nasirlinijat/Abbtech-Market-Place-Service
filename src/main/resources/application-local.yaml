@@ -1,14 +1,8 @@
-server:
-  servlet:
-    context-path: /api/market-place
-    application-display-name: Market Place
 spring:
-  config:
-    import: employee/application-employee.yaml
   datasource:
-    url: jdbc:postgresql://${DB_URL}:5432/${DB_NAME}?currentSchema=${DB_SCHEMA}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    url: jdbc:postgresql://localhost:5432/market_place?currentSchema=online_shop
+    username: postgres
+    password: postgres
     driver-class-name: org.postgresql.Driver
     hikari:
       pool-name: MarketPlacePool

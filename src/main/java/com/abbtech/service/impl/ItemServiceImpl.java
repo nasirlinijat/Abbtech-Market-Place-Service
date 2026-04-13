@@ -5,6 +5,7 @@ import com.abbtech.dto.response.ResponseItemDto;
 import com.abbtech.model.Item;
 import com.abbtech.repository.ItemRepository;
 import com.abbtech.service.ItemService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -14,7 +15,7 @@ import java.util.List;
 public class ItemServiceImpl implements ItemService {
     private final ItemRepository itemRepository;
 
-    public ItemServiceImpl(ItemRepository itemRepository) {
+    public ItemServiceImpl(@Qualifier("itemRepositoryImpl") ItemRepository itemRepository) {
         this.itemRepository = itemRepository;
     }
 

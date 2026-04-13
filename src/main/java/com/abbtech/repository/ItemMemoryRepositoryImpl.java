@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class ItemMemoryRepository implements ItemRepository {
+public class ItemMemoryRepositoryImpl implements ItemRepository {
 
     private static List<Item> items = new ArrayList<>(Arrays.asList(
             new Item("Wireless Headphones", new BigDecimal("79.99"), "headphones.jpg", "Premium noise-cancelling wireless headphones with 30hr battery life", new BigDecimal("45.00")),
