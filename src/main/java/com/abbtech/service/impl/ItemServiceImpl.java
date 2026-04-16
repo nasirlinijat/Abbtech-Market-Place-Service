@@ -4,7 +4,9 @@ import com.abbtech.dto.request.RequestItemDto;
 import com.abbtech.dto.response.ResponseItemDto;
 import com.abbtech.exception.ProductErrorEnum;
 import com.abbtech.exception.ProductException;
+import com.abbtech.model.Brand;
 import com.abbtech.model.Item;
+import com.abbtech.repository.BrandRepository;
 import com.abbtech.repository.ItemRepository;
 import com.abbtech.service.ItemService;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -18,8 +20,11 @@ import java.util.List;
 public class ItemServiceImpl implements ItemService {
     private final ItemRepository itemRepository;
 
-    public ItemServiceImpl(@Qualifier("itemRepositoryImpl") ItemRepository itemRepository) {
+    private final BrandRepository brandRepository;
+
+    public ItemServiceImpl(@Qualifier("itemRepositoryImpl") ItemRepository itemRepository, BrandRepository brandRepository) {
         this.itemRepository = itemRepository;
+        this.brandRepository = brandRepository;
     }
 
 
@@ -61,6 +66,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<ResponseItemDto> getAll() {
         return itemRepository.getAll()
                 .stream()

@@ -17,3 +17,8 @@ spring:
       max-lifetime: 1800000
       auto-commit: false
       leak-detection-threshold: 20000
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    show-sql: true

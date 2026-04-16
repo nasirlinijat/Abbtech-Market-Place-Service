@@ -1,37 +1,44 @@
 package com.abbtech.model;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "brand")
 public class Brand {
-    private Integer id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(length = 100, unique = true, nullable = false)
     private String name;
+
+    @Column(length = 250)
     private String description;
+
+    @Column(length = 250)
     private String image;
+
+    @Column(nullable = false)
     private Boolean isActive;
+
+    @Column
     private Boolean isDeleted;
+
+    @Column
     private LocalDateTime createdAt;
+
+    @Column(nullable = false)
     private LocalDateTime updatedAt;
 
-    public Brand() {
-    }
 
-    public Brand(Integer id, String name, String description, String image, Boolean isActive, Boolean isDeleted,
-                 LocalDateTime createdAt, LocalDateTime updatedAt) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.image = image;
-        this.isActive = isActive;
-        this.isDeleted = isDeleted;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
-
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

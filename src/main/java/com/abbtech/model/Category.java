@@ -8,13 +8,20 @@ public class Category {
     private String description;
     private String image;
     private Integer parentId;
-    private Integer categoryOrder;
-    private Boolean isActive;
-    private Boolean isDeleted;
+    private Integer categoryOrder = 1;
+    private Boolean isActive = true;
+    private Boolean isDeleted = false;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
     public Category() {
+    }
+
+    public Category(String name, String description, String image, Integer parentId) {
+        this.name = name;
+        this.description = description;
+        this.image = image;
+        this.parentId = parentId;
     }
 
     public Category(Integer id, String name, String description, String image, Integer parentId, Integer categoryOrder,
