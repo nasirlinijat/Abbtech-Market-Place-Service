@@ -1,22 +1,31 @@
 package com.abbtech.model;
 
-
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-
-public class Item {
+public class Brand {
     private Integer id;
     private String name;
     private String description;
     private String image;
-    private BigDecimal price;
-    private Integer categoryId;
-    private Integer brandId;
     private Boolean isActive;
     private Boolean isDeleted;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+
+    public Brand() {
+    }
+
+    public Brand(Integer id, String name, String description, String image, Boolean isActive, Boolean isDeleted,
+                 LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.image = image;
+        this.isActive = isActive;
+        this.isDeleted = isDeleted;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
 
     public Integer getId() {
         return id;
@@ -50,30 +59,6 @@ public class Item {
         this.image = image;
     }
 
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    public Integer getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    public Integer getBrandId() {
-        return brandId;
-    }
-
-    public void setBrandId(Integer brandId) {
-        this.brandId = brandId;
-    }
-
     public Boolean getIsActive() {
         return isActive;
     }
@@ -104,15 +89,5 @@ public class Item {
 
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
-    }
-
-    public Item(String name, BigDecimal price, String image, String description) {
-        this.name = name;
-        this.price = price;
-        this.image = image;
-        this.description = description;
-    }
-
-    public Item() {
     }
 }

@@ -10,11 +10,16 @@ public interface ItemRepository {
 
     Optional<Item> getById(Long id);
 
+    Optional<Item> getByName(String name);
+
     void deleteById(Long id);
 
     void add(Item item);
 
     void saveAll(List<Item> items);
 
+    void updateByName(String name, Item item);
+
+    void updateDescriptionByName(String name, String description);
 
 }

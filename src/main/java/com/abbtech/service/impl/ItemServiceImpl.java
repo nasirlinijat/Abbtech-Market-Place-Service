@@ -29,12 +29,16 @@ public class ItemServiceImpl implements ItemService {
         Item item = new Item();
         item.setName(request.getName());
         item.setDescription(request.getDescription());
-        item.setImage(item.getImage());
+        item.setImage(request.getImage());
         item.setPrice(request.getPrice());
+        item.setIsActive(true);
+        item.setIsDeleted(false);
 
         itemRepository.add(item);
 
+        Long id = item.getId() == null ? null : item.getId().longValue();
         return new ResponseItemDto(
+                id,
                 item.getName(),
                 item.getPrice(),
                 item.getImage(),
@@ -47,7 +51,12 @@ public class ItemServiceImpl implements ItemService {
     public void saveAll(List<RequestItemDto> requestItems) {
         itemRepository.saveAll(requestItems
                 .stream()
-                .map(item -> new Item(item.getName(), item.getPrice(), item.getImage(), item.getDescription()))
+                .map(item -> {
+                    Item newItem = new Item(item.getName(), item.getPrice(), item.getImage(), item.getDescription());
+                    newItem.setIsActive(true);
+                    newItem.setIsDeleted(false);
+                    return newItem;
+                })
                 .toList());
     }
 
@@ -56,6 +65,7 @@ public class ItemServiceImpl implements ItemService {
         return itemRepository.getAll()
                 .stream()
                 .map(item -> new ResponseItemDto(
+                        item.getId() == null ? null : item.getId().longValue(),
                         item.getName(),
                         item.getPrice(),
                         item.getImage(),
@@ -65,7 +75,13 @@ public class ItemServiceImpl implements ItemService {
 
     public ResponseItemDto getById(Long id) {
         return itemRepository.getById(id)
-                .map(item -> new ResponseItemDto(item.getName(), item.getPrice(), item.getImage(), item.getDescription()))
+                .map(item -> new ResponseItemDto(
+                        item.getId() == null ? null : item.getId().longValue(),
+                        item.getName(),
+                        item.getPrice(),
+                        item.getImage(),
+                        item.getDescription()
+                ))
                 .orElseThrow(() -> new ProductException(ProductErrorEnum.PRODUCT_NOT_FOUND));
 
     }
@@ -78,21 +94,24 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public ResponseItemDto updateByName(String name, RequestItemDto requestItemDto) {
-        //Item item = itemRepository.getById(name).orElseThrow(() -> new RuntimeException("No element with name found!"));
+        Item existingItem = itemRepository.getByName(name)
+                .orElseThrow(() -> new ProductException(ProductErrorEnum.PRODUCT_NOT_FOUND));
 
-//        item.setName(requestItemDto.getName());
-//        item.setPrice(requestItemDto.getPrice());
-//        item.setImage(requestItemDto.getImage());
-//        item.setDescription(requestItemDto.getDescription());
-//
-//        return new ResponseItemDto(
-//                item.getName(),
-//                item.getPrice(),
-//                item.getImage(),
-//                item.getDescription()
-        //       );
+        existingItem.setName(requestItemDto.getName());
+        existingItem.setPrice(requestItemDto.getPrice());
+        existingItem.setImage(requestItemDto.getImage());
+        existingItem.setDescription(requestItemDto.getDescription());
 
-        return null;
+        itemRepository.updateByName(name, existingItem);
+
+        Long id = existingItem.getId() == null ? null : existingItem.getId().longValue();
+        return new ResponseItemDto(
+                id,
+                existingItem.getName(),
+                existingItem.getPrice(),
+                existingItem.getImage(),
+                existingItem.getDescription()
+        );
     }
 
     @Override
@@ -103,6 +122,7 @@ public class ItemServiceImpl implements ItemService {
                 .filter(item -> item.getPrice().compareTo(minPrice) >= 0 &&
                         item.getPrice().compareTo(maxPrice) <= 0)
                 .map(item -> new ResponseItemDto(
+                        item.getId() == null ? null : item.getId().longValue(),
                         item.getName(),
                         item.getPrice(),
                         item.getImage(),
@@ -113,8 +133,20 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public ResponseItemDto partialUpdateByName(String name, String itemDescription) {
+        Item existingItem = itemRepository.getByName(name)
+                .orElseThrow(() -> new ProductException(ProductErrorEnum.PRODUCT_NOT_FOUND));
 
-        return null;
+        existingItem.setDescription(itemDescription);
+        itemRepository.updateDescriptionByName(name, itemDescription);
+
+        Long id = existingItem.getId() == null ? null : existingItem.getId().longValue();
+        return new ResponseItemDto(
+                id,
+                existingItem.getName(),
+                existingItem.getPrice(),
+                existingItem.getImage(),
+                existingItem.getDescription()
+        );
     }
 
 
