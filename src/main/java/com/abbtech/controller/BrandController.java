@@ -1,6 +1,7 @@
 package com.abbtech.controller;
 
-import com.abbtech.model.Brand;
+import com.abbtech.dto.request.RequestBrandDto;
+import com.abbtech.dto.response.ResponseBrandDto;
 import com.abbtech.service.BrandService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -18,24 +19,24 @@ public class BrandController {
     }
 
     @GetMapping
-    public List<Brand> getAll() {
+    public List<ResponseBrandDto> getAll() {
         return brandService.getAll();
     }
 
     @GetMapping("/{id}")
-    public Brand getById(@PathVariable Long id) {
+    public ResponseBrandDto getById(@PathVariable Long id) {
         return brandService.getById(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Brand add(@RequestBody Brand brand) {
-        return brandService.add(brand);
+    public ResponseBrandDto add(@RequestBody RequestBrandDto request) {
+        return brandService.add(request);
     }
 
     @PutMapping("/{id}")
-    public Brand updateById(@PathVariable Long id, @RequestBody Brand brand) {
-        return brandService.updateById(id, brand);
+    public ResponseBrandDto updateById(@PathVariable Long id, @RequestBody RequestBrandDto request) {
+        return brandService.updateById(id, request);
     }
 
     @DeleteMapping("/{id}")

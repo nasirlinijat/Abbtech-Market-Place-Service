@@ -1,5 +1,7 @@
 package com.abbtech.service.impl;
 
+import com.abbtech.dto.request.RequestBrandDto;
+import com.abbtech.dto.response.ResponseBrandDto;
 import com.abbtech.exception.ProductErrorEnum;
 import com.abbtech.exception.ProductException;
 import com.abbtech.model.Brand;
@@ -20,41 +22,68 @@ public class BrandServiceImpl implements BrandService {
     }
 
     @Override
-    public List<Brand> getAll() {
-        return brandRepository.findAll();
+    public List<ResponseBrandDto> getAll() {
+        return brandRepository.findAll().stream()
+                .map(this::toResponseDto)
+                .toList();
     }
 
     @Override
-    public Brand getById(Long id) {
-        return brandRepository.findById(id)
-                .orElseThrow(() -> new ProductException(ProductErrorEnum.PRODUCT_NOT_FOUND));
-    }
-
-    @Override
-    @Transactional
-    public Brand add(Brand brand) {
-        return brandRepository.save(brand);
+    public ResponseBrandDto getById(Long id) {
+        return toResponseDto(findBrandByIdOrThrow(id));
     }
 
     @Override
     @Transactional
-    public Brand updateById(Long id, Brand brand) {
-        var optionalBrand = brandRepository.findById(id);
-        if (optionalBrand.isPresent()) {
-            Brand existingBrand = optionalBrand.get();
-            existingBrand.setName(brand.getName());
-            existingBrand.setDescription(brand.getDescription());
-            existingBrand.setImage(brand.getImage());
-            return brandRepository.save(existingBrand);
-        } else {
-            throw new ProductException(ProductErrorEnum.PRODUCT_NOT_FOUND);
-        }
+    public ResponseBrandDto add(RequestBrandDto request) {
+        Brand brand = toBrand(request);
+        return toResponseDto(brandRepository.save(brand));
+    }
+
+    @Override
+    @Transactional
+    public ResponseBrandDto updateById(Long id, RequestBrandDto request) {
+        Brand existingBrand = findBrandByIdOrThrow(id);
+        existingBrand.setName(request.getName());
+        existingBrand.setDescription(request.getDescription());
+        existingBrand.setImage(request.getImage());
+        existingBrand.setIsActive(request.getIsActive());
+        existingBrand.setIsDeleted(request.getIsDeleted());
+        return toResponseDto(brandRepository.save(existingBrand));
     }
 
     @Override
     @Transactional
     public void deleteById(Long id) {
         brandRepository.deleteById(id);
+    }
+
+    private Brand findBrandByIdOrThrow(Long id) {
+        return brandRepository.findById(id)
+                .orElseThrow(() -> new ProductException(ProductErrorEnum.PRODUCT_NOT_FOUND));
+    }
+
+    private Brand toBrand(RequestBrandDto request) {
+        Brand brand = new Brand();
+        brand.setName(request.getName());
+        brand.setDescription(request.getDescription());
+        brand.setImage(request.getImage());
+        brand.setIsActive(request.getIsActive());
+        brand.setIsDeleted(request.getIsDeleted());
+        return brand;
+    }
+
+    private ResponseBrandDto toResponseDto(Brand brand) {
+        return new ResponseBrandDto(
+                brand.getId(),
+                brand.getName(),
+                brand.getDescription(),
+                brand.getImage(),
+                brand.getIsActive(),
+                brand.getIsDeleted(),
+                brand.getCreatedAt(),
+                brand.getUpdatedAt()
+        );
     }
 }
 

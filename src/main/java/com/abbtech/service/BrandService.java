@@ -1,17 +1,18 @@
 package com.abbtech.service;
 
-import com.abbtech.model.Brand;
+import com.abbtech.dto.request.RequestBrandDto;
+import com.abbtech.dto.response.ResponseBrandDto;
 
 import java.util.List;
 
 public interface BrandService {
-    List<Brand> getAll();
+    List<ResponseBrandDto> getAll();
 
-    Brand getById(Long id);
+    ResponseBrandDto getById(Long id);
 
-    Brand add(Brand brand);
+    ResponseBrandDto add(RequestBrandDto request);
 
-    Brand updateById(Long id, Brand brand);
+    ResponseBrandDto updateById(Long id, RequestBrandDto request);
 
     void deleteById(Long id);
 }

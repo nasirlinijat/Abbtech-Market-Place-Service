@@ -1,45 +1,31 @@
-package com.abbtech.model;
-
-import jakarta.persistence.*;
-import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+package com.abbtech.dto.response;
 
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "brand")
-public class Brand {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ResponseBrandDto {
     private Long id;
-
-    @Column(length = 100, unique = true, nullable = false)
     private String name;
-
-    @Column(length = 250)
     private String description;
-
-    @Column(length = 250)
     private String image;
-
-    @Column(nullable = false)
-    @ColumnDefault("true")
     private Boolean isActive;
-
-    @Column(nullable = false)
-    @ColumnDefault("false")
     private Boolean isDeleted;
-
-    @Column
-    @CreationTimestamp
     private LocalDateTime createdAt;
-
-    @Column(nullable = false)
-    @UpdateTimestamp
     private LocalDateTime updatedAt;
 
+    public ResponseBrandDto() {
+    }
+
+    public ResponseBrandDto(Long id, String name, String description, String image, Boolean isActive, Boolean isDeleted,
+                            LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.image = image;
+        this.isActive = isActive;
+        this.isDeleted = isDeleted;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
 
     public Long getId() {
         return id;
@@ -105,3 +91,4 @@ public class Brand {
         this.updatedAt = updatedAt;
     }
 }
+

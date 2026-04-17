@@ -5,7 +5,6 @@ import java.math.BigDecimal;
 
 public class RequestItemDto {
     private Long id;
-
     private String name;
     private BigDecimal price;
     private String image;
