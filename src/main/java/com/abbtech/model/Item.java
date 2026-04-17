@@ -1,17 +1,25 @@
 package com.abbtech.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
-@AllArgsConstructor
-@RequiredArgsConstructor
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Item {
+    private Long id;
     private String name;
-    private BigDecimal price;
-    private String image;
     private String description;
-    private BigDecimal wholesalePrice;
-
+    private String image;
+    private BigDecimal price;
+    private Long categoryId;
+    private Long brandId;
+    private Boolean isActive;
+    private Boolean isDeleted;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }

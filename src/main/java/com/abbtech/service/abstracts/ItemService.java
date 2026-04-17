@@ -3,21 +3,19 @@ package com.abbtech.service.abstracts;
 import com.abbtech.dto.request.RequestItemDto;
 import com.abbtech.dto.response.ResponseItemDto;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 public interface ItemService {
-    ResponseItemDto add(RequestItemDto request);
+    ResponseItemDto create(RequestItemDto request);
+
+    ResponseItemDto update(Long id, RequestItemDto request);
+
+    void delete(Long id);
 
     List<ResponseItemDto> getAll();
 
-    ResponseItemDto getByName(String name);
+    ResponseItemDto getById(Long id);
 
-    void deleteByName(String name);
+    List<ResponseItemDto> bulkCreate(List<RequestItemDto> requests);
 
-    ResponseItemDto updateByName(String name, RequestItemDto requestItemDto);
-
-    List<ResponseItemDto> getPriceRange(double min, double max);
-
-    ResponseItemDto partialUpdateByName(String name, String itemDescription);
 }

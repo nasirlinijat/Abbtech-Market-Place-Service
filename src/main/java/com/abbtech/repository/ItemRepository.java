@@ -6,12 +6,16 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ItemRepository {
+    Item create(Item item);
+
+    Item update(Long id, Item item);
+
+    void delete(Long id);
+
     List<Item> getAll();
 
-    Optional<Item> getByName(String name);
+    Optional<Item> getById(Long id);
 
-    void deleteByName(String name);
-
-    void add(Item item);
+    List<Item> bulkCreate(List<Item> items);
 
 }

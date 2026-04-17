@@ -4,19 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class RequestItemDto {
+public class RequestCategoryDto {
     private String name;
     private String description;
     private String image;
-    private BigDecimal price;
-    private Long categoryId;
-    private Long brandId;
+    private Long parentId;
+    private Integer categoryOrder;
     private Boolean isActive;
     private Boolean isDeleted;
-
 }

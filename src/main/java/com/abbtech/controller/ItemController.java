@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/api/v1/items")
@@ -16,49 +15,34 @@ public class ItemController {
 
     private final ItemService itemService;
 
-
     @GetMapping()
-    public List<ResponseItemDto> getAll(@RequestHeader("x-custom-header") String customHeader) {
+    public List<ResponseItemDto> getAll() {
         return itemService.getAll();
     }
 
-    @GetMapping("/{name}")
-    public ResponseItemDto getByName(@PathVariable String name,
-                                     @RequestHeader("x-custom-header") String customHeader) {
-        return itemService.getByName(name);
+    @GetMapping("/{id}")
+    public ResponseItemDto getById(@PathVariable Long id) {
+        return itemService.getById(id);
     }
 
-    @GetMapping("/filter")
-    public List<ResponseItemDto> getPriceRange(@RequestParam double min,
-                                               @RequestParam double max,
-                                               @RequestHeader("x-custom-header") String customHeader) {
-        return itemService.getPriceRange(min, max);
+    @PostMapping
+    public ResponseItemDto create(@RequestBody RequestItemDto request) {
+        return itemService.create(request);
     }
 
-    @PostMapping()
-    public ResponseItemDto add(@RequestBody RequestItemDto request,
-                               @RequestHeader("x-custom-header") String customHeader) {
-        return itemService.add(request);
+    @PostMapping("/bulk")
+    public List<ResponseItemDto> bulkCreate(@RequestBody List<RequestItemDto> requests) {
+        return itemService.bulkCreate(requests);
     }
 
-    @PutMapping("/{name}")
-    public ResponseItemDto updateByName(@PathVariable String name,
-                                        @RequestBody RequestItemDto request,
-                                        @RequestHeader("x-custom-header") String customHeader) {
-        return itemService.updateByName(name, request);
+    @PutMapping("/{id}")
+    public ResponseItemDto update(@PathVariable Long id, @RequestBody RequestItemDto request) {
+        return itemService.update(id, request);
     }
 
-    @PatchMapping("/{name}")
-    public ResponseItemDto partialUpdateByName(@PathVariable String name,
-                                               @RequestParam String itemDescription,
-                                               @RequestHeader("x-custom-header") String customHeader) {
-
-        return itemService.partialUpdateByName(name, itemDescription);
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        itemService.delete(id);
     }
 
-    @DeleteMapping("/{name}")
-    public void delete(@PathVariable String name,
-                       @RequestHeader("x-custom-header") String customHeader) {
-        itemService.deleteByName(name);
-    }
 }
