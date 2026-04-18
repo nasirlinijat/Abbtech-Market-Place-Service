@@ -1,18 +1,90 @@
 package com.abbtech.model;
 
-import java.time.LocalDateTime;
+import jakarta.persistence.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Entity
+@Table(name = "category")
 public class Category {
-    private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(length = 100, unique = true, nullable = false)
     private String name;
+    @Column(length = 250)
     private String description;
+
+    @Column(length = 250)
     private String image;
+
+    @Column(name = "parent_id")
     private Integer parentId;
-    private Integer categoryOrder = 1;
-    private Boolean isActive = true;
-    private Boolean isDeleted = false;
+
+    @Column(name = "category_order")
+    private Integer categoryOrder;
+
+    @Column(name = "is_active")
+    @ColumnDefault("true")
+    private Boolean isActive;
+
+    @Column(name = "is_deleted")
+    @ColumnDefault("false")
+    private Boolean isDeleted;
+
+    @CreationTimestamp
+    @Column(name = "created_at")
+    @ColumnDefault("CURRENT_TIMESTAMP")
     private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    @Column(name = "updated_at")
+    @ColumnDefault("CURRENT_TIMESTAMP")
     private LocalDateTime updatedAt;
+
+    @OneToMany(mappedBy = "category")
+    private List<Item> items;
+
+    @ManyToMany(mappedBy = "categories")
+    private List<Brand> brands;
+
+
+    public Boolean getActive() {
+        return isActive;
+    }
+
+    public void setActive(Boolean active) {
+        isActive = active;
+    }
+
+    public Boolean getDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        isDeleted = deleted;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+
+    public List<Brand> getBrands() {
+        return brands;
+    }
+
+    public void setBrands(List<Brand> brands) {
+        this.brands = brands;
+    }
 
     public Category() {
     }
@@ -24,7 +96,7 @@ public class Category {
         this.parentId = parentId;
     }
 
-    public Category(Integer id, String name, String description, String image, Integer parentId, Integer categoryOrder,
+    public Category(Long id, String name, String description, String image, Integer parentId, Integer categoryOrder,
                     Boolean isActive, Boolean isDeleted, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.name = name;
@@ -38,11 +110,11 @@ public class Category {
         this.updatedAt = updatedAt;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -12,13 +12,13 @@ spring:
       pool-name: MarketPlacePool
       maximum-pool-size: 10
       minimum-idle: 5
-      connection-timeout: 10000
-      idle-timeout: 600000
-      max-lifetime: 1800000
+      connection-timeout: 2000000
+      idle-timeout: 6000000
+      max-lifetime: 18000000
       auto-commit: false
-      leak-detection-threshold: 20000
+      leak-detection-threshold: 200000
   jpa:
     open-in-view: false
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
     show-sql: true

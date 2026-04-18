@@ -1,28 +1,73 @@
 package com.abbtech.model;
 
 
+import jakarta.persistence.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-
+@Entity
+@Table(name = "item")
 public class Item {
-    private Integer id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(length = 100, unique = true, nullable = false)
     private String name;
+
+    @Column(length = 250)
     private String description;
+
+    @Column(length = 250)
     private String image;
+
+    @Column(nullable = false)
     private BigDecimal price;
-    private Integer categoryId;
-    private Integer brandId;
+
+    @Column(name = "is_active")
+    @ColumnDefault("true")
     private Boolean isActive;
+
+    @Column(name = "is_deleted")
+    @ColumnDefault("false")
     private Boolean isDeleted;
+
+    @Column(name = "created_at")
+    @CreationTimestamp
+    @ColumnDefault("CURRENT_TIMESTAMP")
     private LocalDateTime createdAt;
+
+    @Column(name = "updated_at")
+    @CreationTimestamp
+    @ColumnDefault("CURRENT_TIMESTAMP")
     private LocalDateTime updatedAt;
 
-    public Integer getId() {
+    @ManyToOne
+    @JoinColumn(name = "brand_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_item_brand"))
+    private Brand brand;
+
+
+    @ManyToOne
+    @JoinColumn(name = "category_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_item_category"))
+    private Category category;
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -58,21 +103,6 @@ public class Item {
         this.price = price;
     }
 
-    public Integer getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    public Integer getBrandId() {
-        return brandId;
-    }
-
-    public void setBrandId(Integer brandId) {
-        this.brandId = brandId;
-    }
 
     public Boolean getIsActive() {
         return isActive;
@@ -106,11 +136,28 @@ public class Item {
         this.updatedAt = updatedAt;
     }
 
-    public Item(String name, BigDecimal price, String image, String description) {
-        this.name = name;
-        this.price = price;
-        this.image = image;
-        this.description = description;
+    public Boolean getActive() {
+        return isActive;
+    }
+
+    public void setActive(Boolean active) {
+        isActive = active;
+    }
+
+    public Boolean getDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        isDeleted = deleted;
+    }
+
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
     }
 
     public Item() {

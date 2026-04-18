@@ -21,13 +21,13 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public List<Category> getAll() {
-        return categoryRepository.getAll();
+        return categoryRepository.findAll();
     }
 
     @Override
     public Category getById(Long id) {
-        return categoryRepository.getById(id)
-                .orElseThrow(() -> new ProductException(ProductErrorEnum.PRODUCT_NOT_FOUND));
+        return categoryRepository.findById(id)
+                .orElseThrow(() -> new ProductException(ProductErrorEnum.ITEM_NOT_FOUND));
     }
 
     @Override
@@ -42,17 +42,19 @@ public class CategoryServiceImpl implements CategoryService {
         if (category.getIsDeleted() == null) {
             category.setIsDeleted(false);
         }
-        categoryRepository.add(category);
+        categoryRepository.save(category);
         return category;
     }
 
     @Override
     @Transactional
     public Category updateById(Long id, Category category) {
-        getById(id);
-        categoryRepository.updateById(id, category);
-        category.setId(id == null ? null : id.intValue());
-        return category;
+//        getById(id);
+//        categoryRepository.updateById(id, category);
+//        category.setId(id == null ? null : id.intValue());
+//        return category;
+
+        return null;
     }
 
     @Override

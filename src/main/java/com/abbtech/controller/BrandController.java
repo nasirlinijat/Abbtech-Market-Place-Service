@@ -2,6 +2,7 @@ package com.abbtech.controller;
 
 import com.abbtech.dto.request.RequestBrandDto;
 import com.abbtech.dto.response.ResponseBrandDto;
+import com.abbtech.dto.response.ResponseItemDto;
 import com.abbtech.service.BrandService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -43,6 +44,12 @@ public class BrandController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteById(@PathVariable Long id) {
         brandService.deleteById(id);
+    }
+
+
+    @GetMapping("/{id}/items")
+    public List<ResponseItemDto> getItemsByBrand(@PathVariable Long id) {
+        return brandService.getItemsByBrand(id);
     }
 }
 

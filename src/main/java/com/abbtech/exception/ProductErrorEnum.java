@@ -13,12 +13,16 @@ public enum ProductErrorEnum implements BaseErrorService {
     /**
      * Error representing unauthorized access.
      */
-    PRODUCT_NOT_FOUND("PRODUCT_NOT_FOUND-ERROR-0001", "PRODUCT_NOT_FOUND", 400),
+    ITEM_NOT_FOUND("PRODUCT_NOT_FOUND-ERROR-0001", "PRODUCT_NOT_FOUND", 400),
 
     /**
      * Custom error description case error.
      */
-    PRODUCT_PRISE_NOT_ALLOWED("PRODUCT_PRISE_NOT_ALLOWED-0002", "PRODUCT_PRISE_NOT_ALLOWED", 400);
+    PRODUCT_PRISE_NOT_ALLOWED("PRODUCT_PRISE_NOT_ALLOWED-0002", "PRODUCT_PRISE_NOT_ALLOWED", 400),
+
+
+    BRAND_NOT_FOUND("BRAND_NOT_FOUND-ERROR-0003", "BRAND_NOT_FOUND", 400);
+
 
     /**
      * Error message.

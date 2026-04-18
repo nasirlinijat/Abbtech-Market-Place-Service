@@ -2,6 +2,7 @@ package com.abbtech.service.impl;
 
 import com.abbtech.dto.request.RequestBrandDto;
 import com.abbtech.dto.response.ResponseBrandDto;
+import com.abbtech.dto.response.ResponseItemDto;
 import com.abbtech.exception.ProductErrorEnum;
 import com.abbtech.exception.ProductException;
 import com.abbtech.model.Brand;
@@ -10,6 +11,7 @@ import com.abbtech.service.BrandService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -66,9 +68,37 @@ public class BrandServiceImpl implements BrandService {
         brandRepository.deleteById(id);
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public List<ResponseItemDto> getItemsByBrand(Long brandId) {
+        Brand brand = brandRepository.findById(brandId).orElseThrow(() -> new ProductException(ProductErrorEnum.BRAND_NOT_FOUND));
+
+        var brands = brandRepository.findAllById(List.of(1L, 2L, 3L));
+
+        var categories = brand.getCategories();
+
+        List<ResponseItemDto> itemsOfAllBrands = new ArrayList<>();
+
+        for (Brand brand1 : brands) {
+
+            var items = brand1.getItems();
+
+            itemsOfAllBrands.addAll(items.stream().map(item -> new ResponseItemDto(
+                            item.getId() == null ? null : item.getId().longValue(),
+                            item.getName(),
+                            item.getPrice(),
+                            item.getImage(),
+                            item.getDescription()))
+                    .toList());
+        }
+
+
+        return itemsOfAllBrands;
+    }
+
     private Brand findBrandByIdOrThrow(Long id) {
         return brandRepository.findById(id)
-                .orElseThrow(() -> new ProductException(ProductErrorEnum.PRODUCT_NOT_FOUND));
+                .orElseThrow(() -> new ProductException(ProductErrorEnum.ITEM_NOT_FOUND));
     }
 
     private Brand toBrand(RequestBrandDto request) {
