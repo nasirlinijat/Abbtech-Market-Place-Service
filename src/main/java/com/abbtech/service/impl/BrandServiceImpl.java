@@ -22,15 +22,23 @@ public class BrandServiceImpl implements BrandService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<ResponseBrandDto> getAll() {
-        return brandRepository.findAll().stream()
+        var brands = brandRepository.findAll();
+        return brands.stream()
                 .map(this::toResponseDto)
                 .toList();
     }
 
     @Override
+    @Transactional(readOnly = true)
     public ResponseBrandDto getById(Long id) {
-        return toResponseDto(findBrandByIdOrThrow(id));
+
+        var optionalBrand = brandRepository.findById(id);
+        var optionalBrand1 = brandRepository.findById(id);
+        var optionalBrand2 = brandRepository.findById(id);
+
+        return toResponseDto(optionalBrand.orElseThrow());
     }
 
     @Override
