@@ -1,6 +1,7 @@
 package com.abbtech.service;
 
 import com.abbtech.dto.request.RequestBrandDto;
+import com.abbtech.dto.request.RequestBrandItemDto;
 import com.abbtech.dto.response.ResponseBrandDto;
 import com.abbtech.dto.response.ResponseItemDto;
 
@@ -18,6 +19,8 @@ public interface BrandService {
     void deleteById(Long id);
 
     List<ResponseItemDto> getItemsByBrand(Long brandId);
+
+    void saveBrandAndItems(RequestBrandItemDto request);
 
 }
 

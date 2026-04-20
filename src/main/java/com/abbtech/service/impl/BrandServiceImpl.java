@@ -1,11 +1,13 @@
 package com.abbtech.service.impl;
 
 import com.abbtech.dto.request.RequestBrandDto;
+import com.abbtech.dto.request.RequestBrandItemDto;
 import com.abbtech.dto.response.ResponseBrandDto;
 import com.abbtech.dto.response.ResponseItemDto;
 import com.abbtech.exception.ProductErrorEnum;
 import com.abbtech.exception.ProductException;
 import com.abbtech.model.Brand;
+import com.abbtech.model.Item;
 import com.abbtech.repository.BrandRepository;
 import com.abbtech.service.BrandService;
 import org.springframework.stereotype.Service;
@@ -94,6 +96,33 @@ public class BrandServiceImpl implements BrandService {
 
 
         return itemsOfAllBrands;
+    }
+
+    @Override
+    public void saveBrandAndItems(RequestBrandItemDto request) {
+
+        Brand brand = new Brand();
+        brand.setName(request.getName());
+        brand.setDescription(request.getDescription());
+        brand.setImage(request.getImage());
+        brand.setIsActive(request.getActive());
+        brand.setIsDeleted(request.getDeleted());
+
+        var items = request.getItems().stream()
+                .map(item -> {
+                    Item newItem = new Item();
+                    newItem.setName(item.getName());
+                    newItem.setPrice(item.getPrice());
+                    newItem.setImage(item.getImage());
+                    newItem.setDescription(item.getDescription());
+                    newItem.setIsActive(true);
+                    newItem.setIsDeleted(false);
+                    newItem.setBrand(brand);
+                    return newItem;
+                }).toList();
+        brand.setItems(items);
+
+        brandRepository.save(brand);
     }
 
     private Brand findBrandByIdOrThrow(Long id) {

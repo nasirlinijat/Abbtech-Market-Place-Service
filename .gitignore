@@ -40,3 +40,4 @@ src/main/resources/application-local.yml
 ### macOS ###
 .DS_Store
 **/.DS_Store
+/.env
