@@ -11,6 +11,7 @@ import com.abbtech.model.Brand;
 import com.abbtech.model.Item;
 import com.abbtech.repository.BrandRepository;
 import com.abbtech.service.BrandService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,13 +19,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class BrandServiceImpl implements BrandService {
 
     private final BrandRepository brandRepository;
-
-    public BrandServiceImpl(BrandRepository brandRepository) {
-        this.brandRepository = brandRepository;
-    }
 
     @Override
     @Transactional(readOnly = true)
