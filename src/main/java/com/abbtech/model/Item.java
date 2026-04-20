@@ -46,13 +46,13 @@ public class Item {
     @ColumnDefault("CURRENT_TIMESTAMP")
     private LocalDateTime updatedAt;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "brand_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_item_brand"), nullable = false)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "brand_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_item_brand"))
     private Brand brand;
 
 
     @ManyToOne
-    @JoinColumn(name = "category_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_item_category"), nullable = false)
+    @JoinColumn(name = "category_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_item_category"))
     private Category category;
 
     public Category getCategory() {

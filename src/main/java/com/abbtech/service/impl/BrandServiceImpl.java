@@ -2,6 +2,7 @@ package com.abbtech.service.impl;
 
 import com.abbtech.dto.request.RequestBrandDto;
 import com.abbtech.dto.request.RequestBrandItemDto;
+import com.abbtech.dto.request.RequestItemDto;
 import com.abbtech.dto.response.ResponseBrandDto;
 import com.abbtech.dto.response.ResponseItemDto;
 import com.abbtech.exception.ProductErrorEnum;
@@ -99,6 +100,7 @@ public class BrandServiceImpl implements BrandService {
     }
 
     @Override
+    @Transactional
     public void saveBrandAndItems(RequestBrandItemDto request) {
 
         Brand brand = new Brand();
@@ -122,6 +124,32 @@ public class BrandServiceImpl implements BrandService {
                 }).toList();
         brand.setItems(items);
 
+        brandRepository.save(brand);
+    }
+
+    @Override
+    @Transactional
+    public void updateBrandItems(Long id, List<RequestItemDto> items) {
+        var brand = brandRepository.findById(id).orElseThrow(() -> new ProductException(ProductErrorEnum.BRAND_NOT_FOUND));
+
+        for (Item existingItem : brand.getItems()) {
+            existingItem.setBrand(null);
+        }
+
+        brand.getItems().clear();
+
+        for (RequestItemDto item : items) {
+            Item newItem = new Item();
+            newItem.setName(item.getName());
+            newItem.setPrice(item.getPrice());
+            newItem.setImage(item.getImage());
+            newItem.setDescription(item.getDescription());
+            newItem.setIsActive(true);
+            newItem.setIsDeleted(false);
+            newItem.setBrand(brand);
+
+            brand.getItems().add(newItem);
+        }
         brandRepository.save(brand);
     }
 

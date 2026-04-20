@@ -43,7 +43,7 @@ public class Brand {
     @ColumnDefault("CURRENT_TIMESTAMP")
     private LocalDateTime updatedAt;
 
-    @OneToMany(mappedBy = "brand", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "brand", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Item> items;
 
     @ManyToMany

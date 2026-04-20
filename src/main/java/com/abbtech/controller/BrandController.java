@@ -2,6 +2,7 @@ package com.abbtech.controller;
 
 import com.abbtech.dto.request.RequestBrandDto;
 import com.abbtech.dto.request.RequestBrandItemDto;
+import com.abbtech.dto.request.RequestItemDto;
 import com.abbtech.dto.response.ResponseBrandDto;
 import com.abbtech.dto.response.ResponseItemDto;
 import com.abbtech.service.BrandService;
@@ -58,5 +59,12 @@ public class BrandController {
     public void saveBrandAndItems(@RequestBody RequestBrandItemDto request) {
         brandService.saveBrandAndItems(request);
     }
+
+    @PutMapping("/{id}/items")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void updateBrandItems(@PathVariable("id") Long id, @RequestBody List<RequestItemDto> items) {
+        brandService.updateBrandItems(id, items);
+    }
+
 }
 
