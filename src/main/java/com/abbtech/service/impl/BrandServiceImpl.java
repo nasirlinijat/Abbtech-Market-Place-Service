@@ -6,9 +6,14 @@ import com.abbtech.dto.response.ResponseItemDto;
 import com.abbtech.exception.ProductErrorEnum;
 import com.abbtech.exception.ProductException;
 import com.abbtech.model.Brand;
+import com.abbtech.model.enums.SortDirectionEnum;
 import com.abbtech.repository.BrandRepository;
 import com.abbtech.service.BrandService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,10 +27,12 @@ public class BrandServiceImpl implements BrandService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<ResponseBrandDto> getAll() {
-        var brands = brandRepository.findAll();
-        return brands.stream()
-                .map(this::toResponseDto).toList();
+    public Page<ResponseBrandDto> getAll(int pageNumber, int pageSize, SortDirectionEnum sortDirectionEnum, String sortField) {
+        Sort sort = Sort.by(Sort.Direction.fromString(sortDirectionEnum.toString()), sortField);
+        Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
+
+        var pageBrands = brandRepository.findAll(pageable);
+        return pageBrands.map(this::toResponseDto);
     }
 
     @Override
