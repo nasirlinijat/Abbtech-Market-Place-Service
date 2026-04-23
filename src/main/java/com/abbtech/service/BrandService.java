@@ -22,10 +22,5 @@ public interface BrandService {
     void deleteById(Long id);
 
     List<ResponseItemDto> getItemsByBrand(Long brandId);
-
-    void saveBrandAndItems(RequestBrandItemDto request);
-
-    void updateBrandItems(Long id, @RequestBody List<RequestItemDto> request);
-
 }
 

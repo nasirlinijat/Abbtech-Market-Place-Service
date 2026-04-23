@@ -49,10 +49,6 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     @Transactional
     public Category updateById(Long id, Category category) {
-//        getById(id);
-//        categoryRepository.updateById(id, category);
-//        category.setId(id == null ? null : id.intValue());
-//        return category;
 
         return null;
     }

@@ -31,15 +31,6 @@ public class ItemServiceImpl implements ItemService {
     @Override
     @Transactional
     public void saveAll(List<RequestItemDto> requestItems) {
-//        itemRepository.saveAll(requestItems
-//                .stream()
-//                .map(item -> {
-//                    Item newItem = new Item(item.getName(), item.getPrice(), item.getImage(), item.getDescription());
-//                    newItem.setIsActive(true);
-//                    newItem.setIsDeleted(false);
-//                    return newItem;
-//                })
-//                .toList());
     }
 
     @Override
