@@ -3,24 +3,21 @@ package com.abbtech.controller;
 import com.abbtech.dto.request.RequestItemDto;
 import com.abbtech.dto.response.ResponseItemDto;
 import com.abbtech.service.ItemService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping(value = "/items")
 public class ItemController {
 
     private final ItemService itemService;
 
-    public ItemController(ItemService itemService) {
-        this.itemService = itemService;
-    }
-
-
     @GetMapping
-    public List<ResponseItemDto> getAll(@RequestHeader(value = "x-custom-header", required = false) String customHeader) {
+    public List<ResponseItemDto> getAll() {
         return itemService.getAll();
     }
 

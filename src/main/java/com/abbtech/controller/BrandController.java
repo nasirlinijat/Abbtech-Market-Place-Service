@@ -5,25 +5,28 @@ import com.abbtech.dto.request.RequestBrandItemDto;
 import com.abbtech.dto.request.RequestItemDto;
 import com.abbtech.dto.response.ResponseBrandDto;
 import com.abbtech.dto.response.ResponseItemDto;
+import com.abbtech.model.enums.SortDirectionEnum;
 import com.abbtech.service.BrandService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/brands")
 public class BrandController {
 
     private final BrandService brandService;
 
-    public BrandController(BrandService brandService) {
-        this.brandService = brandService;
-    }
-
     @GetMapping
-    public List<ResponseBrandDto> getAll() {
-        return brandService.getAll();
+    public Page<ResponseBrandDto> getAll(@RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
+                                         @RequestParam(value = "pageSize", defaultValue = "3") int pageSize,
+                                         @RequestParam(value = "sortDirection", defaultValue = "ASC") String sortDirection,
+                                         @RequestParam(value = "sortField", defaultValue = "name") String sortField) {
+        return brandService.getAll(pageNumber, pageSize, SortDirectionEnum.valueOf(sortDirection), sortField);
     }
 
     @GetMapping("/{id}")

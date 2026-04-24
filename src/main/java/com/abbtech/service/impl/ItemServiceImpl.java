@@ -5,22 +5,17 @@ import com.abbtech.dto.response.ResponseItemDto;
 import com.abbtech.repository.BrandRepository;
 import com.abbtech.repository.ItemRepository;
 import com.abbtech.service.ItemService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @Service
 public class ItemServiceImpl implements ItemService {
     private final ItemRepository itemRepository;
-
     private final BrandRepository brandRepository;
-
-    public ItemServiceImpl(ItemRepository itemRepository, BrandRepository brandRepository) {
-        this.itemRepository = itemRepository;
-        this.brandRepository = brandRepository;
-    }
-
 
     @Override
     @Transactional

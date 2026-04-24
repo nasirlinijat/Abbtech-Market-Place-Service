@@ -9,9 +9,14 @@ import com.abbtech.exception.ProductErrorEnum;
 import com.abbtech.exception.ProductException;
 import com.abbtech.model.Brand;
 import com.abbtech.model.Item;
+import com.abbtech.model.enums.SortDirectionEnum;
 import com.abbtech.repository.BrandRepository;
 import com.abbtech.service.BrandService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,11 +31,10 @@ public class BrandServiceImpl implements BrandService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<ResponseBrandDto> getAll() {
-        var brands = brandRepository.findAll();
-        return brands.stream()
-                .map(this::toResponseDto)
-                .toList();
+    public Page<ResponseBrandDto> getAll(int pageNumber, int pageSize, SortDirectionEnum sortDirection, String sortField) {
+        Sort sort = Sort.by(Sort.Direction.fromString(sortDirection.toString()), sortField);
+        Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
+        return brandRepository.findAll(pageable).map(this::toResponseDto);
     }
 
     @Override
@@ -55,11 +59,11 @@ public class BrandServiceImpl implements BrandService {
     @Transactional
     public ResponseBrandDto updateById(Long id, RequestBrandDto request) {
         Brand existingBrand = findBrandByIdOrThrow(id);
-        existingBrand.setName(request.getName());
-        existingBrand.setDescription(request.getDescription());
-        existingBrand.setImage(request.getImage());
-        existingBrand.setIsActive(request.getIsActive());
-        existingBrand.setIsDeleted(request.getIsDeleted());
+        existingBrand.setName(request.name());
+        existingBrand.setDescription(request.description());
+        existingBrand.setImage(request.image());
+        existingBrand.setIsActive(request.isActive());
+        existingBrand.setIsDeleted(request.isDeleted());
         return toResponseDto(brandRepository.save(existingBrand));
     }
 
@@ -84,12 +88,13 @@ public class BrandServiceImpl implements BrandService {
 
             var items = brand1.getItems();
 
-            itemsOfAllBrands.addAll(items.stream().map(item -> new ResponseItemDto(
-                            item.getId() == null ? null : item.getId().longValue(),
-                            item.getName(),
-                            item.getPrice(),
-                            item.getImage(),
-                            item.getDescription()))
+            itemsOfAllBrands.addAll(items.stream().map(item -> ResponseItemDto.builder()
+                            .id(item.getId() == null ? null : item.getId().longValue())
+                            .name(item.getName())
+                            .price(item.getPrice())
+                            .image(item.getImage())
+                            .description(item.getDescription())
+                            .build())
                     .toList());
         }
 
@@ -102,19 +107,19 @@ public class BrandServiceImpl implements BrandService {
     public void saveBrandAndItems(RequestBrandItemDto request) {
 
         Brand brand = new Brand();
-        brand.setName(request.getName());
-        brand.setDescription(request.getDescription());
-        brand.setImage(request.getImage());
-        brand.setIsActive(request.getActive());
-        brand.setIsDeleted(request.getDeleted());
+        brand.setName(request.name());
+        brand.setDescription(request.description());
+        brand.setImage(request.image());
+        brand.setIsActive(request.active());
+        brand.setIsDeleted(request.deleted());
 
-        var items = request.getItems().stream()
+        var items = request.items().stream()
                 .map(item -> {
                     Item newItem = new Item();
-                    newItem.setName(item.getName());
-                    newItem.setPrice(item.getPrice());
-                    newItem.setImage(item.getImage());
-                    newItem.setDescription(item.getDescription());
+                    newItem.setName(item.name());
+                    newItem.setPrice(item.price());
+                    newItem.setImage(item.image());
+                    newItem.setDescription(item.description());
                     newItem.setIsActive(true);
                     newItem.setIsDeleted(false);
                     newItem.setBrand(brand);
@@ -138,10 +143,10 @@ public class BrandServiceImpl implements BrandService {
 
         for (RequestItemDto item : items) {
             Item newItem = new Item();
-            newItem.setName(item.getName());
-            newItem.setPrice(item.getPrice());
-            newItem.setImage(item.getImage());
-            newItem.setDescription(item.getDescription());
+            newItem.setName(item.name());
+            newItem.setPrice(item.price());
+            newItem.setImage(item.image());
+            newItem.setDescription(item.description());
             newItem.setIsActive(true);
             newItem.setIsDeleted(false);
             newItem.setBrand(brand);
@@ -158,25 +163,26 @@ public class BrandServiceImpl implements BrandService {
 
     private Brand toBrand(RequestBrandDto request) {
         Brand brand = new Brand();
-        brand.setName(request.getName());
-        brand.setDescription(request.getDescription());
-        brand.setImage(request.getImage());
-        brand.setIsActive(request.getIsActive());
-        brand.setIsDeleted(request.getIsDeleted());
+        brand.setName(request.name());
+        brand.setDescription(request.description());
+        brand.setImage(request.image());
+        brand.setIsActive(request.isActive());
+        brand.setIsDeleted(request.isDeleted());
+
         return brand;
     }
 
     private ResponseBrandDto toResponseDto(Brand brand) {
-        return new ResponseBrandDto(
-                brand.getId(),
-                brand.getName(),
-                brand.getDescription(),
-                brand.getImage(),
-                brand.getIsActive(),
-                brand.getIsDeleted(),
-                brand.getCreatedAt(),
-                brand.getUpdatedAt()
-        );
+        return ResponseBrandDto.builder()
+                .id(brand.getId())
+                .name(brand.getName())
+                .description(brand.getDescription())
+                .image(brand.getImage())
+                .isActive(brand.getIsActive())
+                .isDeleted(brand.getIsDeleted())
+                .createdAt(brand.getCreatedAt())
+                .updatedAt(brand.getUpdatedAt())
+                .build();
     }
 }
 

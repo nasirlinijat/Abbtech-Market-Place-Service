@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/market_place?currentSchema=online_shop
+    url: jdbc:postgresql://localhost:5454/market_place
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
