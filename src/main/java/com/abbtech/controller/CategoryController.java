@@ -2,12 +2,12 @@ package com.abbtech.controller;
 
 import com.abbtech.dto.request.RequestCategoryDto;
 import com.abbtech.dto.response.ResponseCategoryDto;
+import com.abbtech.model.enums.SortDirectionEnum;
 import com.abbtech.service.CategoryService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -17,8 +17,12 @@ public class CategoryController {
     private final CategoryService categoryService;
 
     @GetMapping
-    public List<ResponseCategoryDto> getAll() {
-        return categoryService.getAll();
+    public Page<ResponseCategoryDto> getAll(
+            @RequestParam(defaultValue = "0") int pageNumber,
+            @RequestParam(defaultValue = "10") int pageSize,
+            @RequestParam(defaultValue = "ASC") String sortDirection,
+            @RequestParam(defaultValue = "name") String sortField) {
+        return categoryService.getAll(pageNumber, pageSize, SortDirectionEnum.valueOf(sortDirection), sortField);
     }
 
     @GetMapping("/{id}")

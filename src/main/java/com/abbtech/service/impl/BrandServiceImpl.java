@@ -20,7 +20,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -40,12 +39,7 @@ public class BrandServiceImpl implements BrandService {
     @Override
     @Transactional(readOnly = true)
     public ResponseBrandDto getById(Long id) {
-
-        var optionalBrand = brandRepository.findById(id);
-        var optionalBrand1 = brandRepository.findById(id);
-        var optionalBrand2 = brandRepository.findById(id);
-
-        return toResponseDto(optionalBrand.orElseThrow());
+        return toResponseDto(findBrandByIdOrThrow(id));
     }
 
     @Override
@@ -76,30 +70,22 @@ public class BrandServiceImpl implements BrandService {
     @Override
     @Transactional(readOnly = true)
     public List<ResponseItemDto> getItemsByBrand(Long brandId) {
-        Brand brand = brandRepository.findById(brandId).orElseThrow(() -> new ProductException(ProductErrorEnum.BRAND_NOT_FOUND));
-
-        var brands = brandRepository.findAllById(List.of(1L, 2L, 3L));
-
-        var categories = brand.getCategories();
-
-        List<ResponseItemDto> itemsOfAllBrands = new ArrayList<>();
-
-        for (Brand brand1 : brands) {
-
-            var items = brand1.getItems();
-
-            itemsOfAllBrands.addAll(items.stream().map(item -> ResponseItemDto.builder()
-                            .id(item.getId() == null ? null : item.getId().longValue())
-                            .name(item.getName())
-                            .price(item.getPrice())
-                            .image(item.getImage())
-                            .description(item.getDescription())
-                            .build())
-                    .toList());
-        }
-
-
-        return itemsOfAllBrands;
+        Brand brand = findBrandByIdOrThrow(brandId);
+        return brand.getItems().stream()
+                .map(item -> ResponseItemDto.builder()
+                        .id(item.getId())
+                        .name(item.getName())
+                        .price(item.getPrice())
+                        .image(item.getImage())
+                        .description(item.getDescription())
+                        .brandId(brandId)
+                        .categoryId(item.getCategory() != null ? item.getCategory().getId() : null)
+                        .isActive(item.getIsActive())
+                        .isDeleted(item.getIsDeleted())
+                        .createdAt(item.getCreatedAt())
+                        .updatedAt(item.getUpdatedAt())
+                        .build())
+                .toList();
     }
 
     @Override
@@ -158,7 +144,7 @@ public class BrandServiceImpl implements BrandService {
 
     private Brand findBrandByIdOrThrow(Long id) {
         return brandRepository.findById(id)
-                .orElseThrow(() -> new ProductException(ProductErrorEnum.ITEM_NOT_FOUND));
+                .orElseThrow(() -> new ProductException(ProductErrorEnum.BRAND_NOT_FOUND));
     }
 
     private Brand toBrand(RequestBrandDto request) {

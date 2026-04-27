@@ -1,0 +1,50 @@
+databaseChangeLog:
+  - logicalFilePath: 2026-04-25-create-category.yaml
+  - changeSet:
+      id: 1
+      author: Nijat Nasirli
+      comment: Create category table to store categories of e-market
+      changes:
+        - createTable:
+            tableName: category
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: description
+                  type: VARCHAR(250)
+              - column:
+                  name: image
+                  type: VARCHAR(250)
+              - column:
+                  name: parent_id
+                  type: INT
+              - column:
+                  name: category_order
+                  type: INT
+              - column:
+                  name: is_active
+                  type: BOOLEAN
+                  defaultValueBoolean: true
+              - column:
+                  name: is_deleted
+                  type: BOOLEAN
+                  defaultValueBoolean: false
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP

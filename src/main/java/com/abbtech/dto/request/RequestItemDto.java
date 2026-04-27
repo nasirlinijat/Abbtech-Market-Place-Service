@@ -11,6 +11,8 @@ public record RequestItemDto(
         String name,
         BigDecimal price,
         String image,
-        String description
+        String description,
+        Long brandId,
+        Long categoryId
 ) {
 }

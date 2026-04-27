@@ -7,6 +7,7 @@ import com.abbtech.dto.response.ResponseBrandDto;
 import com.abbtech.dto.response.ResponseItemDto;
 import com.abbtech.model.enums.SortDirectionEnum;
 import com.abbtech.service.BrandService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -36,7 +37,7 @@ public class BrandController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseBrandDto add(@RequestBody RequestBrandDto request) {
+    public ResponseBrandDto add(@RequestBody @Valid RequestBrandDto request) {
         return brandService.add(request);
     }
 

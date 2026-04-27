@@ -2,6 +2,9 @@ server:
   servlet:
     application-display-name: Market Place
 spring:
+  profiles:
+    active: local
+
   datasource:
     url: jdbc:postgresql://${DB_URL}:5454/${DB_NAME}?currentSchema=${DB_SCHEMA}
     username: ${DB_USERNAME}
@@ -19,5 +22,9 @@ spring:
   jpa:
     open-in-view: false
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     show-sql: true
+  liquibase:
+        enabled: true
+        change-log: classpath:db/changelog/db.changelog-main.yaml
+

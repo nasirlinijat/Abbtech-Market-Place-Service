@@ -5,13 +5,16 @@ import com.abbtech.dto.response.ResponseCategoryDto;
 import com.abbtech.exception.ProductErrorEnum;
 import com.abbtech.exception.ProductException;
 import com.abbtech.model.Category;
+import com.abbtech.model.enums.SortDirectionEnum;
 import com.abbtech.repository.CategoryRepository;
 import com.abbtech.service.CategoryService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -21,11 +24,10 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<ResponseCategoryDto> getAll() {
-        return categoryRepository.findAll()
-                .stream()
-                .map(this::toResponseDto)
-                .toList();
+    public Page<ResponseCategoryDto> getAll(int pageNumber, int pageSize, SortDirectionEnum sortDirection, String sortField) {
+        Sort sort = Sort.by(Sort.Direction.fromString(sortDirection.toString()), sortField);
+        Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
+        return categoryRepository.findAll(pageable).map(this::toResponseDto);
     }
 
     @Override
@@ -67,12 +69,13 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     @Transactional
     public void deleteById(Long id) {
+        findCategoryByIdOrThrow(id);
         categoryRepository.deleteById(id);
     }
 
     private Category findCategoryByIdOrThrow(Long id) {
         return categoryRepository.findById(id)
-                .orElseThrow(() -> new ProductException(ProductErrorEnum.ITEM_NOT_FOUND));
+                .orElseThrow(() -> new ProductException(ProductErrorEnum.CATEGORY_NOT_FOUND));
     }
 
     private Category toCategory(RequestCategoryDto request) {
@@ -102,4 +105,3 @@ public class CategoryServiceImpl implements CategoryService {
                 .build();
     }
 }
-
