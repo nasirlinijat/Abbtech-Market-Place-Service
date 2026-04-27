@@ -15,3 +15,16 @@ spring:
       leak-detection-threshold: 20000
   liquibase:
     default-schema: online_shop
+    enabled: true
+
+security:
+  public-urls:
+    - /auth/**
+    - /swagger-ui/**
+    - /auth/login
+    - /auth/register
+    - /auth/refresh
+  jwt:
+    secret: "CHANGE_TO_32+_CHAR_RANDOM_SECRET"
+    access-exp: 360_000      # 5 min
+    refresh-exp: 420_000     # 7 min

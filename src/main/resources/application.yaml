@@ -23,6 +23,19 @@ spring:
       ddl-auto: none
     show-sql: true
   liquibase:
-    enabled: true
-    change-log: classpath:db/changelog/db.changelog-main.yaml
+    enabled: ${LIQUIBASE_ENABLED}
     default-schema: ${DB_SCHEMA}
+    change-log: classpath:db/changelog/db.changelog-main.yaml
+
+
+security:
+  public-urls:
+    - /auth/**
+    - /swagger-ui/**
+    - /auth/login
+    - /auth/register
+    - /auth/refresh
+  jwt:
+    secret: ${JWT_SECRET}
+    access-exp: 360_000      # 5 min
+    refresh-exp: 420_000     # 7 min
