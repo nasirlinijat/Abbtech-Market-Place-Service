@@ -1,12 +1,10 @@
 server:
   servlet:
+    context-path: /api/market-place
     application-display-name: Market Place
 spring:
-  profiles:
-    active: local
-
   datasource:
-    url: jdbc:postgresql://${DB_URL}:5454/${DB_NAME}?currentSchema=${DB_SCHEMA}
+    url: jdbc:postgresql://${DB_URL}:5432/${DB_NAME}?currentSchema=${DB_SCHEMA}
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
@@ -22,5 +20,26 @@ spring:
   jpa:
     open-in-view: false
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     show-sql: true
+  liquibase:
+    enabled: ${LIQUIBASE_ENABLED}
+    default-schema: ${DB_SCHEMA}
+    change-log: classpath:db/changelog/db.changelog-main.yaml
+
+
+security:
+  public-urls:
+    - /auth/**
+    - /swagger-ui/**
+    - /auth/login
+    - /auth/register
+    - /auth/refresh
+  jwt:
+    secret: ${JWT_SECRET}
+    access-exp: 360_000      # 5 min
+    refresh-exp: 420_000     # 7 min
+debug: true
+logging:
+  level:
+    com.abbtech: DEBUG

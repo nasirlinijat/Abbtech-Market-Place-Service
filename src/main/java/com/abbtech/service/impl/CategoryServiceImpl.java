@@ -1,10 +1,14 @@
 package com.abbtech.service.impl;
 
+import com.abbtech.dto.request.RequestCategoryDto;
+import com.abbtech.dto.response.ResponseCategoryDto;
 import com.abbtech.exception.ProductErrorEnum;
 import com.abbtech.exception.ProductException;
 import com.abbtech.model.Category;
+import com.abbtech.model.enums.SortDirectionEnum;
 import com.abbtech.repository.CategoryRepository;
 import com.abbtech.service.CategoryService;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,38 +24,26 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public List<Category> getAll() {
-        return categoryRepository.findAll();
-    }
-
-    @Override
-    public Category getById(Long id) {
-        return categoryRepository.findById(id)
-                .orElseThrow(() -> new ProductException(ProductErrorEnum.ITEM_NOT_FOUND));
-    }
-
-    @Override
-    @Transactional
-    public Category add(Category category) {
-        if (category.getCategoryOrder() == null) {
-            category.setCategoryOrder(1);
-        }
-        if (category.getIsActive() == null) {
-            category.setIsActive(true);
-        }
-        if (category.getIsDeleted() == null) {
-            category.setIsDeleted(false);
-        }
-        categoryRepository.save(category);
-        return category;
-    }
-
-    @Override
-    @Transactional
-    public Category updateById(Long id, Category category) {
-
+    public Page<ResponseCategoryDto> getAll(int pageNumber, int pageSize, SortDirectionEnum sortDirection, String sortField) {
         return null;
     }
+
+    @Override
+    public ResponseCategoryDto getById(Long id) {
+        return null;
+    }
+
+    @Override
+    public ResponseCategoryDto add(RequestCategoryDto request) {
+        return null;
+
+    }
+
+    @Override
+    public ResponseCategoryDto updateById(Long id, RequestCategoryDto request) {
+        return null;
+    }
+
 
     @Override
     @Transactional

@@ -10,6 +10,7 @@ import com.abbtech.model.enums.SortDirectionEnum;
 import com.abbtech.repository.BrandRepository;
 import com.abbtech.service.BrandService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -21,6 +22,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class BrandServiceImpl implements BrandService {
 
     private final BrandRepository brandRepository;
@@ -32,6 +34,7 @@ public class BrandServiceImpl implements BrandService {
         Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
 
         var pageBrands = brandRepository.findAll(pageable);
+        log.debug("Page result returned: {}", pageable);
         return pageBrands.map(this::toResponseDto);
     }
 

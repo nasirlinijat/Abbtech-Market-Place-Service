@@ -2,9 +2,11 @@ package com.abbtech.service.impl;
 
 import com.abbtech.dto.request.RequestItemDto;
 import com.abbtech.dto.response.ResponseItemDto;
+import com.abbtech.model.enums.SortDirectionEnum;
 import com.abbtech.repository.BrandRepository;
 import com.abbtech.repository.ItemRepository;
 import com.abbtech.service.ItemService;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,7 +37,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<ResponseItemDto> getAll() {
+    public Page<ResponseItemDto> getAll(int pageNumber, int pageSize, SortDirectionEnum sortDirection, String sortField) {
 //        return itemRepository.getAll()
 //                .stream()
 //                .map(item -> new ResponseItemDto(
@@ -68,10 +70,10 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public List<ResponseItemDto> getPriceRange(double min, double max) {
-
+    public Page<ResponseItemDto> getPriceRange(double min, double max, int pageNumber, int pageSize) {
         return null;
     }
+
 
     @Override
     public ResponseItemDto partialUpdateByName(String name, String itemDescription) {
