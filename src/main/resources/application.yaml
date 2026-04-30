@@ -39,3 +39,7 @@ security:
     secret: ${JWT_SECRET}
     access-exp: 360_000      # 5 min
     refresh-exp: 420_000     # 7 min
+debug: true
+logging:
+  level:
+    com.abbtech: DEBUG

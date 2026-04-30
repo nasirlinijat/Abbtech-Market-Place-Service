@@ -6,6 +6,7 @@ import com.abbtech.dto.response.ResponseItemDto;
 import com.abbtech.model.enums.SortDirectionEnum;
 import com.abbtech.service.BrandService;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -15,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/brands")
+@Slf4j
 public class BrandController {
 
     private final BrandService brandService;
@@ -28,6 +30,11 @@ public class BrandController {
             , @RequestParam(value = "pageSize", required = false, defaultValue = "3") int pageSize
             , @RequestParam(value = "sortDirection", required = false, defaultValue = "ASC") String sortDirection
             , @RequestParam(value = "sortField", required = false, defaultValue = "id") String sortField) {
+
+        int nextPage = 10 / pageNumber;
+
+        log.debug("pageNumber: {}, pageSize: {}, sortDirection: {}, sortField: {}", pageNumber, pageSize, sortDirection, sortField);
+
         return brandService.getAll(pageNumber, pageSize, SortDirectionEnum.valueOf(sortDirection), sortField);
     }
 
@@ -38,7 +45,7 @@ public class BrandController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    @PreAuthorize("hasAnyRole('WRITE_PRIVILEGE,ADMIN')")
+    @PreAuthorize("hasAnyRole('MANAGER','ADMİN') OR hasAuthority('WRITE_PRIVILEGE')")
     public ResponseBrandDto add(@RequestBody @Valid RequestBrandDto request) {
         return brandService.add(request);
     }

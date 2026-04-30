@@ -3,6 +3,7 @@ package com.abbtech.exception;
 import com.abbtech.exception.base.BaseErrorEnum;
 import com.abbtech.exception.base.BaseErrorResponseDTO;
 import com.abbtech.exception.base.BaseException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -17,11 +18,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 
+@Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<BaseErrorResponseDTO> handleConstraintViolationException(MethodArgumentNotValidException ex,
                                                                                    WebRequest webRequest) {
+
+
         Map<String, String> errors = new HashMap<>();
         ex.getBindingResult().getAllErrors().forEach(error -> {
             String fieldName = ((FieldError) error).getField();
@@ -37,6 +41,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(BaseException.class)
     public ResponseEntity<BaseErrorResponseDTO> handleBaseException(BaseException ex,
                                                                     WebRequest webRequest) {
+        log.error("BaseException: {}", ex.getCause().getCause().getMessage());
         return new ResponseEntity<>(new BaseErrorResponseDTO(ex.baseErrorService.getErrorCode(),
                 ex.baseErrorService.getMessage(), webRequest.getContextPath(), LocalDateTime.now().toString(),
                 ex.baseErrorService.getHttpStatus()), HttpStatusCode.valueOf(ex.baseErrorService.getHttpStatus())

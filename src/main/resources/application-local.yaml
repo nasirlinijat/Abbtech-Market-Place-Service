@@ -16,6 +16,8 @@ spring:
   liquibase:
     default-schema: online_shop
     enabled: true
+  jpa:
+    show-sql: false
 
 security:
   public-urls:
