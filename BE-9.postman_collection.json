@@ -1,0 +1,451 @@
+{
+  "info": {
+    "_postman_id": "15225fd3-5afb-418e-b0bd-7af9781c8067",
+    "name": "BE-9",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "15573449",
+    "_collection_link": "https://go.postman.co/collection/15573449-15225fd3-5afb-418e-b0bd-7af9781c8067?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "market-place-service",
+      "item": [
+        {
+          "name": "items",
+          "item": [
+            {
+              "name": "getItemById",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "x-custom-header",
+                    "value": "customHeaderValue",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8080/api/market-place/items/2",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "market-place",
+                    "items",
+                    "2"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "getAllItems",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "x-custom-header",
+                    "value": "HeaderValue",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8080/api/market-place/items",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "market-place",
+                    "items"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "saveAllItem",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n    {\n        \"name\": \"Product 1\",\n        \"price\": 101.0,\n        \"image\": \"image1.jpg\",\n        \"description\": \"Description 1\"\n    },\n    {\n        \"name\": \"Product 2\",\n        \"price\": 102.0,\n        \"image\": \"image2.jpg\",\n        \"description\": \"Description 2\"\n    },\n    {\n        \"name\": \"Product 3\",\n        \"price\": 103.0,\n        \"image\": \"image3.jpg\",\n        \"description\": \"Description 3\"\n    },\n    {\n        \"name\": \"Product 4\",\n        \"price\": 104.0,\n        \"image\": \"image4.jpg\",\n        \"description\": \"Description 4\"\n    },\n    {\n        \"name\": \"Product 5\",\n        \"price\": 105.0,\n        \"image\": \"image5.jpg\",\n        \"description\": \"Description 5\"\n    },\n    {\n        \"name\": \"Product 6\",\n        \"price\": 106.0,\n        \"image\": \"image1.jpg\",\n        \"description\": \"Description 6\"\n    },\n    {\n        \"name\": \"Product 7\",\n        \"price\": 107.0,\n        \"image\": \"image2.jpg\",\n        \"description\": \"Description 7\"\n    },\n    {\n        \"name\": \"Product 8\",\n        \"price\": 108.0,\n        \"image\": \"image3.jpg\",\n        \"description\": \"Description 8\"\n    },\n    {\n        \"name\": \"Product 9\",\n        \"price\": 109.0,\n        \"image\": \"image4.jpg\",\n        \"description\": \"Description 9\"\n    },\n    {\n        \"name\": \"Product 10\",\n        \"price\": 110.0,\n        \"image\": \"image5.jpg\",\n        \"description\": \"Description 10\"\n    },\n    {\n        \"name\": \"Product 11\",\n        \"price\": 111.0,\n        \"image\": \"image1.jpg\",\n        \"description\": \"Description 11\"\n    },\n    {\n        \"name\": \"Product 12\",\n        \"price\": 112.0,\n        \"image\": \"image2.jpg\",\n        \"description\": \"Description 12\"\n    },\n    {\n        \"name\": \"Product 13\",\n        \"price\": 113.0,\n        \"image\": \"image3.jpg\",\n        \"description\": \"Description 13\"\n    },\n    {\n        \"name\": \"Product 14\",\n        \"price\": 114.0,\n        \"image\": \"image4.jpg\",\n        \"description\": \"Description 14\"\n    },\n    {\n        \"name\": \"Product 15\",\n        \"price\": 115.0,\n        \"image\": \"image5.jpg\",\n        \"description\": \"Description 15\"\n    },\n    {\n        \"name\": \"Product 16\",\n        \"price\": 116.0,\n        \"image\": \"image1.jpg\",\n        \"description\": \"Description 16\"\n    },\n    {\n        \"name\": \"Product 17\",\n        \"price\": 117.0,\n        \"image\": \"image2.jpg\",\n        \"description\": \"Description 17\"\n    },\n    {\n        \"name\": \"Product 18\",\n        \"price\": 118.0,\n        \"image\": \"image3.jpg\",\n        \"description\": \"Description 18\"\n    },\n    {\n        \"name\": \"Product 19\",\n        \"price\": 119.0,\n        \"image\": \"image4.jpg\",\n        \"description\": \"Description 19\"\n    },\n    {\n        \"name\": \"Product 20\",\n        \"price\": 120.0,\n        \"image\": \"image5.jpg\",\n        \"description\": \"Description 20\"\n    },\n    {\n        \"name\": \"Product 21\",\n        \"price\": 121.0,\n        \"image\": \"image1.jpg\",\n        \"description\": \"Description 21\"\n    },\n    {\n        \"name\": \"Product 22\",\n        \"price\": 122.0,\n        \"image\": \"image2.jpg\",\n        \"description\": \"Description 22\"\n    },\n    {\n        \"name\": \"Product 23\",\n        \"price\": 123.0,\n        \"image\": \"image3.jpg\",\n        \"description\": \"Description 23\"\n    },\n    {\n        \"name\": \"Product 24\",\n        \"price\": 124.0,\n        \"image\": \"image4.jpg\",\n        \"description\": \"Description 24\"\n    },\n    {\n        \"name\": \"Product 25\",\n        \"price\": 125.0,\n        \"image\": \"image5.jpg\",\n        \"description\": \"Description 25\"\n    },\n    {\n        \"name\": \"Product 26\",\n        \"price\": 126.0,\n        \"image\": \"image1.jpg\",\n        \"description\": \"Description 26\"\n    },\n    {\n        \"name\": \"Product 27\",\n        \"price\": 127.0,\n        \"image\": \"image2.jpg\",\n        \"description\": \"Description 27\"\n    },\n    {\n        \"name\": \"Product 28\",\n        \"price\": 128.0,\n        \"image\": \"image3.jpg\",\n        \"description\": \"Description 28\"\n    },\n    {\n        \"name\": \"Product 29\",\n        \"price\": 129.0,\n        \"image\": \"image4.jpg\",\n        \"description\": \"Description 29\"\n    },\n    {\n        \"name\": \"Product 30\",\n        \"price\": 130.0,\n        \"image\": \"image5.jpg\",\n        \"description\": \"Description 30\"\n    },\n    {\n        \"name\": \"Product 31\",\n        \"price\": 131.0,\n        \"image\": \"image1.jpg\",\n        \"description\": \"Description 31\"\n    },\n    {\n        \"name\": \"Product 32\",\n        \"price\": 132.0,\n        \"image\": \"image2.jpg\",\n        \"description\": \"Description 32\"\n    },\n    {\n        \"name\": \"Product 33\",\n        \"price\": 133.0,\n        \"image\": \"image3.jpg\",\n        \"description\": \"Description 33\"\n    },\n    {\n        \"name\": \"Product 34\",\n        \"price\": 134.0,\n        \"image\": \"image4.jpg\",\n        \"description\": \"Description 34\"\n    },\n    {\n        \"name\": \"Product 35\",\n        \"price\": 135.0,\n        \"image\": \"image5.jpg\",\n        \"description\": \"Description 35\"\n    },\n    {\n        \"name\": \"Product 36\",\n        \"price\": 136.0,\n        \"image\": \"image1.jpg\",\n        \"description\": \"Description 36\"\n    },\n    {\n        \"name\": \"Product 37\",\n        \"price\": 137.0,\n        \"image\": \"image2.jpg\",\n        \"description\": \"Description 37\"\n    },\n    {\n        \"name\": \"Product 38\",\n        \"price\": 138.0,\n        \"image\": \"image3.jpg\",\n        \"description\": \"Description 38\"\n    },\n    {\n        \"name\": \"Product 39\",\n        \"price\": 139.0,\n        \"image\": \"image4.jpg\",\n        \"description\": \"Description 39\"\n    },\n    {\n        \"name\": \"Product 40\",\n        \"price\": 140.0,\n        \"image\": \"image5.jpg\",\n        \"description\": \"Description 40\"\n    },\n    {\n        \"name\": \"Product 41\",\n        \"price\": 141.0,\n        \"image\": \"image1.jpg\",\n        \"description\": \"Description 41\"\n    },\n    {\n        \"name\": \"Product 42\",\n        \"price\": 142.0,\n        \"image\": \"image2.jpg\",\n        \"description\": \"Description 42\"\n    },\n    {\n        \"name\": \"Product 43\",\n        \"price\": 143.0,\n        \"image\": \"image3.jpg\",\n        \"description\": \"Description 43\"\n    },\n    {\n        \"name\": \"Product 44\",\n        \"price\": 144.0,\n        \"image\": \"image4.jpg\",\n        \"description\": \"Description 44\"\n    },\n    {\n        \"name\": \"Product 45\",\n        \"price\": 145.0,\n        \"image\": \"image5.jpg\",\n        \"description\": \"Description 45\"\n    },\n    {\n        \"name\": \"Product 46\",\n        \"price\": 146.0,\n        \"image\": \"image1.jpg\",\n        \"description\": \"Description 46\"\n    },\n    {\n        \"name\": \"Product 47\",\n        \"price\": 147.0,\n        \"image\": \"image2.jpg\",\n        \"description\": \"Description 47\"\n    },\n    {\n        \"name\": \"Product 48\",\n        \"price\": 148.0,\n        \"image\": \"image3.jpg\",\n        \"description\": \"Description 48\"\n    },\n    {\n        \"name\": \"Product 49\",\n        \"price\": 149.0,\n        \"image\": \"image4.jpg\",\n        \"description\": \"Description 49\"\n    },\n    {\n        \"name\": \"Product 50\",\n        \"price\": 150.0,\n        \"image\": \"image5.jpg\",\n        \"description\": \"Description 50\"\n    },\n    {\n        \"name\": \"Product 51\",\n        \"price\": 151.0,\n        \"image\": \"image1.jpg\",\n        \"description\": \"Description 51\"\n    },\n    {\n        \"name\": \"Product 52\",\n        \"price\": 152.0,\n        \"image\": \"image2.jpg\",\n        \"description\": \"Description 52\"\n    },\n    {\n        \"name\": \"Product 53\",\n        \"price\": 153.0,\n        \"image\": \"image3.jpg\",\n        \"description\": \"Description 53\"\n    },\n    {\n        \"name\": \"Product 54\",\n        \"price\": 154.0,\n        \"image\": \"image4.jpg\",\n        \"description\": \"Description 54\"\n    },\n    {\n        \"name\": \"Product 55\",\n        \"price\": 155.0,\n        \"image\": \"image5.jpg\",\n        \"description\": \"Description 55\"\n    },\n    {\n        \"name\": \"Product 56\",\n        \"price\": 156.0,\n        \"image\": \"image1.jpg\",\n        \"description\": \"Description 56\"\n    },\n    {\n        \"name\": \"Product 57\",\n        \"price\": 157.0,\n        \"image\": \"image2.jpg\",\n        \"description\": \"Description 57\"\n    },\n    {\n        \"name\": \"Product 58\",\n        \"price\": 158.0,\n        \"image\": \"image3.jpg\",\n        \"description\": \"Description 58\"\n    },\n    {\n        \"name\": \"Product 59\",\n        \"price\": 159.0,\n        \"image\": \"image4.jpg\",\n        \"description\": \"Description 59\"\n    },\n    {\n        \"name\": \"Product 60\",\n        \"price\": 160.0,\n        \"image\": \"image5.jpg\",\n        \"description\": \"Description 60\"\n    },\n    {\n        \"name\": \"Product 61\",\n        \"price\": 161.0,\n        \"image\": \"image1.jpg\",\n        \"description\": \"Description 61\"\n    },\n    {\n        \"name\": \"Product 62\",\n        \"price\": 162.0,\n        \"image\": \"image2.jpg\",\n        \"description\": \"Description 62\"\n    },\n    {\n        \"name\": \"Product 63\",\n        \"price\": 163.0,\n        \"image\": \"image3.jpg\",\n        \"description\": \"Description 63\"\n    },\n    {\n        \"name\": \"Product 64\",\n        \"price\": 164.0,\n        \"image\": \"image4.jpg\",\n        \"description\": \"Description 64\"\n    },\n    {\n        \"name\": \"Product 65\",\n        \"price\": 165.0,\n        \"image\": \"image5.jpg\",\n        \"description\": \"Description 65\"\n    },\n    {\n        \"name\": \"Product 66\",\n        \"price\": 166.0,\n        \"image\": \"image1.jpg\",\n        \"description\": \"Description 66\"\n    },\n    {\n        \"name\": \"Product 67\",\n        \"price\": 167.0,\n        \"image\": \"image2.jpg\",\n        \"description\": \"Description 67\"\n    },\n    {\n        \"name\": \"Product 68\",\n        \"price\": 168.0,\n        \"image\": \"image3.jpg\",\n        \"description\": \"Description 68\"\n    },\n    {\n        \"name\": \"Product 69\",\n        \"price\": 169.0,\n        \"image\": \"image4.jpg\",\n        \"description\": \"Description 69\"\n    },\n    {\n        \"name\": \"Product 70\",\n        \"price\": 170.0,\n        \"image\": \"image5.jpg\",\n        \"description\": \"Description 70\"\n    },\n    {\n        \"name\": \"Product 71\",\n        \"price\": 171.0,\n        \"image\": \"image1.jpg\",\n        \"description\": \"Description 71\"\n    },\n    {\n        \"name\": \"Product 72\",\n        \"price\": 172.0,\n        \"image\": \"image2.jpg\",\n        \"description\": \"Description 72\"\n    },\n    {\n        \"name\": \"Product 73\",\n        \"price\": 173.0,\n        \"image\": \"image3.jpg\",\n        \"description\": \"Description 73\"\n    },\n    {\n        \"name\": \"Product 74\",\n        \"price\": 174.0,\n        \"image\": \"image4.jpg\",\n        \"description\": \"Description 74\"\n    },\n    {\n        \"name\": \"Product 75\",\n        \"price\": 175.0,\n        \"image\": \"image5.jpg\",\n        \"description\": \"Description 75\"\n    },\n    {\n        \"name\": \"Product 76\",\n        \"price\": 176.0,\n        \"image\": \"image1.jpg\",\n        \"description\": \"Description 76\"\n    },\n    {\n        \"name\": \"Product 77\",\n        \"price\": 177.0,\n        \"image\": \"image2.jpg\",\n        \"description\": \"Description 77\"\n    },\n    {\n        \"name\": \"Product 78\",\n        \"price\": 178.0,\n        \"image\": \"image3.jpg\",\n        \"description\": \"Description 78\"\n    },\n    {\n        \"name\": \"Product 79\",\n        \"price\": 179.0,\n        \"image\": \"image4.jpg\",\n        \"description\": \"Description 79\"\n    },\n    {\n        \"name\": \"Product 80\",\n        \"price\": 180.0,\n        \"image\": \"image5.jpg\",\n        \"description\": \"Description 80\"\n    },\n    {\n        \"name\": \"Product 81\",\n        \"price\": 181.0,\n        \"image\": \"image1.jpg\",\n        \"description\": \"Description 81\"\n    },\n    {\n        \"name\": \"Product 82\",\n        \"price\": 182.0,\n        \"image\": \"image2.jpg\",\n        \"description\": \"Description 82\"\n    },\n    {\n        \"name\": \"Product 83\",\n        \"price\": 183.0,\n        \"image\": \"image3.jpg\",\n        \"description\": \"Description 83\"\n    },\n    {\n        \"name\": \"Product 84\",\n        \"price\": 184.0,\n        \"image\": \"image4.jpg\",\n        \"description\": \"Description 84\"\n    },\n    {\n        \"name\": \"Product 85\",\n        \"price\": 185.0,\n        \"image\": \"image5.jpg\",\n        \"description\": \"Description 85\"\n    },\n    {\n        \"name\": \"Product 86\",\n        \"price\": 186.0,\n        \"image\": \"image1.jpg\",\n        \"description\": \"Description 86\"\n    },\n    {\n        \"name\": \"Product 87\",\n        \"price\": 187.0,\n        \"image\": \"image2.jpg\",\n        \"description\": \"Description 87\"\n    },\n    {\n        \"name\": \"Product 88\",\n        \"price\": 188.0,\n        \"image\": \"image3.jpg\",\n        \"description\": \"Description 88\"\n    },\n    {\n        \"name\": \"Product 89\",\n        \"price\": 189.0,\n        \"image\": \"image4.jpg\",\n        \"description\": \"Description 89\"\n    },\n    {\n        \"name\": \"Product 90\",\n        \"price\": 190.0,\n        \"image\": \"image5.jpg\",\n        \"description\": \"Description 90\"\n    },\n    {\n        \"name\": \"Product 91\",\n        \"price\": 191.0,\n        \"image\": \"image1.jpg\",\n        \"description\": \"Description 91\"\n    },\n    {\n        \"name\": \"Product 92\",\n        \"price\": 192.0,\n        \"image\": \"image2.jpg\",\n        \"description\": \"Description 92\"\n    },\n    {\n        \"name\": \"Product 93\",\n        \"price\": 193.0,\n        \"image\": \"image3.jpg\",\n        \"description\": \"Description 93\"\n    },\n    {\n        \"name\": \"Product 94\",\n        \"price\": 194.0,\n        \"image\": \"image4.jpg\",\n        \"description\": \"Description 94\"\n    },\n    {\n        \"name\": \"Product 95\",\n        \"price\": 195.0,\n        \"image\": \"image5.jpg\",\n        \"description\": \"Description 95\"\n    },\n    {\n        \"name\": \"Product 96\",\n        \"price\": 196.0,\n        \"image\": \"image1.jpg\",\n        \"description\": \"Description 96\"\n    },\n    {\n        \"name\": \"Product 97\",\n        \"price\": 197.0,\n        \"image\": \"image2.jpg\",\n        \"description\": \"Description 97\"\n    },\n    {\n        \"name\": \"Product 98\",\n        \"price\": 198.0,\n        \"image\": \"image3.jpg\",\n        \"description\": \"Description 98\"\n    },\n    {\n        \"name\": \"Product 99\",\n        \"price\": 199.0,\n        \"image\": \"image4.jpg\",\n        \"description\": \"Description 99\"\n    },\n    {\n        \"name\": \"Product 100\",\n        \"price\": 200.0,\n        \"image\": \"image5.jpg\",\n        \"description\": \"Description 100\"\n    }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/market-place/items/all",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "market-place",
+                    "items",
+                    "all"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "saveItem",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\": \"Product Test 1\",\n    \"price\": 156.0,\n    \"image\": \"image1.jpg\",\n    \"description\": \"Description 56\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/market-place/items",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "market-place",
+                    "items"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "deleteItem",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"productName\": \"ProductName\",\n    \"productPrice\": 10.50,\n    \"productImage\": \"image_url.jpeg\",\n    \"productDescription\": \"product.  Description\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/market-place/items/222",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "market-place",
+                    "items",
+                    "222"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "brand",
+          "item": [
+            {
+              "name": "getAllBrands",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{E_MARKET_ACCESS_TOKEN}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/market-place/brands?pageNumber=1&pageSize=5&sortDirection=DESC&sortField=name",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "market-place",
+                    "brands"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageNumber",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "sortDirection",
+                      "value": "DESC"
+                    },
+                    {
+                      "key": "sortField",
+                      "value": "name"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "getBrandById",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/market-place/brands/2",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "market-place",
+                    "brands",
+                    "2"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "getItemsByBrand",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/market-place/brands/1/items",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "market-place",
+                    "brands",
+                    "1",
+                    "items"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "saveBrand",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{E_MARKET_ACCESS_TOKEN}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\": \"Samsung\",\n    \"description\": \"Samsung electronics\",\n    \"image\": \"image1.jpg\",\n    \"isActive\": true,\n    \"isDeleted\": false,\n    \"createdAt\": \"2026-04-16T12:00:00\",\n    \"updatedAt\": \"2026-04-16T12:00:00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/market-place/brands",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "market-place",
+                    "brands"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "security",
+          "item": [
+            {
+              "name": "register",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"cavidan.hatamov\",\n  \"fullName\": \"Cavidan Hatamov\",\n  \"email\": \"cavidan@gmail.com\",\n  \"password\": \"mypass1\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/market-place/auth/register",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "market-place",
+                    "auth",
+                    "register"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "login",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "// Parse response JSON",
+                      "let response = pm.response.json();",
+                      "",
+                      "// Get tokens",
+                      "let accessToken = response.accessToken;",
+                      "let refreshToken = response.refreshToken;",
+                      "",
+                      "// Set as environment variables",
+                      "pm.environment.set(\"E_MARKET_ACCESS_TOKEN\", accessToken);",
+                      "pm.environment.set(\"E_MARKET_REFRESH_TOKEN\", refreshToken);"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"cavidan.hatamov\",\n  \"password\": \"mypass1\"\n}\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/market-place/auth/login",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "market-place",
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "refresh",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "// Parse response JSON",
+                      "let response = pm.response.json();",
+                      "",
+                      "// Get tokens",
+                      "let accessToken = response.accessToken;",
+                      "let refreshToken = response.refreshToken;",
+                      "",
+                      "// Set as environment variables",
+                      "pm.environment.set(\"E_MARKET_ACCESS_TOKEN\", accessToken);",
+                      "pm.environment.set(\"E_MARKET_REFRESH_TOKEN\", refreshToken);",
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{E_MARKET_REFRESH_TOKEN}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/market-place/auth/refresh",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "market-place",
+                    "auth",
+                    "refresh"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

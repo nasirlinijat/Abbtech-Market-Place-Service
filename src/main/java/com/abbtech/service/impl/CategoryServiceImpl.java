@@ -1,45 +1,38 @@
 package com.abbtech.service.impl;
 
-import com.abbtech.dto.request.RequestCategoryDto;
-import com.abbtech.dto.response.ResponseCategoryDto;
 import com.abbtech.exception.ProductErrorEnum;
 import com.abbtech.exception.ProductException;
 import com.abbtech.model.Category;
-import com.abbtech.model.enums.SortDirectionEnum;
 import com.abbtech.repository.CategoryRepository;
 import com.abbtech.service.CategoryService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@RequiredArgsConstructor
+import java.util.List;
+
 @Service
 public class CategoryServiceImpl implements CategoryService {
 
     private final CategoryRepository categoryRepository;
 
-    @Override
-    @Transactional(readOnly = true)
-    public Page<ResponseCategoryDto> getAll(int pageNumber, int pageSize, SortDirectionEnum sortDirection, String sortField) {
-        Sort sort = Sort.by(Sort.Direction.fromString(sortDirection.toString()), sortField);
-        Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
-        return categoryRepository.findAll(pageable).map(this::toResponseDto);
+    public CategoryServiceImpl(CategoryRepository categoryRepository) {
+        this.categoryRepository = categoryRepository;
     }
 
     @Override
-    @Transactional(readOnly = true)
-    public ResponseCategoryDto getById(Long id) {
-        return toResponseDto(findCategoryByIdOrThrow(id));
+    public List<Category> getAll() {
+        return categoryRepository.findAll();
+    }
+
+    @Override
+    public Category getById(Long id) {
+        return categoryRepository.findById(id)
+                .orElseThrow(() -> new ProductException(ProductErrorEnum.ITEM_NOT_FOUND));
     }
 
     @Override
     @Transactional
-    public ResponseCategoryDto add(RequestCategoryDto request) {
-        Category category = toCategory(request);
+    public Category add(Category category) {
         if (category.getCategoryOrder() == null) {
             category.setCategoryOrder(1);
         }
@@ -49,59 +42,21 @@ public class CategoryServiceImpl implements CategoryService {
         if (category.getIsDeleted() == null) {
             category.setIsDeleted(false);
         }
-        return toResponseDto(categoryRepository.save(category));
+        categoryRepository.save(category);
+        return category;
     }
 
     @Override
     @Transactional
-    public ResponseCategoryDto updateById(Long id, RequestCategoryDto request) {
-        Category existingCategory = findCategoryByIdOrThrow(id);
-        existingCategory.setName(request.name());
-        existingCategory.setDescription(request.description());
-        existingCategory.setImage(request.image());
-        existingCategory.setParentId(request.parentId());
-        existingCategory.setCategoryOrder(request.categoryOrder());
-        existingCategory.setIsActive(request.isActive());
-        existingCategory.setIsDeleted(request.isDeleted());
-        return toResponseDto(categoryRepository.save(existingCategory));
+    public Category updateById(Long id, Category category) {
+
+        return null;
     }
 
     @Override
     @Transactional
     public void deleteById(Long id) {
-        findCategoryByIdOrThrow(id);
         categoryRepository.deleteById(id);
     }
-
-    private Category findCategoryByIdOrThrow(Long id) {
-        return categoryRepository.findById(id)
-                .orElseThrow(() -> new ProductException(ProductErrorEnum.CATEGORY_NOT_FOUND));
-    }
-
-    private Category toCategory(RequestCategoryDto request) {
-        Category category = new Category();
-        category.setName(request.name());
-        category.setDescription(request.description());
-        category.setImage(request.image());
-        category.setParentId(request.parentId());
-        category.setCategoryOrder(request.categoryOrder());
-        category.setIsActive(request.isActive());
-        category.setIsDeleted(request.isDeleted());
-        return category;
-    }
-
-    private ResponseCategoryDto toResponseDto(Category category) {
-        return ResponseCategoryDto.builder()
-                .id(category.getId())
-                .name(category.getName())
-                .description(category.getDescription())
-                .image(category.getImage())
-                .parentId(category.getParentId())
-                .categoryOrder(category.getCategoryOrder())
-                .isActive(category.getIsActive())
-                .isDeleted(category.getIsDeleted())
-                .createdAt(category.getCreatedAt())
-                .updatedAt(category.getUpdatedAt())
-                .build();
-    }
 }
+

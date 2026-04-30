@@ -8,11 +8,12 @@ import com.abbtech.dto.response.ResponseItemDto;
 import com.abbtech.model.enums.SortDirectionEnum;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
 public interface BrandService {
-    Page<ResponseBrandDto> getAll(int pageNumber, int pageSize, SortDirectionEnum sortDirection, String sortField);
+    Page<ResponseBrandDto> getAll(int pageNumber, int pageSize, SortDirectionEnum sortDirectionEnum, String sortField);
 
     ResponseBrandDto getById(Long id);
 
@@ -23,10 +24,5 @@ public interface BrandService {
     void deleteById(Long id);
 
     List<ResponseItemDto> getItemsByBrand(Long brandId);
-
-    void saveBrandAndItems(RequestBrandItemDto request);
-
-    void updateBrandItems(Long id, @RequestBody List<RequestItemDto> request);
-
 }
 

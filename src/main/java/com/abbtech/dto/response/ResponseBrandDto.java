@@ -1,19 +1,14 @@
 package com.abbtech.dto.response;
 
-import lombok.Builder;
-
 import java.time.LocalDateTime;
 
-@Builder
-public record ResponseBrandDto(
-        Long id,
-        String name,
-        String description,
-        String image,
-        Boolean isActive,
-        Boolean isDeleted,
-        LocalDateTime createdAt,
-        LocalDateTime updatedAt
-) {
+public record ResponseBrandDto(Long id,
+                               String name,
+                               String description,
+                               String image,
+                               Boolean isActive,
+                               Boolean isDeleted,
+                               LocalDateTime createdAt,
+                               LocalDateTime updatedAt) {
 }
 

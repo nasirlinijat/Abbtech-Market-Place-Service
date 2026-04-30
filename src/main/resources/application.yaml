@@ -22,9 +22,5 @@ spring:
   jpa:
     open-in-view: false
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     show-sql: true
-  liquibase:
-        enabled: true
-        change-log: classpath:db/changelog/db.changelog-main.yaml
-

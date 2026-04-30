@@ -1,14 +1,11 @@
 package com.abbtech.service.impl;
 
 import com.abbtech.dto.request.RequestBrandDto;
-import com.abbtech.dto.request.RequestBrandItemDto;
-import com.abbtech.dto.request.RequestItemDto;
 import com.abbtech.dto.response.ResponseBrandDto;
 import com.abbtech.dto.response.ResponseItemDto;
 import com.abbtech.exception.ProductErrorEnum;
 import com.abbtech.exception.ProductException;
 import com.abbtech.model.Brand;
-import com.abbtech.model.Item;
 import com.abbtech.model.enums.SortDirectionEnum;
 import com.abbtech.repository.BrandRepository;
 import com.abbtech.service.BrandService;
@@ -30,16 +27,19 @@ public class BrandServiceImpl implements BrandService {
 
     @Override
     @Transactional(readOnly = true)
-    public Page<ResponseBrandDto> getAll(int pageNumber, int pageSize, SortDirectionEnum sortDirection, String sortField) {
-        Sort sort = Sort.by(Sort.Direction.fromString(sortDirection.toString()), sortField);
+    public Page<ResponseBrandDto> getAll(int pageNumber, int pageSize, SortDirectionEnum sortDirectionEnum, String sortField) {
+        Sort sort = Sort.by(Sort.Direction.fromString(sortDirectionEnum.toString()), sortField);
         Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
-        return brandRepository.findAll(pageable).map(this::toResponseDto);
+
+        var pageBrands = brandRepository.findAll(pageable);
+        return pageBrands.map(this::toResponseDto);
     }
 
     @Override
     @Transactional(readOnly = true)
     public ResponseBrandDto getById(Long id) {
-        return toResponseDto(findBrandByIdOrThrow(id));
+        var optionalBrand = brandRepository.findById(id);
+        return toResponseDto(optionalBrand.orElseThrow());
     }
 
     @Override
@@ -70,81 +70,16 @@ public class BrandServiceImpl implements BrandService {
     @Override
     @Transactional(readOnly = true)
     public List<ResponseItemDto> getItemsByBrand(Long brandId) {
-        Brand brand = findBrandByIdOrThrow(brandId);
-        return brand.getItems().stream()
-                .map(item -> ResponseItemDto.builder()
-                        .id(item.getId())
-                        .name(item.getName())
-                        .price(item.getPrice())
-                        .image(item.getImage())
-                        .description(item.getDescription())
-                        .brandId(brandId)
-                        .categoryId(item.getCategory() != null ? item.getCategory().getId() : null)
-                        .isActive(item.getIsActive())
-                        .isDeleted(item.getIsDeleted())
-                        .createdAt(item.getCreatedAt())
-                        .updatedAt(item.getUpdatedAt())
-                        .build())
-                .toList();
+        Brand brand = brandRepository.findById(brandId).orElseThrow(() -> new ProductException(ProductErrorEnum.BRAND_NOT_FOUND));
+
+
+        return null;
     }
 
-    @Override
-    @Transactional
-    public void saveBrandAndItems(RequestBrandItemDto request) {
-
-        Brand brand = new Brand();
-        brand.setName(request.name());
-        brand.setDescription(request.description());
-        brand.setImage(request.image());
-        brand.setIsActive(request.active());
-        brand.setIsDeleted(request.deleted());
-
-        var items = request.items().stream()
-                .map(item -> {
-                    Item newItem = new Item();
-                    newItem.setName(item.name());
-                    newItem.setPrice(item.price());
-                    newItem.setImage(item.image());
-                    newItem.setDescription(item.description());
-                    newItem.setIsActive(true);
-                    newItem.setIsDeleted(false);
-                    newItem.setBrand(brand);
-                    return newItem;
-                }).toList();
-        brand.setItems(items);
-
-        brandRepository.save(brand);
-    }
-
-    @Override
-    @Transactional
-    public void updateBrandItems(Long id, List<RequestItemDto> items) {
-        var brand = brandRepository.findById(id).orElseThrow(() -> new ProductException(ProductErrorEnum.BRAND_NOT_FOUND));
-
-        for (Item existingItem : brand.getItems()) {
-            existingItem.setBrand(null);
-        }
-
-        brand.getItems().clear();
-
-        for (RequestItemDto item : items) {
-            Item newItem = new Item();
-            newItem.setName(item.name());
-            newItem.setPrice(item.price());
-            newItem.setImage(item.image());
-            newItem.setDescription(item.description());
-            newItem.setIsActive(true);
-            newItem.setIsDeleted(false);
-            newItem.setBrand(brand);
-
-            brand.getItems().add(newItem);
-        }
-        brandRepository.save(brand);
-    }
 
     private Brand findBrandByIdOrThrow(Long id) {
         return brandRepository.findById(id)
-                .orElseThrow(() -> new ProductException(ProductErrorEnum.BRAND_NOT_FOUND));
+                .orElseThrow(() -> new ProductException(ProductErrorEnum.ITEM_NOT_FOUND));
     }
 
     private Brand toBrand(RequestBrandDto request) {
@@ -154,21 +89,20 @@ public class BrandServiceImpl implements BrandService {
         brand.setImage(request.image());
         brand.setIsActive(request.isActive());
         brand.setIsDeleted(request.isDeleted());
-
         return brand;
     }
 
     private ResponseBrandDto toResponseDto(Brand brand) {
-        return ResponseBrandDto.builder()
-                .id(brand.getId())
-                .name(brand.getName())
-                .description(brand.getDescription())
-                .image(brand.getImage())
-                .isActive(brand.getIsActive())
-                .isDeleted(brand.getIsDeleted())
-                .createdAt(brand.getCreatedAt())
-                .updatedAt(brand.getUpdatedAt())
-                .build();
+        return new ResponseBrandDto(
+                brand.getId(),
+                brand.getName(),
+                brand.getDescription(),
+                brand.getImage(),
+                brand.getIsActive(),
+                brand.getIsDeleted(),
+                brand.getCreatedAt(),
+                brand.getUpdatedAt()
+        );
     }
 }
 
