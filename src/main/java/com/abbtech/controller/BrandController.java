@@ -38,18 +38,20 @@ public class BrandController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    @PreAuthorize("hasAnyRole('WRITE_PRIVILEGE,ADMIN')")
+    @PreAuthorize("hasRole('ADMIN') or hasAuthority('WRITE_PRIVILEGE')")
     public ResponseBrandDto add(@RequestBody @Valid RequestBrandDto request) {
         return brandService.add(request);
     }
 
     @PutMapping("/{id}")
-    public ResponseBrandDto updateById(@PathVariable Long id, @RequestBody RequestBrandDto request) {
+    @PreAuthorize("hasRole('ADMIN') or hasAuthority('WRITE_PRIVILEGE')")
+    public ResponseBrandDto updateById(@PathVariable Long id, @RequestBody @Valid RequestBrandDto request) {
         return brandService.updateById(id, request);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PreAuthorize("hasRole('ADMIN')")
     public void deleteById(@PathVariable Long id) {
         brandService.deleteById(id);
     }

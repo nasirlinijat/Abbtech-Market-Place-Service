@@ -14,6 +14,8 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -27,16 +29,16 @@ public class AuthController {
     private final UserDetailsServiceImpl userDetailsService;
 
     @PostMapping("/login")
-    public TokenResponseDto login(@RequestBody LoginRequestDto req) {
+    public TokenResponseDto login(@RequestBody @Valid LoginRequestDto req) {
         Authentication auth =
                 manager.authenticate(new UsernamePasswordAuthenticationToken(req.username(), req.password()));
         UserDetails user = (UserDetails) auth.getPrincipal();
         return new TokenResponseDto(jwt.accessToken(user), jwt.refreshToken(user));
     }
 
-
     @PostMapping("/register")
-    public void register(@RequestBody RegisterRequestDto req) {
+    @ResponseStatus(HttpStatus.CREATED)
+    public void register(@RequestBody @Valid RegisterRequestDto req) {
         registerService.register(req);
     }
 

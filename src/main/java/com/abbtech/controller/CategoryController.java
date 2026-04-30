@@ -4,9 +4,11 @@ import com.abbtech.dto.request.RequestCategoryDto;
 import com.abbtech.dto.response.ResponseCategoryDto;
 import com.abbtech.model.enums.SortDirectionEnum;
 import com.abbtech.service.CategoryService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
@@ -32,17 +34,20 @@ public class CategoryController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseCategoryDto add(@RequestBody RequestCategoryDto request) {
+    @PreAuthorize("hasRole('ADMIN') or hasAuthority('WRITE_PRIVILEGE')")
+    public ResponseCategoryDto add(@RequestBody @Valid RequestCategoryDto request) {
         return categoryService.add(request);
     }
 
     @PutMapping("/{id}")
-    public ResponseCategoryDto updateById(@PathVariable Long id, @RequestBody RequestCategoryDto request) {
+    @PreAuthorize("hasRole('ADMIN') or hasAuthority('WRITE_PRIVILEGE')")
+    public ResponseCategoryDto updateById(@PathVariable Long id, @RequestBody @Valid RequestCategoryDto request) {
         return categoryService.updateById(id, request);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PreAuthorize("hasRole('ADMIN')")
     public void deleteById(@PathVariable Long id) {
         categoryService.deleteById(id);
     }
