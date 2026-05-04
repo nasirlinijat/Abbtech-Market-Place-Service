@@ -6,6 +6,7 @@ import com.abbtech.dto.response.ResponseItemDto;
 import com.abbtech.exception.ProductErrorEnum;
 import com.abbtech.exception.ProductException;
 import com.abbtech.model.Brand;
+import com.abbtech.model.Item;
 import com.abbtech.model.enums.SortDirectionEnum;
 import com.abbtech.repository.BrandRepository;
 import com.abbtech.service.BrandService;
@@ -73,10 +74,19 @@ public class BrandServiceImpl implements BrandService {
     @Override
     @Transactional(readOnly = true)
     public List<ResponseItemDto> getItemsByBrand(Long brandId) {
-        Brand brand = brandRepository.findById(brandId).orElseThrow(() -> new ProductException(ProductErrorEnum.BRAND_NOT_FOUND));
+        Brand brand = brandRepository.findById(brandId)
+                .orElseThrow(() -> new ProductException(ProductErrorEnum.BRAND_NOT_FOUND));
+        return brand.getItems().stream().map(this::toItemResponseDto).toList();
+    }
 
-
-        return null;
+    private ResponseItemDto toItemResponseDto(Item item) {
+        return new ResponseItemDto(
+                item.getId(),
+                item.getName(),
+                item.getPrice(),
+                item.getImage(),
+                item.getDescription()
+        );
     }
 
 

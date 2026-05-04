@@ -2,7 +2,7 @@ databaseChangeLog:
   - logicalFilePath: 2026-04-25-create-item.yaml
   - changeSet:
       id: 1
-      author: JavidanHatamov
+      author: Nijat Nasirli
       comment: Create item table to keep item information of e-market
       changes:
         - createTable:
@@ -56,7 +56,7 @@ databaseChangeLog:
 
   - changeSet:
       id: 2
-      author: JavidanHatamov
+      author: Nijat Nasirli
       changes:
         - addForeignKeyConstraint:
             baseTableName: item

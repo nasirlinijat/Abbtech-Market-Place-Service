@@ -2,7 +2,7 @@ databaseChangeLog:
   - logicalFilePath: 2026-04-25-create-brand.yaml
   - changeSet:
       id: 1
-      author: JavidanHatamov
+      author: Nijat Nasirli
       comment: Create category to keep brand information of e-market
       changes:
         - createTable:

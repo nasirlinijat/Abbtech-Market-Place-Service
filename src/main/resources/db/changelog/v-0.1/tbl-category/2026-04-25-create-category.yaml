@@ -2,7 +2,7 @@ databaseChangeLog:
   - logicalFilePath: 2026-04-25-create-category.yaml
   - changeSet:
       id: 1
-      author: JavidanHatamov
+      author: Nijat Nasirli
       comment: Create category table to keep categories of e-market
       changes:
         - createTable:

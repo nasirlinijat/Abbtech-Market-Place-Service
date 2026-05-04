@@ -24,6 +24,10 @@ public record RequestItemDto(
         String image,
 
         @Length(max = 250, message = "Description cannot exceed 250 characters")
-        String description
+        String description,
+
+        Long brandId,
+
+        Long categoryId
 ) {
 }

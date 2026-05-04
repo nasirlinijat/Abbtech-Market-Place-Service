@@ -1,0 +1,1180 @@
+2026-04-30 20:31:56 [main] INFO  : Starting MarketPlaceApplication using Java 25.0.2 with PID 2136 (C:\Users\nicat\Projects\abbtech-market-place-service\build\classes\java\main started by nicat in C:\Users\nicat\Projects\abbtech-market-place-service)
+2026-04-30 20:31:56 [main] DEBUG : Running with Spring Boot v4.0.3, Spring v7.0.5
+2026-04-30 20:31:56 [main] INFO  : No active profile set, falling back to 1 default profile: "default"
+2026-04-30 20:31:56 [main] DEBUG : Loading source class com.abbtech.MarketPlaceApplication
+2026-04-30 20:31:56 [main] DEBUG : Refreshing org.springframework.boot.web.server.servlet.context.AnnotationConfigServletWebServerApplicationContext@41200e0c
+2026-04-30 20:31:57 [background-preinit] INFO  : HV000001: Hibernate Validator 9.0.1.Final
+2026-04-30 20:31:58 [main] WARN  : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to process import candidates for configuration class [com.abbtech.MarketPlaceApplication]: Error processing condition on org.springframework.boot.liquibase.autoconfigure.LiquibaseAutoConfiguration
+2026-04-30 20:31:58 [main] DEBUG : 
+
+
+============================
+CONDITIONS EVALUATION REPORT
+============================
+
+
+Positive matches:
+-----------------
+
+   AopAutoConfiguration matched:
+      - @ConditionalOnBooleanProperty (spring.aop.auto=true) matched (OnPropertyCondition)
+
+   AopAutoConfiguration.AspectJAutoProxyingConfiguration matched:
+      - @ConditionalOnClass found required class 'org.aspectj.weaver.Advice' (OnClassCondition)
+
+   AopAutoConfiguration.AspectJAutoProxyingConfiguration.CglibAutoProxyConfiguration matched:
+      - @ConditionalOnBooleanProperty (spring.aop.proxy-target-class=true) matched (OnPropertyCondition)
+
+   DataJpaRepositoriesAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.data.jpa.repository.JpaRepository' (OnClassCondition)
+      - @ConditionalOnBooleanProperty (spring.data.jpa.repositories.enabled=true) matched (OnPropertyCondition)
+
+   DataSourceAutoConfiguration matched:
+      - @ConditionalOnClass found required classes 'javax.sql.DataSource', 'org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType' (OnClassCondition)
+
+   DataSourceAutoConfiguration.PooledDataSourceConfiguration matched:
+      - AnyNestedCondition 1 matched 1 did not; NestedCondition on DataSourceAutoConfiguration.PooledDataSourceCondition.PooledDataSourceAvailable PooledDataSource found supported DataSource; NestedCondition on DataSourceAutoConfiguration.PooledDataSourceCondition.ExplicitType @ConditionalOnProperty (spring.datasource.type) did not find property 'spring.datasource.type' (DataSourceAutoConfiguration.PooledDataSourceCondition)
+
+   DataSourceConfiguration.Hikari matched:
+      - @ConditionalOnClass found required class 'com.zaxxer.hikari.HikariDataSource' (OnClassCondition)
+      - @ConditionalOnProperty (spring.datasource.type=com.zaxxer.hikari.HikariDataSource) matched (OnPropertyCondition)
+
+   DataSourceInitializationAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.jdbc.datasource.init.DatabasePopulator' (OnClassCondition)
+      - SQL InitializationDatabase Initialization default value is EMBEDDED (OnSqlInitializationCondition)
+
+   DataSourceJmxConfiguration matched:
+      - @ConditionalOnBooleanProperty (spring.jmx.enabled=true) matched (OnPropertyCondition)
+
+   DataSourceJmxConfiguration.Hikari matched:
+      - @ConditionalOnClass found required class 'com.zaxxer.hikari.HikariDataSource' (OnClassCondition)
+
+   DataSourcePoolMetadataProvidersConfiguration.HikariPoolDataSourceMetadataProviderConfiguration matched:
+      - @ConditionalOnClass found required class 'com.zaxxer.hikari.HikariDataSource' (OnClassCondition)
+
+   DataWebAutoConfiguration matched:
+      - @ConditionalOnClass found required classes 'org.springframework.data.web.PageableHandlerMethodArgumentResolver', 'org.springframework.web.servlet.config.annotation.WebMvcConfigurer' (OnClassCondition)
+      - found 'session' scope (OnWebApplicationCondition)
+
+   DispatcherServletAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.web.servlet.DispatcherServlet' (OnClassCondition)
+      - found 'session' scope (OnWebApplicationCondition)
+
+   DispatcherServletAutoConfiguration.DispatcherServletConfiguration matched:
+      - @ConditionalOnClass found required class 'jakarta.servlet.ServletRegistration' (OnClassCondition)
+      - Default DispatcherServlet did not find dispatcher servlet beans (DispatcherServletAutoConfiguration.DefaultDispatcherServletCondition)
+
+   DispatcherServletAutoConfiguration.DispatcherServletRegistrationConfiguration matched:
+      - @ConditionalOnClass found required class 'jakarta.servlet.ServletRegistration' (OnClassCondition)
+      - DispatcherServlet Registration did not find servlet registration bean (DispatcherServletAutoConfiguration.DispatcherServletRegistrationCondition)
+
+   ErrorMvcAutoConfiguration matched:
+      - @ConditionalOnClass found required classes 'jakarta.servlet.Servlet', 'org.springframework.web.servlet.DispatcherServlet' (OnClassCondition)
+      - found 'session' scope (OnWebApplicationCondition)
+
+   ErrorMvcAutoConfiguration.WhitelabelErrorViewConfiguration matched:
+      - @ConditionalOnBooleanProperty (spring.web.error.whitelabel.enabled=true) matched (OnPropertyCondition)
+      - ErrorTemplate Missing did not find error template view (ErrorMvcAutoConfiguration.ErrorTemplateMissingCondition)
+
+   HibernateJpaAutoConfiguration matched:
+      - @ConditionalOnClass found required classes 'org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean', 'jakarta.persistence.EntityManager', 'org.hibernate.engine.spi.SessionImplementor' (OnClassCondition)
+
+   HttpMessageConvertersAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.http.converter.HttpMessageConverter' (OnClassCondition)
+      - NoneNestedConditions 0 matched 1 did not; NestedCondition on HttpMessageConvertersAutoConfiguration.NotReactiveWebApplicationCondition.ReactiveWebApplication did not find reactive web application classes (HttpMessageConvertersAutoConfiguration.NotReactiveWebApplicationCondition)
+
+   Jackson2HttpMessageConvertersConfiguration.MappingJackson2HttpMessageConverterConfiguration matched:
+      - @ConditionalOnClass found required class 'com.fasterxml.jackson.databind.ObjectMapper' (OnClassCondition)
+
+   JacksonAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'tools.jackson.databind.json.JsonMapper' (OnClassCondition)
+
+   JacksonAutoConfiguration.JsonProblemDetailsConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.http.ProblemDetail' (OnClassCondition)
+
+   JacksonHttpMessageConvertersConfiguration.JacksonJsonHttpMessageConverterConfiguration matched:
+      - @ConditionalOnClass found required class 'tools.jackson.databind.json.JsonMapper' (OnClassCondition)
+      - @ConditionalOnProperty (spring.http.converters.preferred-json-mapper=jackson) matched (OnPropertyCondition)
+
+   JdbcTemplateAutoConfiguration matched:
+      - @ConditionalOnClass found required classes 'javax.sql.DataSource', 'org.springframework.jdbc.core.JdbcTemplate' (OnClassCondition)
+
+   JmxAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.jmx.export.MBeanExporter' (OnClassCondition)
+      - @ConditionalOnBooleanProperty (spring.jmx.enabled=true) matched (OnPropertyCondition)
+
+   JtaAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'jakarta.transaction.Transaction' (OnClassCondition)
+      - @ConditionalOnBooleanProperty (spring.jta.enabled=true) matched (OnPropertyCondition)
+
+   LiquibaseAutoConfiguration matched:
+      - @ConditionalOnClass found required classes 'liquibase.integration.spring.SpringLiquibase', 'liquibase.change.DatabaseChange' (OnClassCondition)
+
+   SpringApplicationAdminJmxAutoConfiguration matched:
+      - @ConditionalOnBooleanProperty (spring.application.admin.enabled=true) matched (OnPropertyCondition)
+
+   TaskExecutionAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor' (OnClassCondition)
+
+   TaskSchedulingAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler' (OnClassCondition)
+
+   TransactionManagerCustomizationAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.transaction.PlatformTransactionManager' (OnClassCondition)
+
+   ValidationAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'jakarta.validation.executable.ExecutableValidator' (OnClassCondition)
+      - @ConditionalOnResource found location classpath:META-INF/services/jakarta.validation.spi.ValidationProvider (OnResourceCondition)
+
+   WebMvcAutoConfiguration matched:
+      - @ConditionalOnClass found required classes 'jakarta.servlet.Servlet', 'org.springframework.web.servlet.DispatcherServlet', 'org.springframework.web.servlet.config.annotation.WebMvcConfigurer' (OnClassCondition)
+      - found 'session' scope (OnWebApplicationCondition)
+
+   XADataSourceAutoConfiguration matched:
+      - @ConditionalOnClass found required classes 'javax.sql.DataSource', 'jakarta.transaction.TransactionManager', 'org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType' (OnClassCondition)
+
+
+Negative matches:
+-----------------
+
+   AopAutoConfiguration.AspectJAutoProxyingConfiguration.JdkDynamicAutoProxyConfiguration:
+      Did not match:
+         - @ConditionalOnBooleanProperty (spring.aop.proxy-target-class=false) did not find property 'spring.aop.proxy-target-class' (OnPropertyCondition)
+
+   AopAutoConfiguration.ClassProxyingConfiguration:
+      Did not match:
+         - @ConditionalOnMissingClass found unwanted class 'org.aspectj.weaver.Advice' (OnClassCondition)
+
+   DataRepositoryMetricsAutoConfiguration:
+      Did not match:
+         - @ConditionalOnBean did not find required type 'io.micrometer.core.instrument.MeterRegistry' (OnBeanCondition)
+
+   DataSourceAutoConfiguration.EmbeddedDatabaseConfiguration:
+      Did not match:
+         - EmbeddedDataSource found supported pooled data source (DataSourceAutoConfiguration.EmbeddedDatabaseCondition)
+
+   DataSourceCheckpointRestoreConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.crac.Resource' (OnClassCondition)
+
+   DataSourceConfiguration.Dbcp2:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.apache.commons.dbcp2.BasicDataSource' (OnClassCondition)
+
+   DataSourceConfiguration.Generic:
+      Did not match:
+         - @ConditionalOnProperty (spring.datasource.type) did not find property 'spring.datasource.type' (OnPropertyCondition)
+
+   DataSourceConfiguration.OracleUcp:
+      Did not match:
+         - @ConditionalOnClass did not find required classes 'oracle.ucp.jdbc.PoolDataSourceImpl', 'oracle.jdbc.OracleConnection' (OnClassCondition)
+
+   DataSourceConfiguration.Tomcat:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.apache.tomcat.jdbc.pool.DataSource' (OnClassCondition)
+
+   DataSourceHealthContributorAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.boot.health.autoconfigure.contributor.ConditionalOnEnabledHealthIndicator' (OnClassCondition)
+
+   DataSourceJmxConfiguration.TomcatDataSourceJmxConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.apache.tomcat.jdbc.pool.DataSourceProxy' (OnClassCondition)
+
+   DataSourcePoolMetadataProvidersConfiguration.CommonsDbcp2PoolDataSourceMetadataProviderConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.apache.commons.dbcp2.BasicDataSource' (OnClassCondition)
+
+   DataSourcePoolMetadataProvidersConfiguration.OracleUcpPoolDataSourceMetadataProviderConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required classes 'oracle.ucp.jdbc.PoolDataSource', 'oracle.jdbc.OracleConnection' (OnClassCondition)
+
+   DataSourcePoolMetadataProvidersConfiguration.TomcatDataSourcePoolMetadataProviderConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.apache.tomcat.jdbc.pool.DataSource' (OnClassCondition)
+
+   DataSourcePoolMetricsAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'io.micrometer.core.instrument.MeterRegistry' (OnClassCondition)
+
+   GsonHttpMessageConvertersConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'com.google.gson.Gson' (OnClassCondition)
+
+   HibernateMetricsAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'io.micrometer.core.instrument.MeterRegistry' (OnClassCondition)
+
+   Jackson2HttpMessageConvertersConfiguration.MappingJackson2XmlHttpMessageConverterConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'com.fasterxml.jackson.dataformat.xml.XmlMapper' (OnClassCondition)
+
+   JacksonAutoConfiguration.CborConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'tools.jackson.dataformat.cbor.CBORMapper' (OnClassCondition)
+
+   JacksonAutoConfiguration.XmlConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'tools.jackson.dataformat.xml.XmlMapper' (OnClassCondition)
+
+   JacksonHttpMessageConvertersConfiguration.JacksonXmlHttpMessageConverterConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'tools.jackson.dataformat.xml.XmlMapper' (OnClassCondition)
+
+   JndiDataSourceAutoConfiguration:
+      Did not match:
+         - @ConditionalOnProperty (spring.datasource.jndi-name) did not find property 'spring.datasource.jndi-name' (OnPropertyCondition)
+      Matched:
+         - @ConditionalOnClass found required classes 'javax.sql.DataSource', 'org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType' (OnClassCondition)
+
+   JndiJtaConfiguration:
+      Did not match:
+         - @ConditionalOnJndi JNDI environment is not available (OnJndiCondition)
+      Matched:
+         - @ConditionalOnClass found required class 'org.springframework.transaction.jta.JtaTransactionManager' (OnClassCondition)
+
+   JpaBaseConfiguration.JpaWebConfiguration:
+      Did not match:
+         - @ConditionalOnBooleanProperty (spring.jpa.open-in-view=true) found different value in property 'spring.jpa.open-in-view' (OnPropertyCondition)
+      Matched:
+         - @ConditionalOnClass found required class 'org.springframework.web.servlet.config.annotation.WebMvcConfigurer' (OnClassCondition)
+         - found 'session' scope (OnWebApplicationCondition)
+
+   JsonbHttpMessageConvertersConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'jakarta.json.bind.Jsonb' (OnClassCondition)
+
+   KotlinSerializationHttpMessageConvertersConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required classes 'kotlinx.serialization.Serializable', 'kotlinx.serialization.json.Json' (OnClassCondition)
+
+   LiquibaseEndpointAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.boot.actuate.autoconfigure.endpoint.condition.ConditionalOnAvailableEndpoint' (OnClassCondition)
+
+   ManagementWebSecurityAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.boot.actuate.autoconfigure.endpoint.web.WebEndpointAutoConfiguration' (OnClassCondition)
+
+   MessageSourceAutoConfiguration:
+      Did not match:
+         - ResourceBundle did not find bundle with basename messages (MessageSourceAutoConfiguration.ResourceBundleCondition)
+
+   RSocketSecurityAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.boot.rsocket.server.RSocketServerCustomizer' (OnClassCondition)
+
+   ReactiveManagementWebSecurityAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.boot.actuate.autoconfigure.endpoint.web.WebEndpointAutoConfiguration' (OnClassCondition)
+
+   ReactiveWebSecurityAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'reactor.core.publisher.Flux' (OnClassCondition)
+
+   ServletHttpExchangesAutoConfiguration:
+      Did not match:
+         - @ConditionalOnBean did not find required type 'org.springframework.boot.actuate.web.exchanges.HttpExchangeRepository' (OnBeanCondition)
+
+   ServletManagementContextAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.boot.actuate.autoconfigure.endpoint.web.WebEndpointProperties' (OnClassCondition)
+
+   ServletMappingsAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.boot.actuate.autoconfigure.endpoint.condition.ConditionalOnAvailableEndpoint' (OnClassCondition)
+
+   TomcatMetricsAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'io.micrometer.core.instrument.binder.tomcat.TomcatMetrics' (OnClassCondition)
+
+   TomcatReactiveManagementContextAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.boot.actuate.autoconfigure.web.server.ManagementContextFactory' (OnClassCondition)
+
+   TomcatReactiveWebServerAutoConfiguration:
+      Did not match:
+         - @ConditionalOnWebApplication did not find reactive web application classes (OnWebApplicationCondition)
+
+   TomcatServletManagementContextAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.boot.actuate.autoconfigure.web.server.ManagementContextFactory' (OnClassCondition)
+
+   WebMvcAutoConfiguration.ProblemDetailsErrorHandlingConfiguration:
+      Did not match:
+         - @ConditionalOnBooleanProperty (spring.mvc.problemdetails.enabled=true) did not find property 'spring.mvc.problemdetails.enabled' (OnPropertyCondition)
+
+   WebMvcAutoConfiguration.ResourceChainCustomizerConfiguration:
+      Did not match:
+         - @ConditionalOnEnabledResourceChain did not find class org.webjars.WebJarVersionLocator (OnEnabledResourceChainCondition)
+
+   WebMvcHealthEndpointExtensionAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.boot.health.actuate.endpoint.HealthEndpoint' (OnClassCondition)
+
+   WebMvcMappingsAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.boot.actuate.autoconfigure.endpoint.condition.ConditionalOnAvailableEndpoint' (OnClassCondition)
+
+   WebMvcObservationAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.boot.micrometer.observation.autoconfigure.ObservationProperties' (OnClassCondition)
+
+
+Exclusions:
+-----------
+
+    None
+
+
+Unconditional classes:
+----------------------
+
+    org.springframework.boot.security.autoconfigure.web.servlet.ServletWebSecurityAutoConfiguration
+
+    org.springframework.boot.autoconfigure.context.ConfigurationPropertiesAutoConfiguration
+
+    org.springframework.boot.autoconfigure.ssl.SslAutoConfiguration
+
+    org.springframework.boot.autoconfigure.context.LifecycleAutoConfiguration
+
+    org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoConfiguration
+
+    org.springframework.boot.security.autoconfigure.SecurityAutoConfiguration
+
+    org.springframework.boot.persistence.autoconfigure.PersistenceExceptionTranslationAutoConfiguration
+
+    org.springframework.boot.security.autoconfigure.web.servlet.SecurityFilterAutoConfiguration
+
+    org.springframework.boot.jdbc.autoconfigure.JdbcClientAutoConfiguration
+
+    org.springframework.boot.servlet.autoconfigure.MultipartAutoConfiguration
+
+    org.springframework.boot.security.autoconfigure.ReactiveUserDetailsServiceAutoConfiguration
+
+    org.springframework.boot.transaction.autoconfigure.TransactionAutoConfiguration
+
+    org.springframework.boot.jdbc.autoconfigure.DataSourceTransactionManagerAutoConfiguration
+
+    org.springframework.boot.tomcat.autoconfigure.servlet.TomcatServletWebServerAutoConfiguration
+
+    org.springframework.boot.autoconfigure.availability.ApplicationAvailabilityAutoConfiguration
+
+    org.springframework.boot.security.autoconfigure.UserDetailsServiceAutoConfiguration
+
+    org.springframework.boot.autoconfigure.info.ProjectInfoAutoConfiguration
+
+    org.springframework.boot.servlet.autoconfigure.HttpEncodingAutoConfiguration
+
+
+
+2026-04-30 20:31:58 [main] ERROR : Application run failed
+org.springframework.beans.factory.BeanDefinitionStoreException: Failed to process import candidates for configuration class [com.abbtech.MarketPlaceApplication]: Error processing condition on org.springframework.boot.liquibase.autoconfigure.LiquibaseAutoConfiguration
+	at org.springframework.context.annotation.ConfigurationClassParser.processImports(ConfigurationClassParser.java:644)
+	at org.springframework.context.annotation.ConfigurationClassParser$DeferredImportSelectorGroupingHandler.lambda$processGroupImports$0(ConfigurationClassParser.java:864)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.context.annotation.ConfigurationClassParser$DeferredImportSelectorGroupingHandler.processGroupImports(ConfigurationClassParser.java:860)
+	at org.springframework.context.annotation.ConfigurationClassParser$DeferredImportSelectorHandler.process(ConfigurationClassParser.java:831)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:200)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:446)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:310)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:349)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:118)
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:795)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:603)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at com.abbtech.MarketPlaceApplication.main(MarketPlaceApplication.java:13)
+Caused by: java.lang.IllegalStateException: Error processing condition on org.springframework.boot.liquibase.autoconfigure.LiquibaseAutoConfiguration
+	at org.springframework.boot.autoconfigure.condition.SpringBootCondition.matches(SpringBootCondition.java:60)
+	at org.springframework.context.annotation.ConditionEvaluator.shouldSkip(ConditionEvaluator.java:100)
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:249)
+	at org.springframework.context.annotation.ConfigurationClassParser.processImports(ConfigurationClassParser.java:634)
+	... 18 common frames omitted
+Caused by: org.springframework.util.PlaceholderResolutionException: Could not resolve placeholder 'LIQUIBASE_ENABLED' in value "${LIQUIBASE_ENABLED}"
+	at org.springframework.util.PlaceholderResolutionException.withValue(PlaceholderResolutionException.java:81)
+	at org.springframework.util.PlaceholderParser$ParsedValue.resolve(PlaceholderParser.java:296)
+	at org.springframework.util.PlaceholderParser.replacePlaceholders(PlaceholderParser.java:129)
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:96)
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:286)
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:257)
+	at org.springframework.core.env.AbstractPropertyResolver.resolveNestedPlaceholders(AbstractPropertyResolver.java:277)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertyResolver.getProperty(ConfigurationPropertySourcesPropertyResolver.java:83)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertyResolver.getProperty(ConfigurationPropertySourcesPropertyResolver.java:64)
+	at org.springframework.core.env.AbstractEnvironment.getProperty(AbstractEnvironment.java:552)
+	at org.springframework.boot.autoconfigure.condition.OnPropertyCondition$Spec.collectProperties(OnPropertyCondition.java:170)
+	at org.springframework.boot.autoconfigure.condition.OnPropertyCondition.determineOutcome(OnPropertyCondition.java:104)
+	at org.springframework.boot.autoconfigure.condition.OnPropertyCondition.getMatchOutcome(OnPropertyCondition.java:62)
+	at org.springframework.boot.autoconfigure.condition.SpringBootCondition.matches(SpringBootCondition.java:47)
+	... 21 common frames omitted
+2026-04-30 20:35:54 [main] INFO  : Starting MarketPlaceApplication using Java 25.0.2 with PID 16528 (C:\Users\nicat\Projects\abbtech-market-place-service\build\classes\java\main started by nicat in C:\Users\nicat\Projects\abbtech-market-place-service)
+2026-04-30 20:35:54 [main] DEBUG : Running with Spring Boot v4.0.3, Spring v7.0.5
+2026-04-30 20:35:54 [main] INFO  : No active profile set, falling back to 1 default profile: "default"
+2026-04-30 20:35:54 [background-preinit] INFO  : HV000001: Hibernate Validator 9.0.1.Final
+2026-04-30 20:35:55 [main] WARN  : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to process import candidates for configuration class [com.abbtech.MarketPlaceApplication]: Error processing condition on org.springframework.boot.liquibase.autoconfigure.LiquibaseAutoConfiguration
+2026-04-30 20:35:55 [main] INFO  : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-04-30 20:35:55 [main] ERROR : Application run failed
+org.springframework.beans.factory.BeanDefinitionStoreException: Failed to process import candidates for configuration class [com.abbtech.MarketPlaceApplication]: Error processing condition on org.springframework.boot.liquibase.autoconfigure.LiquibaseAutoConfiguration
+	at org.springframework.context.annotation.ConfigurationClassParser.processImports(ConfigurationClassParser.java:644)
+	at org.springframework.context.annotation.ConfigurationClassParser$DeferredImportSelectorGroupingHandler.lambda$processGroupImports$0(ConfigurationClassParser.java:864)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.context.annotation.ConfigurationClassParser$DeferredImportSelectorGroupingHandler.processGroupImports(ConfigurationClassParser.java:860)
+	at org.springframework.context.annotation.ConfigurationClassParser$DeferredImportSelectorHandler.process(ConfigurationClassParser.java:831)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:200)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:446)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:310)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:349)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:118)
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:795)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:603)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at com.abbtech.MarketPlaceApplication.main(MarketPlaceApplication.java:13)
+Caused by: java.lang.IllegalStateException: Error processing condition on org.springframework.boot.liquibase.autoconfigure.LiquibaseAutoConfiguration
+	at org.springframework.boot.autoconfigure.condition.SpringBootCondition.matches(SpringBootCondition.java:60)
+	at org.springframework.context.annotation.ConditionEvaluator.shouldSkip(ConditionEvaluator.java:100)
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:249)
+	at org.springframework.context.annotation.ConfigurationClassParser.processImports(ConfigurationClassParser.java:634)
+	... 18 common frames omitted
+Caused by: org.springframework.util.PlaceholderResolutionException: Could not resolve placeholder 'LIQUIBASE_ENABLED' in value "${LIQUIBASE_ENABLED}"
+	at org.springframework.util.PlaceholderResolutionException.withValue(PlaceholderResolutionException.java:81)
+	at org.springframework.util.PlaceholderParser$ParsedValue.resolve(PlaceholderParser.java:296)
+	at org.springframework.util.PlaceholderParser.replacePlaceholders(PlaceholderParser.java:129)
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:96)
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:286)
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:257)
+	at org.springframework.core.env.AbstractPropertyResolver.resolveNestedPlaceholders(AbstractPropertyResolver.java:277)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertyResolver.getProperty(ConfigurationPropertySourcesPropertyResolver.java:83)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertyResolver.getProperty(ConfigurationPropertySourcesPropertyResolver.java:64)
+	at org.springframework.core.env.AbstractEnvironment.getProperty(AbstractEnvironment.java:552)
+	at org.springframework.boot.autoconfigure.condition.OnPropertyCondition$Spec.collectProperties(OnPropertyCondition.java:170)
+	at org.springframework.boot.autoconfigure.condition.OnPropertyCondition.determineOutcome(OnPropertyCondition.java:104)
+	at org.springframework.boot.autoconfigure.condition.OnPropertyCondition.getMatchOutcome(OnPropertyCondition.java:62)
+	at org.springframework.boot.autoconfigure.condition.SpringBootCondition.matches(SpringBootCondition.java:47)
+	... 21 common frames omitted
+2026-04-30 20:38:34 [main] INFO  : Starting MarketPlaceApplication using Java 25.0.2 with PID 2204 (C:\Users\nicat\Projects\abbtech-market-place-service\build\classes\java\main started by nicat in C:\Users\nicat\Projects\abbtech-market-place-service)
+2026-04-30 20:38:34 [main] DEBUG : Running with Spring Boot v4.0.3, Spring v7.0.5
+2026-04-30 20:38:34 [main] INFO  : The following 1 profile is active: "local"
+2026-04-30 20:38:34 [background-preinit] INFO  : HV000001: Hibernate Validator 9.0.1.Final
+2026-04-30 20:38:37 [main] INFO  : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-30 20:38:38 [main] INFO  : Finished Spring Data repository scanning in 277 ms. Found 5 JPA repository interfaces.
+2026-04-30 20:38:39 [main] INFO  : Tomcat initialized with port 8080 (http)
+2026-04-30 20:38:39 [main] INFO  : Initializing ProtocolHandler ["http-nio-8080"]
+2026-04-30 20:38:39 [main] INFO  : Starting service [Tomcat]
+2026-04-30 20:38:39 [main] INFO  : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-30 20:38:40 [main] INFO  : Root WebApplicationContext: initialization completed in 5743 ms
+2026-04-30 20:38:40 [main] DEBUG : Filter 'jwtFilter' configured for use
+2026-04-30 20:38:40 [main] INFO  : MarketPlacePool - Starting...
+2026-04-30 20:38:40 [main] INFO  : MarketPlacePool - Added connection org.postgresql.jdbc.PgConnection@55061418
+2026-04-30 20:38:40 [main] INFO  : MarketPlacePool - Start completed.
+2026-04-30 20:38:41 [main] INFO  : Reading resource: db/changelog/v-0.1/2026-04-24-create-brand.yaml
+2026-04-30 20:38:41 [main] INFO  : Creating database changelog table with name: online_shop.databasechangelog
+2026-04-30 20:38:42 [main] INFO  : Reading from online_shop.databasechangelog
+2026-04-30 20:38:42 [main] INFO  : Reading resource: db/changelog/v-0.1/2026-04-24-create-category.yaml
+2026-04-30 20:38:42 [main] INFO  : Reading resource: db/changelog/v-0.1/2026-04-24-create-item.yaml
+2026-04-30 20:38:42 [main] INFO  : Reading resource: db/changelog/v-0.1/tbl-brand/2026-04-25-create-brand.yaml
+2026-04-30 20:38:42 [main] INFO  : Reading resource: db/changelog/v-0.1/tbl-category/2026-04-25-create-category.yaml
+2026-04-30 20:38:42 [main] INFO  : Reading resource: db/changelog/v-0.1/tbl-item/2026-04-25-create-item.yaml
+2026-04-30 20:38:42 [main] INFO  : Reading resource: db/changelog/v-0.1/tbl-security/20260123-1-tbl-security.yaml
+2026-04-30 20:38:42 [main] INFO  : Creating snapshot
+2026-04-30 20:38:42 [main] INFO  : Successfully acquired change log lock
+2026-04-30 20:38:42 [main] INFO  : Using deploymentId: 7567120542
+2026-04-30 20:38:42 [main] INFO  : Reading from online_shop.databasechangelog
+2026-04-30 20:38:42 [main] INFO  : Running Changeset: 2026-04-25-create-brand.yaml::1::Nijat Nasirli
+2026-04-30 20:38:42 [main] ERROR : ChangeSet 2026-04-25-create-brand.yaml::1::Nijat Nasirli encountered an exception.
+liquibase.exception.DatabaseException: ERROR: relation "brand" already exists [Failed SQL: (0) CREATE TABLE online_shop.brand (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(100) NOT NULL, description VARCHAR(250), image VARCHAR(250), is_active BOOLEAN DEFAULT TRUE NOT NULL, is_deleted BOOLEAN DEFAULT FALSE NOT NULL, created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), updated_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), CONSTRAINT brand_pkey PRIMARY KEY (id), UNIQUE (name))]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:520)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:85)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:188)
+	at liquibase.executor.AbstractExecutor.execute(AbstractExecutor.java:148)
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1198)
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:860)
+	at liquibase.changelog.visitor.UpdateVisitor.executeAcceptedChange(UpdateVisitor.java:127)
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:71)
+	at liquibase.changelog.ChangeLogIterator.lambda$run$0(ChangeLogIterator.java:133)
+	at liquibase.Scope.lambda$child$0(Scope.java:214)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:213)
+	at liquibase.Scope.child(Scope.java:192)
+	at liquibase.changelog.ChangeLogIterator.lambda$run$1(ChangeLogIterator.java:122)
+	at liquibase.Scope.lambda$child$0(Scope.java:214)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:213)
+	at liquibase.Scope.child(Scope.java:192)
+	at liquibase.Scope.child(Scope.java:280)
+	at liquibase.Scope.child(Scope.java:284)
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:91)
+	at liquibase.command.core.AbstractUpdateCommandStep.lambda$run$1(AbstractUpdateCommandStep.java:117)
+	at liquibase.Scope.lambda$child$0(Scope.java:214)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:213)
+	at liquibase.Scope.child(Scope.java:192)
+	at liquibase.command.core.AbstractUpdateCommandStep.run(AbstractUpdateCommandStep.java:115)
+	at liquibase.command.core.UpdateCommandStep.run(UpdateCommandStep.java:100)
+	at liquibase.command.CommandScope.lambda$execute$6(CommandScope.java:263)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:199)
+	at liquibase.command.CommandScope.execute(CommandScope.java:251)
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:216)
+	at liquibase.Scope.lambda$child$0(Scope.java:214)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:213)
+	at liquibase.Scope.child(Scope.java:192)
+	at liquibase.Liquibase.runInScope(Liquibase.java:1366)
+	at liquibase.Liquibase.update(Liquibase.java:205)
+	at liquibase.Liquibase.update(Liquibase.java:188)
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:327)
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:279)
+	at liquibase.Scope.lambda$child$0(Scope.java:214)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:213)
+	at liquibase.Scope.child(Scope.java:192)
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:272)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1864)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1813)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:309)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:977)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at com.abbtech.MarketPlaceApplication.main(MarketPlaceApplication.java:13)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "brand" already exists
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2875)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2560)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:429)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:526)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:436)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:358)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:343)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:319)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:314)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:512)
+	... 65 common frames omitted
+2026-04-30 20:38:43 [main] INFO  : UPDATE SUMMARY
+2026-04-30 20:38:43 [main] INFO  : Run:                          0
+2026-04-30 20:38:43 [main] INFO  : Previously run:               0
+2026-04-30 20:38:43 [main] INFO  : Filtered out:                 0
+2026-04-30 20:38:43 [main] INFO  : -------------------------------
+2026-04-30 20:38:43 [main] INFO  : Total change sets:           12
+2026-04-30 20:38:43 [main] INFO  : Update summary generated
+2026-04-30 20:38:43 [main] INFO  : Update command encountered an exception.
+2026-04-30 20:38:43 [main] INFO  : Successfully released change log lock
+2026-04-30 20:38:43 [main] INFO  : Logging exception.
+2026-04-30 20:38:43 [main] INFO  : ERROR: Exception Details
+2026-04-30 20:38:43 [main] INFO  : ERROR: Exception Primary Class:  PSQLException
+2026-04-30 20:38:43 [main] INFO  : ERROR: Exception Primary Reason:  ERROR: relation "brand" already exists
+2026-04-30 20:38:43 [main] INFO  : ERROR: Exception Primary Source:  PostgreSQL 18.3 (Debian 18.3-1.pgdg13+1)
+2026-04-30 20:38:43 [main] INFO  : Command execution complete
+2026-04-30 20:38:45 [main] WARN  : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/hibernate/autoconfigure/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/liquibase/autoconfigure/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset 2026-04-25-create-brand.yaml::1::Nijat Nasirli:
+     Reason: liquibase.exception.DatabaseException: ERROR: relation "brand" already exists [Failed SQL: (0) CREATE TABLE online_shop.brand (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(100) NOT NULL, description VARCHAR(250), image VARCHAR(250), is_active BOOLEAN DEFAULT TRUE NOT NULL, is_deleted BOOLEAN DEFAULT FALSE NOT NULL, created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), updated_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), CONSTRAINT brand_pkey PRIMARY KEY (id), UNIQUE (name))]
+2026-04-30 20:38:45 [main] INFO  : MarketPlacePool - Shutdown initiated...
+2026-04-30 20:38:45 [main] INFO  : MarketPlacePool - Shutdown completed.
+2026-04-30 20:38:45 [main] INFO  : Stopping service [Tomcat]
+2026-04-30 20:38:45 [main] INFO  : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-04-30 20:38:45 [main] ERROR : Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/hibernate/autoconfigure/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/liquibase/autoconfigure/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset 2026-04-25-create-brand.yaml::1::Nijat Nasirli:
+     Reason: liquibase.exception.DatabaseException: ERROR: relation "brand" already exists [Failed SQL: (0) CREATE TABLE online_shop.brand (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(100) NOT NULL, description VARCHAR(250), image VARCHAR(250), is_active BOOLEAN DEFAULT TRUE NOT NULL, is_deleted BOOLEAN DEFAULT FALSE NOT NULL, created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), updated_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), CONSTRAINT brand_pkey PRIMARY KEY (id), UNIQUE (name))]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:977)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at com.abbtech.MarketPlaceApplication.main(MarketPlaceApplication.java:13)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/liquibase/autoconfigure/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset 2026-04-25-create-brand.yaml::1::Nijat Nasirli:
+     Reason: liquibase.exception.DatabaseException: ERROR: relation "brand" already exists [Failed SQL: (0) CREATE TABLE online_shop.brand (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(100) NOT NULL, description VARCHAR(250), image VARCHAR(250), is_active BOOLEAN DEFAULT TRUE NOT NULL, is_deleted BOOLEAN DEFAULT FALSE NOT NULL, created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), updated_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), CONSTRAINT brand_pkey PRIMARY KEY (id), UNIQUE (name))]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1817)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:309)
+	... 10 common frames omitted
+Caused by: liquibase.exception.LiquibaseException: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset 2026-04-25-create-brand.yaml::1::Nijat Nasirli:
+     Reason: liquibase.exception.DatabaseException: ERROR: relation "brand" already exists [Failed SQL: (0) CREATE TABLE online_shop.brand (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(100) NOT NULL, description VARCHAR(250), image VARCHAR(250), is_active BOOLEAN DEFAULT TRUE NOT NULL, is_deleted BOOLEAN DEFAULT FALSE NOT NULL, created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), updated_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), CONSTRAINT brand_pkey PRIMARY KEY (id), UNIQUE (name))]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:289)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1864)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1813)
+	... 17 common frames omitted
+Caused by: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset 2026-04-25-create-brand.yaml::1::Nijat Nasirli:
+     Reason: liquibase.exception.DatabaseException: ERROR: relation "brand" already exists [Failed SQL: (0) CREATE TABLE online_shop.brand (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(100) NOT NULL, description VARCHAR(250), image VARCHAR(250), is_active BOOLEAN DEFAULT TRUE NOT NULL, is_deleted BOOLEAN DEFAULT FALSE NOT NULL, created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), updated_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), CONSTRAINT brand_pkey PRIMARY KEY (id), UNIQUE (name))]
+	at liquibase.command.CommandScope.lambda$execute$6(CommandScope.java:310)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:199)
+	at liquibase.command.CommandScope.execute(CommandScope.java:251)
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:216)
+	at liquibase.Scope.lambda$child$0(Scope.java:214)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:213)
+	at liquibase.Scope.child(Scope.java:192)
+	at liquibase.Liquibase.runInScope(Liquibase.java:1366)
+	at liquibase.Liquibase.update(Liquibase.java:205)
+	at liquibase.Liquibase.update(Liquibase.java:188)
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:327)
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:279)
+	at liquibase.Scope.lambda$child$0(Scope.java:214)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:213)
+	at liquibase.Scope.child(Scope.java:192)
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:272)
+	... 19 common frames omitted
+Caused by: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset 2026-04-25-create-brand.yaml::1::Nijat Nasirli:
+     Reason: liquibase.exception.DatabaseException: ERROR: relation "brand" already exists [Failed SQL: (0) CREATE TABLE online_shop.brand (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(100) NOT NULL, description VARCHAR(250), image VARCHAR(250), is_active BOOLEAN DEFAULT TRUE NOT NULL, is_deleted BOOLEAN DEFAULT FALSE NOT NULL, created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), updated_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), CONSTRAINT brand_pkey PRIMARY KEY (id), UNIQUE (name))]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:155)
+	at liquibase.command.core.AbstractUpdateCommandStep.lambda$run$1(AbstractUpdateCommandStep.java:117)
+	at liquibase.Scope.lambda$child$0(Scope.java:214)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:213)
+	at liquibase.Scope.child(Scope.java:192)
+	at liquibase.command.core.AbstractUpdateCommandStep.run(AbstractUpdateCommandStep.java:115)
+	at liquibase.command.core.UpdateCommandStep.run(UpdateCommandStep.java:100)
+	at liquibase.command.CommandScope.lambda$execute$6(CommandScope.java:263)
+	... 37 common frames omitted
+Caused by: liquibase.exception.MigrationFailedException: Migration failed for changeset 2026-04-25-create-brand.yaml::1::Nijat Nasirli:
+     Reason: liquibase.exception.DatabaseException: ERROR: relation "brand" already exists [Failed SQL: (0) CREATE TABLE online_shop.brand (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(100) NOT NULL, description VARCHAR(250), image VARCHAR(250), is_active BOOLEAN DEFAULT TRUE NOT NULL, is_deleted BOOLEAN DEFAULT FALSE NOT NULL, created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), updated_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), CONSTRAINT brand_pkey PRIMARY KEY (id), UNIQUE (name))]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:918)
+	at liquibase.changelog.visitor.UpdateVisitor.executeAcceptedChange(UpdateVisitor.java:127)
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:71)
+	at liquibase.changelog.ChangeLogIterator.lambda$run$0(ChangeLogIterator.java:133)
+	at liquibase.Scope.lambda$child$0(Scope.java:214)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:213)
+	at liquibase.Scope.child(Scope.java:192)
+	at liquibase.changelog.ChangeLogIterator.lambda$run$1(ChangeLogIterator.java:122)
+	at liquibase.Scope.lambda$child$0(Scope.java:214)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:213)
+	at liquibase.Scope.child(Scope.java:192)
+	at liquibase.Scope.child(Scope.java:280)
+	at liquibase.Scope.child(Scope.java:284)
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:91)
+	... 45 common frames omitted
+Caused by: liquibase.exception.DatabaseException: ERROR: relation "brand" already exists [Failed SQL: (0) CREATE TABLE online_shop.brand (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(100) NOT NULL, description VARCHAR(250), image VARCHAR(250), is_active BOOLEAN DEFAULT TRUE NOT NULL, is_deleted BOOLEAN DEFAULT FALSE NOT NULL, created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), updated_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), CONSTRAINT brand_pkey PRIMARY KEY (id), UNIQUE (name))]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:520)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:85)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:188)
+	at liquibase.executor.AbstractExecutor.execute(AbstractExecutor.java:148)
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1198)
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:860)
+	... 60 common frames omitted
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "brand" already exists
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2875)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2560)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:429)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:526)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:436)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:358)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:343)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:319)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:314)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:512)
+	... 65 common frames omitted
+2026-04-30 20:39:15 [main] INFO  : Starting MarketPlaceApplication using Java 25.0.2 with PID 16616 (C:\Users\nicat\Projects\abbtech-market-place-service\build\classes\java\main started by nicat in C:\Users\nicat\Projects\abbtech-market-place-service)
+2026-04-30 20:39:15 [main] DEBUG : Running with Spring Boot v4.0.3, Spring v7.0.5
+2026-04-30 20:39:15 [main] INFO  : The following 1 profile is active: "local"
+2026-04-30 20:39:16 [background-preinit] INFO  : HV000001: Hibernate Validator 9.0.1.Final
+2026-04-30 20:39:17 [main] INFO  : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-30 20:39:17 [main] INFO  : Finished Spring Data repository scanning in 131 ms. Found 5 JPA repository interfaces.
+2026-04-30 20:39:18 [main] INFO  : Tomcat initialized with port 8080 (http)
+2026-04-30 20:39:18 [main] INFO  : Initializing ProtocolHandler ["http-nio-8080"]
+2026-04-30 20:39:19 [main] INFO  : Starting service [Tomcat]
+2026-04-30 20:39:19 [main] INFO  : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-30 20:39:19 [main] INFO  : Root WebApplicationContext: initialization completed in 3059 ms
+2026-04-30 20:39:19 [main] DEBUG : Filter 'jwtFilter' configured for use
+2026-04-30 20:39:19 [main] INFO  : MarketPlacePool - Starting...
+2026-04-30 20:39:19 [main] INFO  : MarketPlacePool - Added connection org.postgresql.jdbc.PgConnection@a4df251
+2026-04-30 20:39:19 [main] INFO  : MarketPlacePool - Start completed.
+2026-04-30 20:39:20 [main] INFO  : Reading resource: db/changelog/v-0.1/2026-04-24-create-brand.yaml
+2026-04-30 20:39:20 [main] INFO  : Reading from online_shop.databasechangelog
+2026-04-30 20:39:21 [main] INFO  : Reading resource: db/changelog/v-0.1/2026-04-24-create-category.yaml
+2026-04-30 20:39:21 [main] INFO  : Reading resource: db/changelog/v-0.1/2026-04-24-create-item.yaml
+2026-04-30 20:39:21 [main] INFO  : Reading resource: db/changelog/v-0.1/tbl-brand/2026-04-25-create-brand.yaml
+2026-04-30 20:39:21 [main] INFO  : Reading resource: db/changelog/v-0.1/tbl-category/2026-04-25-create-category.yaml
+2026-04-30 20:39:21 [main] INFO  : Reading resource: db/changelog/v-0.1/tbl-item/2026-04-25-create-item.yaml
+2026-04-30 20:39:21 [main] INFO  : Reading resource: db/changelog/v-0.1/tbl-security/20260123-1-tbl-security.yaml
+2026-04-30 20:39:21 [main] INFO  : Successfully acquired change log lock
+2026-04-30 20:39:21 [main] INFO  : Using deploymentId: 7567159472
+2026-04-30 20:39:21 [main] INFO  : Reading from online_shop.databasechangelog
+2026-04-30 20:39:21 [main] INFO  : Running Changeset: 2026-04-25-create-brand.yaml::1::Nijat Nasirli
+2026-04-30 20:39:21 [main] ERROR : ChangeSet 2026-04-25-create-brand.yaml::1::Nijat Nasirli encountered an exception.
+liquibase.exception.DatabaseException: ERROR: relation "brand" already exists [Failed SQL: (0) CREATE TABLE online_shop.brand (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(100) NOT NULL, description VARCHAR(250), image VARCHAR(250), is_active BOOLEAN DEFAULT TRUE NOT NULL, is_deleted BOOLEAN DEFAULT FALSE NOT NULL, created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), updated_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), CONSTRAINT brand_pkey PRIMARY KEY (id), UNIQUE (name))]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:520)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:85)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:188)
+	at liquibase.executor.AbstractExecutor.execute(AbstractExecutor.java:148)
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1198)
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:860)
+	at liquibase.changelog.visitor.UpdateVisitor.executeAcceptedChange(UpdateVisitor.java:127)
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:71)
+	at liquibase.changelog.ChangeLogIterator.lambda$run$0(ChangeLogIterator.java:133)
+	at liquibase.Scope.lambda$child$0(Scope.java:214)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:213)
+	at liquibase.Scope.child(Scope.java:192)
+	at liquibase.changelog.ChangeLogIterator.lambda$run$1(ChangeLogIterator.java:122)
+	at liquibase.Scope.lambda$child$0(Scope.java:214)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:213)
+	at liquibase.Scope.child(Scope.java:192)
+	at liquibase.Scope.child(Scope.java:280)
+	at liquibase.Scope.child(Scope.java:284)
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:91)
+	at liquibase.command.core.AbstractUpdateCommandStep.lambda$run$1(AbstractUpdateCommandStep.java:117)
+	at liquibase.Scope.lambda$child$0(Scope.java:214)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:213)
+	at liquibase.Scope.child(Scope.java:192)
+	at liquibase.command.core.AbstractUpdateCommandStep.run(AbstractUpdateCommandStep.java:115)
+	at liquibase.command.core.UpdateCommandStep.run(UpdateCommandStep.java:100)
+	at liquibase.command.CommandScope.lambda$execute$6(CommandScope.java:263)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:199)
+	at liquibase.command.CommandScope.execute(CommandScope.java:251)
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:216)
+	at liquibase.Scope.lambda$child$0(Scope.java:214)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:213)
+	at liquibase.Scope.child(Scope.java:192)
+	at liquibase.Liquibase.runInScope(Liquibase.java:1366)
+	at liquibase.Liquibase.update(Liquibase.java:205)
+	at liquibase.Liquibase.update(Liquibase.java:188)
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:327)
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:279)
+	at liquibase.Scope.lambda$child$0(Scope.java:214)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:213)
+	at liquibase.Scope.child(Scope.java:192)
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:272)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1864)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1813)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:309)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:977)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at com.abbtech.MarketPlaceApplication.main(MarketPlaceApplication.java:13)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "brand" already exists
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2875)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2560)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:429)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:526)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:436)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:358)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:343)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:319)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:314)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:512)
+	... 65 common frames omitted
+2026-04-30 20:39:21 [main] INFO  : UPDATE SUMMARY
+2026-04-30 20:39:21 [main] INFO  : Run:                          0
+2026-04-30 20:39:21 [main] INFO  : Previously run:               0
+2026-04-30 20:39:21 [main] INFO  : Filtered out:                 0
+2026-04-30 20:39:21 [main] INFO  : -------------------------------
+2026-04-30 20:39:21 [main] INFO  : Total change sets:           12
+2026-04-30 20:39:21 [main] INFO  : Update summary generated
+2026-04-30 20:39:21 [main] INFO  : Update command encountered an exception.
+2026-04-30 20:39:21 [main] INFO  : Successfully released change log lock
+2026-04-30 20:39:21 [main] INFO  : Logging exception.
+2026-04-30 20:39:21 [main] INFO  : ERROR: Exception Details
+2026-04-30 20:39:21 [main] INFO  : ERROR: Exception Primary Class:  PSQLException
+2026-04-30 20:39:21 [main] INFO  : ERROR: Exception Primary Reason:  ERROR: relation "brand" already exists
+2026-04-30 20:39:21 [main] INFO  : ERROR: Exception Primary Source:  PostgreSQL 18.3 (Debian 18.3-1.pgdg13+1)
+2026-04-30 20:39:21 [main] INFO  : Command execution complete
+2026-04-30 20:39:23 [main] WARN  : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/hibernate/autoconfigure/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/liquibase/autoconfigure/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset 2026-04-25-create-brand.yaml::1::Nijat Nasirli:
+     Reason: liquibase.exception.DatabaseException: ERROR: relation "brand" already exists [Failed SQL: (0) CREATE TABLE online_shop.brand (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(100) NOT NULL, description VARCHAR(250), image VARCHAR(250), is_active BOOLEAN DEFAULT TRUE NOT NULL, is_deleted BOOLEAN DEFAULT FALSE NOT NULL, created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), updated_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), CONSTRAINT brand_pkey PRIMARY KEY (id), UNIQUE (name))]
+2026-04-30 20:39:23 [main] INFO  : MarketPlacePool - Shutdown initiated...
+2026-04-30 20:39:23 [main] INFO  : MarketPlacePool - Shutdown completed.
+2026-04-30 20:39:23 [main] INFO  : Stopping service [Tomcat]
+2026-04-30 20:39:23 [main] INFO  : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-04-30 20:39:23 [main] ERROR : Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/hibernate/autoconfigure/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/liquibase/autoconfigure/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset 2026-04-25-create-brand.yaml::1::Nijat Nasirli:
+     Reason: liquibase.exception.DatabaseException: ERROR: relation "brand" already exists [Failed SQL: (0) CREATE TABLE online_shop.brand (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(100) NOT NULL, description VARCHAR(250), image VARCHAR(250), is_active BOOLEAN DEFAULT TRUE NOT NULL, is_deleted BOOLEAN DEFAULT FALSE NOT NULL, created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), updated_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), CONSTRAINT brand_pkey PRIMARY KEY (id), UNIQUE (name))]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:977)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at com.abbtech.MarketPlaceApplication.main(MarketPlaceApplication.java:13)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/liquibase/autoconfigure/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset 2026-04-25-create-brand.yaml::1::Nijat Nasirli:
+     Reason: liquibase.exception.DatabaseException: ERROR: relation "brand" already exists [Failed SQL: (0) CREATE TABLE online_shop.brand (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(100) NOT NULL, description VARCHAR(250), image VARCHAR(250), is_active BOOLEAN DEFAULT TRUE NOT NULL, is_deleted BOOLEAN DEFAULT FALSE NOT NULL, created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), updated_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), CONSTRAINT brand_pkey PRIMARY KEY (id), UNIQUE (name))]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1817)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:309)
+	... 10 common frames omitted
+Caused by: liquibase.exception.LiquibaseException: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset 2026-04-25-create-brand.yaml::1::Nijat Nasirli:
+     Reason: liquibase.exception.DatabaseException: ERROR: relation "brand" already exists [Failed SQL: (0) CREATE TABLE online_shop.brand (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(100) NOT NULL, description VARCHAR(250), image VARCHAR(250), is_active BOOLEAN DEFAULT TRUE NOT NULL, is_deleted BOOLEAN DEFAULT FALSE NOT NULL, created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), updated_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), CONSTRAINT brand_pkey PRIMARY KEY (id), UNIQUE (name))]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:289)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1864)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1813)
+	... 17 common frames omitted
+Caused by: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset 2026-04-25-create-brand.yaml::1::Nijat Nasirli:
+     Reason: liquibase.exception.DatabaseException: ERROR: relation "brand" already exists [Failed SQL: (0) CREATE TABLE online_shop.brand (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(100) NOT NULL, description VARCHAR(250), image VARCHAR(250), is_active BOOLEAN DEFAULT TRUE NOT NULL, is_deleted BOOLEAN DEFAULT FALSE NOT NULL, created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), updated_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), CONSTRAINT brand_pkey PRIMARY KEY (id), UNIQUE (name))]
+	at liquibase.command.CommandScope.lambda$execute$6(CommandScope.java:310)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:199)
+	at liquibase.command.CommandScope.execute(CommandScope.java:251)
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:216)
+	at liquibase.Scope.lambda$child$0(Scope.java:214)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:213)
+	at liquibase.Scope.child(Scope.java:192)
+	at liquibase.Liquibase.runInScope(Liquibase.java:1366)
+	at liquibase.Liquibase.update(Liquibase.java:205)
+	at liquibase.Liquibase.update(Liquibase.java:188)
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:327)
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:279)
+	at liquibase.Scope.lambda$child$0(Scope.java:214)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:213)
+	at liquibase.Scope.child(Scope.java:192)
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:272)
+	... 19 common frames omitted
+Caused by: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset 2026-04-25-create-brand.yaml::1::Nijat Nasirli:
+     Reason: liquibase.exception.DatabaseException: ERROR: relation "brand" already exists [Failed SQL: (0) CREATE TABLE online_shop.brand (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(100) NOT NULL, description VARCHAR(250), image VARCHAR(250), is_active BOOLEAN DEFAULT TRUE NOT NULL, is_deleted BOOLEAN DEFAULT FALSE NOT NULL, created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), updated_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), CONSTRAINT brand_pkey PRIMARY KEY (id), UNIQUE (name))]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:155)
+	at liquibase.command.core.AbstractUpdateCommandStep.lambda$run$1(AbstractUpdateCommandStep.java:117)
+	at liquibase.Scope.lambda$child$0(Scope.java:214)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:213)
+	at liquibase.Scope.child(Scope.java:192)
+	at liquibase.command.core.AbstractUpdateCommandStep.run(AbstractUpdateCommandStep.java:115)
+	at liquibase.command.core.UpdateCommandStep.run(UpdateCommandStep.java:100)
+	at liquibase.command.CommandScope.lambda$execute$6(CommandScope.java:263)
+	... 37 common frames omitted
+Caused by: liquibase.exception.MigrationFailedException: Migration failed for changeset 2026-04-25-create-brand.yaml::1::Nijat Nasirli:
+     Reason: liquibase.exception.DatabaseException: ERROR: relation "brand" already exists [Failed SQL: (0) CREATE TABLE online_shop.brand (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(100) NOT NULL, description VARCHAR(250), image VARCHAR(250), is_active BOOLEAN DEFAULT TRUE NOT NULL, is_deleted BOOLEAN DEFAULT FALSE NOT NULL, created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), updated_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), CONSTRAINT brand_pkey PRIMARY KEY (id), UNIQUE (name))]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:918)
+	at liquibase.changelog.visitor.UpdateVisitor.executeAcceptedChange(UpdateVisitor.java:127)
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:71)
+	at liquibase.changelog.ChangeLogIterator.lambda$run$0(ChangeLogIterator.java:133)
+	at liquibase.Scope.lambda$child$0(Scope.java:214)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:213)
+	at liquibase.Scope.child(Scope.java:192)
+	at liquibase.changelog.ChangeLogIterator.lambda$run$1(ChangeLogIterator.java:122)
+	at liquibase.Scope.lambda$child$0(Scope.java:214)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:213)
+	at liquibase.Scope.child(Scope.java:192)
+	at liquibase.Scope.child(Scope.java:280)
+	at liquibase.Scope.child(Scope.java:284)
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:91)
+	... 45 common frames omitted
+Caused by: liquibase.exception.DatabaseException: ERROR: relation "brand" already exists [Failed SQL: (0) CREATE TABLE online_shop.brand (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(100) NOT NULL, description VARCHAR(250), image VARCHAR(250), is_active BOOLEAN DEFAULT TRUE NOT NULL, is_deleted BOOLEAN DEFAULT FALSE NOT NULL, created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), updated_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), CONSTRAINT brand_pkey PRIMARY KEY (id), UNIQUE (name))]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:520)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:85)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:188)
+	at liquibase.executor.AbstractExecutor.execute(AbstractExecutor.java:148)
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1198)
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:860)
+	... 60 common frames omitted
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "brand" already exists
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2875)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2560)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:429)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:526)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:436)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:358)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:343)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:319)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:314)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:512)
+	... 65 common frames omitted
+2026-04-30 20:40:31 [main] INFO  : Starting MarketPlaceApplication using Java 25.0.2 with PID 9488 (C:\Users\nicat\Projects\abbtech-market-place-service\build\classes\java\main started by nicat in C:\Users\nicat\Projects\abbtech-market-place-service)
+2026-04-30 20:40:31 [main] DEBUG : Running with Spring Boot v4.0.3, Spring v7.0.5
+2026-04-30 20:40:31 [main] INFO  : The following 1 profile is active: "local"
+2026-04-30 20:40:32 [background-preinit] INFO  : HV000001: Hibernate Validator 9.0.1.Final
+2026-04-30 20:40:34 [main] INFO  : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-30 20:40:35 [main] INFO  : Finished Spring Data repository scanning in 301 ms. Found 5 JPA repository interfaces.
+2026-04-30 20:40:36 [main] INFO  : Tomcat initialized with port 8080 (http)
+2026-04-30 20:40:36 [main] INFO  : Initializing ProtocolHandler ["http-nio-8080"]
+2026-04-30 20:40:36 [main] INFO  : Starting service [Tomcat]
+2026-04-30 20:40:36 [main] INFO  : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-30 20:40:36 [main] INFO  : Root WebApplicationContext: initialization completed in 5310 ms
+2026-04-30 20:40:37 [main] DEBUG : Filter 'jwtFilter' configured for use
+2026-04-30 20:40:37 [main] INFO  : MarketPlacePool - Starting...
+2026-04-30 20:40:37 [main] INFO  : MarketPlacePool - Added connection org.postgresql.jdbc.PgConnection@6068ebb2
+2026-04-30 20:40:37 [main] INFO  : MarketPlacePool - Start completed.
+2026-04-30 20:40:38 [main] INFO  : Reading resource: db/changelog/v-0.1/2026-04-24-create-brand.yaml
+2026-04-30 20:40:39 [main] INFO  : Reading from online_shop.databasechangelog
+2026-04-30 20:40:39 [main] INFO  : Reading resource: db/changelog/v-0.1/2026-04-24-create-category.yaml
+2026-04-30 20:40:39 [main] INFO  : Reading resource: db/changelog/v-0.1/2026-04-24-create-item.yaml
+2026-04-30 20:40:39 [main] INFO  : Reading resource: db/changelog/v-0.1/tbl-brand/2026-04-25-create-brand.yaml
+2026-04-30 20:40:39 [main] INFO  : Reading resource: db/changelog/v-0.1/tbl-category/2026-04-25-create-category.yaml
+2026-04-30 20:40:39 [main] INFO  : Reading resource: db/changelog/v-0.1/tbl-item/2026-04-25-create-item.yaml
+2026-04-30 20:40:39 [main] INFO  : Reading resource: db/changelog/v-0.1/tbl-security/20260123-1-tbl-security.yaml
+2026-04-30 20:40:40 [main] INFO  : Successfully acquired change log lock
+2026-04-30 20:40:40 [main] INFO  : Using deploymentId: 7567237405
+2026-04-30 20:40:40 [main] INFO  : Reading from online_shop.databasechangelog
+2026-04-30 20:40:40 [main] INFO  : Running Changeset: 2026-04-25-create-brand.yaml::1::Nijat Nasirli
+2026-04-30 20:40:40 [main] ERROR : ChangeSet 2026-04-25-create-brand.yaml::1::Nijat Nasirli encountered an exception.
+liquibase.exception.DatabaseException: ERROR: relation "brand" already exists [Failed SQL: (0) CREATE TABLE online_shop.brand (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(100) NOT NULL, description VARCHAR(250), image VARCHAR(250), is_active BOOLEAN DEFAULT TRUE NOT NULL, is_deleted BOOLEAN DEFAULT FALSE NOT NULL, created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), updated_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), CONSTRAINT brand_pkey PRIMARY KEY (id), UNIQUE (name))]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:520)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:85)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:188)
+	at liquibase.executor.AbstractExecutor.execute(AbstractExecutor.java:148)
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1198)
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:860)
+	at liquibase.changelog.visitor.UpdateVisitor.executeAcceptedChange(UpdateVisitor.java:127)
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:71)
+	at liquibase.changelog.ChangeLogIterator.lambda$run$0(ChangeLogIterator.java:133)
+	at liquibase.Scope.lambda$child$0(Scope.java:214)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:213)
+	at liquibase.Scope.child(Scope.java:192)
+	at liquibase.changelog.ChangeLogIterator.lambda$run$1(ChangeLogIterator.java:122)
+	at liquibase.Scope.lambda$child$0(Scope.java:214)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:213)
+	at liquibase.Scope.child(Scope.java:192)
+	at liquibase.Scope.child(Scope.java:280)
+	at liquibase.Scope.child(Scope.java:284)
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:91)
+	at liquibase.command.core.AbstractUpdateCommandStep.lambda$run$1(AbstractUpdateCommandStep.java:117)
+	at liquibase.Scope.lambda$child$0(Scope.java:214)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:213)
+	at liquibase.Scope.child(Scope.java:192)
+	at liquibase.command.core.AbstractUpdateCommandStep.run(AbstractUpdateCommandStep.java:115)
+	at liquibase.command.core.UpdateCommandStep.run(UpdateCommandStep.java:100)
+	at liquibase.command.CommandScope.lambda$execute$6(CommandScope.java:263)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:199)
+	at liquibase.command.CommandScope.execute(CommandScope.java:251)
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:216)
+	at liquibase.Scope.lambda$child$0(Scope.java:214)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:213)
+	at liquibase.Scope.child(Scope.java:192)
+	at liquibase.Liquibase.runInScope(Liquibase.java:1366)
+	at liquibase.Liquibase.update(Liquibase.java:205)
+	at liquibase.Liquibase.update(Liquibase.java:188)
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:327)
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:279)
+	at liquibase.Scope.lambda$child$0(Scope.java:214)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:213)
+	at liquibase.Scope.child(Scope.java:192)
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:272)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1864)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1813)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:309)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:977)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at com.abbtech.MarketPlaceApplication.main(MarketPlaceApplication.java:13)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "brand" already exists
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2875)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2560)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:429)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:526)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:436)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:358)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:343)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:319)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:314)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:512)
+	... 65 common frames omitted
+2026-04-30 20:40:40 [main] INFO  : UPDATE SUMMARY
+2026-04-30 20:40:40 [main] INFO  : Run:                          0
+2026-04-30 20:40:40 [main] INFO  : Previously run:               0
+2026-04-30 20:40:40 [main] INFO  : Filtered out:                 0
+2026-04-30 20:40:40 [main] INFO  : -------------------------------
+2026-04-30 20:40:40 [main] INFO  : Total change sets:           12
+2026-04-30 20:40:40 [main] INFO  : Update summary generated
+2026-04-30 20:40:40 [main] INFO  : Update command encountered an exception.
+2026-04-30 20:40:40 [main] INFO  : Successfully released change log lock
+2026-04-30 20:40:40 [main] INFO  : Logging exception.
+2026-04-30 20:40:40 [main] INFO  : ERROR: Exception Details
+2026-04-30 20:40:40 [main] INFO  : ERROR: Exception Primary Class:  PSQLException
+2026-04-30 20:40:40 [main] INFO  : ERROR: Exception Primary Reason:  ERROR: relation "brand" already exists
+2026-04-30 20:40:40 [main] INFO  : ERROR: Exception Primary Source:  PostgreSQL 18.3 (Debian 18.3-1.pgdg13+1)
+2026-04-30 20:40:40 [main] INFO  : Command execution complete
+2026-04-30 20:40:42 [main] WARN  : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/hibernate/autoconfigure/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/liquibase/autoconfigure/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset 2026-04-25-create-brand.yaml::1::Nijat Nasirli:
+     Reason: liquibase.exception.DatabaseException: ERROR: relation "brand" already exists [Failed SQL: (0) CREATE TABLE online_shop.brand (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(100) NOT NULL, description VARCHAR(250), image VARCHAR(250), is_active BOOLEAN DEFAULT TRUE NOT NULL, is_deleted BOOLEAN DEFAULT FALSE NOT NULL, created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), updated_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), CONSTRAINT brand_pkey PRIMARY KEY (id), UNIQUE (name))]
+2026-04-30 20:40:42 [main] INFO  : MarketPlacePool - Shutdown initiated...
+2026-04-30 20:40:42 [main] INFO  : MarketPlacePool - Shutdown completed.
+2026-04-30 20:40:42 [main] INFO  : Stopping service [Tomcat]
+2026-04-30 20:40:42 [main] INFO  : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-04-30 20:40:42 [main] ERROR : Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/hibernate/autoconfigure/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/liquibase/autoconfigure/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset 2026-04-25-create-brand.yaml::1::Nijat Nasirli:
+     Reason: liquibase.exception.DatabaseException: ERROR: relation "brand" already exists [Failed SQL: (0) CREATE TABLE online_shop.brand (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(100) NOT NULL, description VARCHAR(250), image VARCHAR(250), is_active BOOLEAN DEFAULT TRUE NOT NULL, is_deleted BOOLEAN DEFAULT FALSE NOT NULL, created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), updated_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), CONSTRAINT brand_pkey PRIMARY KEY (id), UNIQUE (name))]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:977)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at com.abbtech.MarketPlaceApplication.main(MarketPlaceApplication.java:13)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/liquibase/autoconfigure/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset 2026-04-25-create-brand.yaml::1::Nijat Nasirli:
+     Reason: liquibase.exception.DatabaseException: ERROR: relation "brand" already exists [Failed SQL: (0) CREATE TABLE online_shop.brand (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(100) NOT NULL, description VARCHAR(250), image VARCHAR(250), is_active BOOLEAN DEFAULT TRUE NOT NULL, is_deleted BOOLEAN DEFAULT FALSE NOT NULL, created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), updated_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), CONSTRAINT brand_pkey PRIMARY KEY (id), UNIQUE (name))]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1817)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:309)
+	... 10 common frames omitted
+Caused by: liquibase.exception.LiquibaseException: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset 2026-04-25-create-brand.yaml::1::Nijat Nasirli:
+     Reason: liquibase.exception.DatabaseException: ERROR: relation "brand" already exists [Failed SQL: (0) CREATE TABLE online_shop.brand (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(100) NOT NULL, description VARCHAR(250), image VARCHAR(250), is_active BOOLEAN DEFAULT TRUE NOT NULL, is_deleted BOOLEAN DEFAULT FALSE NOT NULL, created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), updated_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), CONSTRAINT brand_pkey PRIMARY KEY (id), UNIQUE (name))]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:289)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1864)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1813)
+	... 17 common frames omitted
+Caused by: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset 2026-04-25-create-brand.yaml::1::Nijat Nasirli:
+     Reason: liquibase.exception.DatabaseException: ERROR: relation "brand" already exists [Failed SQL: (0) CREATE TABLE online_shop.brand (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(100) NOT NULL, description VARCHAR(250), image VARCHAR(250), is_active BOOLEAN DEFAULT TRUE NOT NULL, is_deleted BOOLEAN DEFAULT FALSE NOT NULL, created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), updated_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), CONSTRAINT brand_pkey PRIMARY KEY (id), UNIQUE (name))]
+	at liquibase.command.CommandScope.lambda$execute$6(CommandScope.java:310)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:199)
+	at liquibase.command.CommandScope.execute(CommandScope.java:251)
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:216)
+	at liquibase.Scope.lambda$child$0(Scope.java:214)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:213)
+	at liquibase.Scope.child(Scope.java:192)
+	at liquibase.Liquibase.runInScope(Liquibase.java:1366)
+	at liquibase.Liquibase.update(Liquibase.java:205)
+	at liquibase.Liquibase.update(Liquibase.java:188)
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:327)
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:279)
+	at liquibase.Scope.lambda$child$0(Scope.java:214)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:213)
+	at liquibase.Scope.child(Scope.java:192)
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:272)
+	... 19 common frames omitted
+Caused by: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset 2026-04-25-create-brand.yaml::1::Nijat Nasirli:
+     Reason: liquibase.exception.DatabaseException: ERROR: relation "brand" already exists [Failed SQL: (0) CREATE TABLE online_shop.brand (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(100) NOT NULL, description VARCHAR(250), image VARCHAR(250), is_active BOOLEAN DEFAULT TRUE NOT NULL, is_deleted BOOLEAN DEFAULT FALSE NOT NULL, created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), updated_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), CONSTRAINT brand_pkey PRIMARY KEY (id), UNIQUE (name))]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:155)
+	at liquibase.command.core.AbstractUpdateCommandStep.lambda$run$1(AbstractUpdateCommandStep.java:117)
+	at liquibase.Scope.lambda$child$0(Scope.java:214)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:213)
+	at liquibase.Scope.child(Scope.java:192)
+	at liquibase.command.core.AbstractUpdateCommandStep.run(AbstractUpdateCommandStep.java:115)
+	at liquibase.command.core.UpdateCommandStep.run(UpdateCommandStep.java:100)
+	at liquibase.command.CommandScope.lambda$execute$6(CommandScope.java:263)
+	... 37 common frames omitted
+Caused by: liquibase.exception.MigrationFailedException: Migration failed for changeset 2026-04-25-create-brand.yaml::1::Nijat Nasirli:
+     Reason: liquibase.exception.DatabaseException: ERROR: relation "brand" already exists [Failed SQL: (0) CREATE TABLE online_shop.brand (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(100) NOT NULL, description VARCHAR(250), image VARCHAR(250), is_active BOOLEAN DEFAULT TRUE NOT NULL, is_deleted BOOLEAN DEFAULT FALSE NOT NULL, created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), updated_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), CONSTRAINT brand_pkey PRIMARY KEY (id), UNIQUE (name))]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:918)
+	at liquibase.changelog.visitor.UpdateVisitor.executeAcceptedChange(UpdateVisitor.java:127)
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:71)
+	at liquibase.changelog.ChangeLogIterator.lambda$run$0(ChangeLogIterator.java:133)
+	at liquibase.Scope.lambda$child$0(Scope.java:214)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:213)
+	at liquibase.Scope.child(Scope.java:192)
+	at liquibase.changelog.ChangeLogIterator.lambda$run$1(ChangeLogIterator.java:122)
+	at liquibase.Scope.lambda$child$0(Scope.java:214)
+	at liquibase.Scope.child(Scope.java:223)
+	at liquibase.Scope.child(Scope.java:213)
+	at liquibase.Scope.child(Scope.java:192)
+	at liquibase.Scope.child(Scope.java:280)
+	at liquibase.Scope.child(Scope.java:284)
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:91)
+	... 45 common frames omitted
+Caused by: liquibase.exception.DatabaseException: ERROR: relation "brand" already exists [Failed SQL: (0) CREATE TABLE online_shop.brand (id BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, name VARCHAR(100) NOT NULL, description VARCHAR(250), image VARCHAR(250), is_active BOOLEAN DEFAULT TRUE NOT NULL, is_deleted BOOLEAN DEFAULT FALSE NOT NULL, created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), updated_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(), CONSTRAINT brand_pkey PRIMARY KEY (id), UNIQUE (name))]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:520)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:85)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:188)
+	at liquibase.executor.AbstractExecutor.execute(AbstractExecutor.java:148)
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1198)
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:860)
+	... 60 common frames omitted
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "brand" already exists
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2875)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2560)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:429)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:526)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:436)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:358)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:343)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:319)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:314)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:512)
+	... 65 common frames omitted
